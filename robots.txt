@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tabi.ayumi-biz.com/sitemap.xml
