@@ -257,6 +257,24 @@
       color: var(--sub);
       font-size: 13px;
     }
+    .article-dates {
+      display: grid;
+      gap: 6px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .article-dates span {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .article-dates b {
+      color: var(--sub);
+      font-weight: 700;
+    }
     .source-list a {
       color: var(--teal);
       text-decoration: underline;
@@ -422,6 +440,10 @@
         <a href="#hotel">宿選び</a>
         <a href="#booking">予約前の確認</a>
         <a href="#sources">公式情報</a>
+        <div class="article-dates">
+          <span><b>公開日</b>2026.06.07</span>
+          <span><b>更新日</b>2026.06.07</span>
+        </div>
       </aside>
     </div>
   </main>
