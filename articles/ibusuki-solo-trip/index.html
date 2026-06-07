@@ -263,12 +263,6 @@
       text-underline-offset: 2px;
       cursor: help;
     }
-    .section-note {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.75;
-    }
     .time-row {
       display: grid;
       grid-template-columns: 88px minmax(0, 1fr) 108px;
@@ -466,7 +460,12 @@
           <div class="time-example">
             <h3>【例】羽田発で1泊2日を組むとしたら</h3>
             <p>たとえば羽田空港から鹿児島空港へ向かう場合、鹿児島空港には大手航空会社（FSC）、中堅航空会社（MCC）、格安航空会社（LCC）が就航しています。羽田発なら、価格と時間のバランスでスカイマークを候補にしやすいです。</p>
-            <p class="term-note">FSC / MCC / LCC は、航空会社のサービス内容や運賃帯をざっくり分ける区分です。語をタップすると意味が出るようにしてあります。</p>
+            <p class="term-note">
+              <abbr title="FSC: フルサービスキャリア。手荷物や機内サービスが充実した航空会社です。">FSC</abbr> /
+              <abbr title="MCC: 中堅航空会社。FSCとLCCの中間で、価格と利便性のバランスを取りやすい区分です。">MCC</abbr> /
+              <abbr title="LCC: 格安航空会社。運賃を抑えやすい一方、サービスは必要最小限です。">LCC</abbr>
+              は、ホバーや長押しで補足を見られます。
+            </p>
             <div class="time-row">
               <b>【例】8:40-10:30</b>
               <span>羽田空港から鹿児島空港へ。例: スカイマーク SKY303便</span>
@@ -492,7 +491,6 @@
               <span>約4〜4.5時間</span>
             </div>
             <p>便名や時刻、空港バス、JRの接続は季節や運行日により変わります。予約前に航空会社、空港バス、JR九州の公式情報で最新時刻を確認してください。</p>
-            <p class="section-note">写真の下に、便名・移動手段・所要時間を短く添えると、縦長写真より読みやすくなります。</p>
           </div>
           <h3>1日目のイメージ（例）</h3>
           <ol>
