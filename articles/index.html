@@ -101,6 +101,33 @@
       color: var(--ink);
       font: inherit;
     }
+    .tag-filter-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .tag-filter-chip {
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--sub);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .18s ease, color .18s ease, border-color .18s ease;
+    }
+    .tag-filter-chip[aria-pressed="true"] {
+      border-color: var(--teal);
+      background: var(--teal);
+      color: var(--white);
+    }
+    .tag-filter-chip.is-clear {
+      background: #f8f9f9;
+      color: var(--ink);
+    }
     .article-list {
       margin-top: 28px;
       border-top: 1px solid var(--line);
@@ -201,19 +228,19 @@
         </select>
       </div>
       <div class="filter-box">
-        <label for="tagFilter">タグで探す</label>
-        <select id="tagFilter">
-          <option value="all">すべて</option>
-          <option value="一人旅">一人旅</option>
-          <option value="カップル">カップル</option>
-          <option value="記念日">記念日</option>
-          <option value="車なし">車なし</option>
-          <option value="温泉">温泉</option>
-          <option value="ホテル">ホテル</option>
-          <option value="沖縄離島">沖縄離島</option>
-          <option value="街歩き">街歩き</option>
-          <option value="文化">文化</option>
-        </select>
+        <label>タグで探す</label>
+        <div class="tag-filter-group" id="tagFilterGroup" aria-label="タグで探す">
+          <button type="button" class="tag-filter-chip is-clear" data-clear-tags="true">選択をクリア</button>
+          <button type="button" class="tag-filter-chip" data-tag="一人旅" aria-pressed="false">一人旅</button>
+          <button type="button" class="tag-filter-chip" data-tag="カップル" aria-pressed="false">カップル</button>
+          <button type="button" class="tag-filter-chip" data-tag="記念日" aria-pressed="false">記念日</button>
+          <button type="button" class="tag-filter-chip" data-tag="車なし" aria-pressed="false">車なし</button>
+          <button type="button" class="tag-filter-chip" data-tag="温泉" aria-pressed="false">温泉</button>
+          <button type="button" class="tag-filter-chip" data-tag="ホテル" aria-pressed="false">ホテル</button>
+          <button type="button" class="tag-filter-chip" data-tag="沖縄離島" aria-pressed="false">沖縄離島</button>
+          <button type="button" class="tag-filter-chip" data-tag="街歩き" aria-pressed="false">街歩き</button>
+          <button type="button" class="tag-filter-chip" data-tag="文化" aria-pressed="false">文化</button>
+        </div>
       </div>
     </section>
 
@@ -352,7 +379,8 @@
   </footer>
   <script>
     const areaFilter = document.getElementById("areaFilter");
-    const tagFilter = document.getElementById("tagFilter");
+    const tagFilterGroup = document.getElementById("tagFilterGroup");
+    const tagFilterButtons = [...document.querySelectorAll(".tag-filter-chip[data-tag]")];
     const rows = [...document.querySelectorAll(".article-row")];
 
     const matchesArea = (row, areaValue) => {
@@ -361,22 +389,35 @@
       return areaText.includes(areaValue);
     };
 
-    const matchesTag = (row, tagValue) => {
-      if (tagValue === "all") return true;
+    const matchesTag = (row, selectedTags) => {
+      if (selectedTags.length === 0) return true;
       const tags = [...row.querySelectorAll(".pill")].map((pill) => pill.textContent.trim());
-      return tags.some((tag) => tag.includes(tagValue));
+      return selectedTags.every((selectedTag) => tags.some((tag) => tag.includes(selectedTag)));
     };
 
     const applyFilters = () => {
       const areaValue = areaFilter.value;
-      const tagValue = tagFilter.value;
+      const selectedTags = tagFilterButtons
+        .filter((button) => button.getAttribute("aria-pressed") === "true")
+        .map((button) => button.dataset.tag);
       rows.forEach((row) => {
-        row.style.display = matchesArea(row, areaValue) && matchesTag(row, tagValue) ? "grid" : "none";
+        row.style.display = matchesArea(row, areaValue) && matchesTag(row, selectedTags) ? "grid" : "none";
       });
     };
 
     areaFilter.addEventListener("change", applyFilters);
-    tagFilter.addEventListener("change", applyFilters);
+    tagFilterGroup.addEventListener("click", (event) => {
+      const target = event.target.closest("button");
+      if (!target) return;
+      if (target.dataset.clearTags === "true") {
+        tagFilterButtons.forEach((button) => button.setAttribute("aria-pressed", "false"));
+        applyFilters();
+        return;
+      }
+      const isPressed = target.getAttribute("aria-pressed") === "true";
+      target.setAttribute("aria-pressed", isPressed ? "false" : "true");
+      applyFilters();
+    });
   </script>
 </body>
 </html>
