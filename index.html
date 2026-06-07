@@ -764,7 +764,8 @@
         date: "2026.06",
         tags: ["solo", "onsen", "carfree"],
         label: ["一人旅", "温泉"],
-        image: "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=900&q=80"
+        image: "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=900&q=80",
+        url: "/articles/ibusuki-solo-trip/"
       },
       {
         title: "記念日に泊まりたい温泉宿｜露天風呂付き客室の選び方",
@@ -857,14 +858,14 @@
     const locationGrid = document.getElementById("locationGrid");
     const renderCards = (items, target) => {
       target.innerHTML = items.map((article) => `
-        <article class="article-card">
+        <a class="article-card" href="${article.url || '#'}">
           <div class="thumb" style="background-image:url('${article.image}')"></div>
           <div class="card-body">
             <div class="card-tags">${article.label.map((tag) => `<span class="pill">${tag}</span>`).join("")}</div>
             <h3>${article.title}</h3>
             <div class="card-meta"><span>${article.area}</span><span>${article.date}</span></div>
           </div>
-        </article>
+        </a>
       `).join("");
     };
     const renderArticles = (filter) => {
