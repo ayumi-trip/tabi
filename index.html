@@ -747,7 +747,7 @@
     </a>
     <nav class="nav-links" aria-label="主要メニュー">
       <a href="#articles">記事を探す</a>
-      <a href="finder.html">旅先レコメンド</a>
+      <a href="/articles/trip-choice-first-step/">旅の選び方</a>
     </nav>
   </header>
 
@@ -757,7 +757,7 @@
         <h1>旅を、みつける。</h1>
         <div class="hero-actions">
           <a class="primary" href="#articles">記事を見る</a>
-          <a class="secondary" href="finder.html">旅先レコメンド</a>
+          <a class="secondary" href="/articles/trip-choice-first-step/">旅の選び方</a>
         </div>
       </div>
       <div class="hero-visual" role="img" aria-label="海辺の旅行イメージ"></div>
@@ -796,22 +796,34 @@
       <div class="section-title">
         <h2>旅のひとりごと</h2>
       </div>
-      <div class="note-list">
-        <a class="note-card" href="/articles/okinawa-islands-2days/">
-          <b>沖縄離島の1泊2日は、まず石垣島から考える</b>
-          <p>短い休みで離島へ行くなら、島をいくつも詰め込むより、空港から市街地や離島ターミナルへ動きやすい石垣島を軸にしたほうが予定を組みやすいです。</p>
-          <span>沖縄離島</span>
+      <div class="article-grid">
+        <a class="article-card" href="/articles/trip-choice-first-step/">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="pill">旅の選び方</span><span class="pill">週末旅</span></div>
+            <h3>旅先選びは、誰と行くか・何を優先するか・レンタカーの有無で決める</h3>
+            <div class="card-meta"><span>旅のひとりごと</span><span>2026.06</span></div>
+          </div>
         </a>
-        <a class="note-card" href="/articles/kohama-hotels-2/">
-          <b>小浜島は、ホテルで過ごす夜の時間まで含めて選びたい</b>
-          <p>小浜島は観光地を詰め込むより、どのホテルで夜を過ごすかの印象差が大きい島です。はいむるぶしを推したい理由も、そこにあります。</p>
-          <span>小浜島</span>
+        <a class="article-card" href="/articles/kohama-hotels-2/">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="pill">小浜島</span><span class="pill">ホテル</span></div>
+            <h3>小浜島は、ホテルで過ごす夜の時間まで含めて選びたい</h3>
+            <div class="card-meta"><span>旅のひとりごと</span><span>2026.06</span></div>
+          </div>
         </a>
-        <a class="note-card" href="/articles/nara-prison-museum/">
-          <b>奈良監獄ミュージアムは、建築を見るだけでも行く理由になる</b>
-          <p>奈良公園だけではない奈良の寄り道先として、赤れんが建築の迫力はかなり強いです。最近の開業情報も含めて、単独で見に行く価値があります。</p>
-          <span>奈良</span>
+        <a class="article-card" href="/articles/nara-prison-museum/">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <div class="card-tags"><span class="pill">奈良</span><span class="pill">建築</span></div>
+            <h3>奈良監獄ミュージアムは、建築を見るだけでも行く理由になる</h3>
+            <div class="card-meta"><span>旅のひとりごと</span><span>2026.06</span></div>
+          </div>
         </a>
+      </div>
+      <div class="section-footer">
+        <a class="section-link" href="/articles/index.html">その他記事を見る</a>
       </div>
     </section>
 
@@ -1260,7 +1272,7 @@
 
     const grid = document.getElementById("articleGrid");
     const locationGrid = document.getElementById("locationGrid");
-    const PREVIEW_LIMIT = 6;
+    const PREVIEW_LIMIT = 3;
     const renderCards = (items, target) => {
       target.innerHTML = items.map((article) => `
         <a class="article-card" href="${article.url || '#'}">

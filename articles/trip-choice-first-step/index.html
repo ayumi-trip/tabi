@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅先選びは、誰と行くか・何を優先するか・レンタカーの有無で決める | tabinote</title>
+  <meta name="description" content="旅先が決まらないときは、誰と行くか、何を優先するか、レンタカーが必要かの3つで絞ると考えやすくなります。週末旅の行き先を決めるときの整理の仕方をまとめました。">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="tabinote編集部">
+  <meta name="theme-color" content="#1f5f8f">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://tabi.ayumi-biz.com/articles/trip-choice-first-step/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="tabinote">
+  <meta property="og:title" content="旅先選びは、誰と行くか・何を優先するか・レンタカーの有無で決める | tabinote">
+  <meta property="og:description" content="旅先が決まらないときは、誰と行くか、何を優先するか、レンタカーが必要かの3つで絞ると考えやすくなります。週末旅の行き先を決めるときの整理の仕方をまとめました。">
+  <meta property="og:url" content="https://tabi.ayumi-biz.com/articles/trip-choice-first-step/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="旅先選びは、誰と行くか・何を優先するか・レンタカーの有無で決める | tabinote">
+  <meta name="twitter:description" content="旅先が決まらないときは、誰と行くか、何を優先するか、レンタカーが必要かの3つで絞ると考えやすくなります。週末旅の行き先を決めるときの整理の仕方をまとめました。">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --sub: #4f5658;
+      --muted: #777f82;
+      --line: #e8eaec;
+      --paper: #fff;
+      --paper-2: #f4f6f6;
+      --white: #fff;
+      --deep: #161a1c;
+      --teal: #1f5f8f;
+      --teal-2: #f1f6fb;
+      --shadow: 0 14px 40px rgba(17, 17, 17, .07);
+      --r: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 clamp(18px, 4vw, 52px);
+      background: rgba(255,255,255,.92);
+      border-bottom: 1px solid rgba(17,17,17,.08);
+      backdrop-filter: blur(16px);
+    }
+    .brand-name {
+      font-family: "Shippori Mincho", serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .brand-name span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--sub);
+      font-size: 13px;
+    }
+    .article-hero {
+      padding: 64px clamp(20px, 5vw, 72px) 40px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(rgba(255,255,255,.42), rgba(255,255,255,.78)),
+        url("https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.86);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.25;
+    }
+    .hero-summary {
+      max-width: 760px;
+      color: var(--sub);
+      font-size: 15px;
+    }
+    .article-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 32px;
+      padding: 40px clamp(20px, 5vw, 72px) 72px;
+    }
+    .content-box {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .content-box h2 {
+      margin: 0 0 14px;
+      font-family: "Shippori Mincho", serif;
+      font-size: 30px;
+      line-height: 1.35;
+    }
+    .content-box h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    .summary-list, .content-box ul {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    .sidebar {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+      display: grid;
+      gap: 16px;
+    }
+    .side-box {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: var(--paper-2);
+    }
+    .side-box b {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .side-box a {
+      display: block;
+      color: var(--sub);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .date-list {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--sub);
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px clamp(20px, 5vw, 72px);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      background: #f8f9f9;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    @media (max-width: 960px) {
+      .article-wrap { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .footer { display: block; }
+      .footer-links { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" aria-label="tabinote トップ">
+      <span class="brand-name">tabi<span>note</span></span>
+    </a>
+    <nav class="nav-links" aria-label="主要メニュー">
+      <a href="/#articles">記事を探す</a>
+      <a href="/#notes">旅のひとりごと</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="article-hero">
+      <div class="eyebrow">旅のひとりごと</div>
+      <h1>旅先選びは、誰と行くか・何を優先するか・レンタカーの有無で決める</h1>
+      <p class="hero-summary">旅先が決まらないときは、行きたい場所を増やすより、条件を先に減らしたほうが考えやすくなります。週末旅や短い連休なら、誰と行くか、何を優先するか、レンタカーが必要かの3つで絞るのが実用的です。</p>
+    </section>
+
+    <div class="article-wrap">
+      <article>
+        <section class="content-box" id="summary">
+          <h2>ひとことでいうと</h2>
+          <ul class="summary-list">
+            <li>旅先選びは、行きたい場所を増やすより、条件を3つに絞るほうが早いです。</li>
+            <li>まずは「誰と行くか」「何を優先するか」「レンタカーが必要か」を決めます。</li>
+            <li>週末旅や初心者の旅行なら、移動が単純な場所から選ぶと失敗しにくいです。</li>
+          </ul>
+        </section>
+
+        <section class="content-box" id="who">
+          <h2>まず決めたいのは、誰と行くか</h2>
+          <p>ひとり旅と記念日旅行では、同じ場所でも求めるものが変わります。ひとり旅なら動きやすさやひとりで入りやすい飲食店、記念日なら宿の滞在時間や食事の満足度を先に見たほうが、候補を絞りやすくなります。</p>
+          <ul>
+            <li>ひとり旅なら、移動の単純さと夜ごはんの取りやすさを優先する</li>
+            <li>カップルや記念日なら、宿で過ごす時間の満足度を先に考える</li>
+            <li>初心者ほど、誰向けの旅かを先に決めたほうが迷いにくい</li>
+          </ul>
+        </section>
+
+        <section class="content-box" id="priority">
+          <h2>次に、何を優先するかを3つまでに絞る</h2>
+          <p>「温泉も行きたい、海も見たい、グルメも外せない」と広げると、短い休みでは組みにくくなります。週末旅なら、温泉、グルメ、街歩き、離島、歴史などの中から、主役を1つ、サブを1〜2つまでに抑えるのが現実的です。</p>
+          <ul>
+            <li>主役は1つにする</li>
+            <li>サブは1〜2つまでにとどめる</li>
+            <li>やりたいことが増えたら、日数を足すか場所を変える</li>
+          </ul>
+        </section>
+
+        <section class="content-box" id="car">
+          <h2>レンタカーが必要かどうかで、候補はかなり変わる</h2>
+          <p>車なしで行きたいなら、空港、駅、港から宿までの動きやすさを先に見る必要があります。逆に、絶景を点で回る旅や、郊外の観光地を複数入れたい旅なら、レンタカー前提のほうが組みやすいです。</p>
+          <ul>
+            <li>車なしなら、空港・駅・港から宿までの距離が短い場所を選ぶ</li>
+            <li>路線バスや送迎で成立するかを見る</li>
+            <li>郊外を広く回りたいなら、最初からレンタカー前提で考える</li>
+          </ul>
+        </section>
+
+        <section class="content-box" id="ending">
+          <h2>迷ったら、移動が単純な場所から選ぶ</h2>
+          <p>旅慣れていないうちは、乗り継ぎが多い場所や、現地移動が複雑な場所ほど負担が大きくなります。短い休みで満足度を上げたいなら、空港や駅から街まで近い場所、宿を決めると旅程が見えやすい場所から選ぶのが無難です。</p>
+          <p>週末旅の行き先に迷ったときは、まず条件を減らしてから場所を選ぶ。この順番にすると、旅先はかなり決めやすくなります。</p>
+        </section>
+      </article>
+
+      <aside class="sidebar">
+        <div class="side-box">
+          <b>この記事の内容</b>
+          <a href="#summary">ひとことでいうと</a>
+          <a href="#who">まず決めたいのは、誰と行くか</a>
+          <a href="#priority">何を優先するかを絞る</a>
+          <a href="#car">レンタカーが必要かどうか</a>
+          <a href="#ending">迷ったら移動が単純な場所から</a>
+        </div>
+        <div class="side-box">
+          <b>公開情報</b>
+          <div class="date-list">
+            <div>公開日 2026.06.07</div>
+            <div>更新日 2026.06.07</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
+    <div class="footer-links">
+      <a href="/about.html">運営者情報</a>
+      <a href="/contact.html">お問い合わせ</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/ads.html">広告掲載について</a>
+    </div>
+  </footer>
+</body>
+</html>
