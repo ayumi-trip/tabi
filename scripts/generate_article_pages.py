@@ -10,6 +10,10 @@ ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE_PATH = ROOT / "articles" / "ibusuki-solo-trip" / "index.html"
 
 
+def write_text_utf8_bom(path: Path, content: str) -> None:
+    path.write_text(content, encoding="utf-8-sig")
+
+
 def section(section_id: str, heading: str, body: str) -> str:
     return dedent(
         f"""\
@@ -1449,7 +1453,7 @@ def main() -> None:
     for article in ARTICLES:
         output = apply_article(template, article)
         target = ROOT / "articles" / article["slug"] / "index.html"
-        target.write_text(output, encoding="utf-8")
+        write_text_utf8_bom(target, output)
         print(f"wrote {target.relative_to(ROOT)}")
 
 

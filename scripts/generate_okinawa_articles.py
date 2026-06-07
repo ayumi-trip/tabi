@@ -13,6 +13,10 @@ INDEX_PATH = ROOT / "index.html"
 SITEMAP_PATH = ROOT / "sitemap.xml"
 
 
+def write_text_utf8_bom(path: Path, content: str) -> None:
+    path.write_text(content, encoding="utf-8-sig")
+
+
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -1558,7 +1562,7 @@ def write_articles() -> None:
         )
         target = OUTPUT_DIR / str(article["slug"]) / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(page, encoding="utf-8")
+        write_text_utf8_bom(target, page)
 
 
 def update_index() -> None:
@@ -1579,7 +1583,7 @@ def update_index() -> None:
     locations_js = json.dumps(LOCATION_ARTICLES, ensure_ascii=False, indent=6)
     content = re.sub(r"const articles = \[.*?\n    \];", f"const articles = {articles_js};", content, count=1, flags=re.S)
     content = re.sub(r"const locationArticles = \[.*?\n    \];", f"const locationArticles = {locations_js};", content, count=1, flags=re.S)
-    INDEX_PATH.write_text(content, encoding="utf-8")
+    write_text_utf8_bom(INDEX_PATH, content)
 
 
 def update_sitemap() -> None:
