@@ -760,128 +760,401 @@
   <script>
     const articles = [
       {
-        title: "指宿ひとり旅｜砂むし温泉と海沿い宿で過ごす1泊2日",
-        area: "鹿児島・指宿",
-        date: "2026.06",
-        tags: ["solo", "onsen", "carfree"],
-        label: ["ひとり旅", "温泉"],
-        image: "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/ibusuki-solo-trip/"
+            "title": "指宿ひとり旅｜砂むし温泉と海沿い宿で過ごす1泊2日",
+            "area": "鹿児島・指宿",
+            "date": "2026.06",
+            "tags": [
+                  "solo",
+                  "onsen",
+                  "carfree"
+            ],
+            "label": [
+                  "ひとり旅",
+                  "温泉"
+            ],
+            "image": "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/ibusuki-solo-trip/"
       },
       {
-        title: "沖縄離島は1泊2日で行ける？短い休みで選びたい島を整理する",
-        area: "沖縄",
-        date: "2026.06",
-        tags: ["solo", "couple", "okinawa"],
-        label: ["沖縄離島", "週末旅"],
-        image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/okinawa-islands-2days/"
+            "title": "沖縄離島は1泊2日で行ける？短い休みで選びたい島を整理する",
+            "area": "沖縄",
+            "date": "2026.06",
+            "tags": [
+                  "solo",
+                  "couple",
+                  "okinawa"
+            ],
+            "label": [
+                  "沖縄離島",
+                  "週末旅行"
+            ],
+            "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/okinawa-islands-2days/"
       },
       {
-        title: "男鹿半島は2泊3日でゆっくり行きたい。秋田市内と文化を楽しむ旅の組み方",
-        area: "秋田・男鹿",
-        date: "2026.06",
-        tags: ["couple", "solo", "culture"],
-        label: ["文化体験", "2泊3日"],
-        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/oga-solo-trip/"
+            "title": "男鹿半島は2泊3日でゆっくり行きたい。なまはげと秋田市内の文化旅",
+            "area": "秋田・男鹿",
+            "date": "2026.06",
+            "tags": [
+                  "couple",
+                  "solo"
+            ],
+            "label": [
+                  "文化旅",
+                  "2泊3日"
+            ],
+            "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/oga-solo-trip/"
       },
       {
-        title: "奈良カップル旅は記念日に使いやすい？ホテルと街歩きで組む1泊2日",
-        area: "奈良",
-        date: "2026.06",
-        tags: ["couple", "anniversary", "carfree"],
-        label: ["カップル", "記念日"],
-        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/nara-couple-trip/"
+            "title": "奈良カップル旅｜記念日に使いやすいホテルと街歩きで回る1泊2日",
+            "area": "奈良",
+            "date": "2026.06",
+            "tags": [
+                  "couple",
+                  "anniversary",
+                  "carfree"
+            ],
+            "label": [
+                  "カップル",
+                  "記念日"
+            ],
+            "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/nara-couple-trip/"
       },
       {
-        title: "金沢は街歩き旅に向いている？ひとりでもカップルでも組みやすい1泊2日",
-        area: "石川・金沢",
-        date: "2026.06",
-        tags: ["solo", "couple", "culture"],
-        label: ["街歩き", "グルメ"],
-        image: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/kanazawa-city-walk/"
+            "title": "金沢は車なし旅に向いている？ひとりでもカップルでも楽しむ1泊2日",
+            "area": "石川・金沢",
+            "date": "2026.06",
+            "tags": [
+                  "solo",
+                  "couple"
+            ],
+            "label": [
+                  "街歩き",
+                  "グルメ"
+            ],
+            "image": "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/kanazawa-city-walk/"
       },
       {
-        title: "箱根は記念日旅行に向いている？温泉宿とフリーパスで組む1泊2日",
-        area: "神奈川・箱根",
-        date: "2026.06",
-        tags: ["anniversary", "couple", "onsen"],
-        label: ["箱根", "記念日"],
-        image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/hakone-anniversary-trip/"
+            "title": "箱根は記念日旅行に向いている？温泉宿とフリーパスで回る1泊2日",
+            "area": "神奈川・箱根",
+            "date": "2026.06",
+            "tags": [
+                  "anniversary",
+                  "couple",
+                  "onsen"
+            ],
+            "label": [
+                  "箱根",
+                  "記念日"
+            ],
+            "image": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/hakone-anniversary-trip/"
       },
       {
-        title: "由布院は週末温泉旅に向いている？街歩きと宿時間で組む1泊2日",
-        area: "大分・由布院",
-        date: "2026.06",
-        tags: ["onsen", "couple", "solo"],
-        label: ["由布院", "週末旅"],
-        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/yufuin-onsen-weekend/"
+            "title": "由布院は週末温泉旅に向いている？街歩きと宿時間で組む1泊2日",
+            "area": "大分・由布院",
+            "date": "2026.06",
+            "tags": [
+                  "onsen",
+                  "couple",
+                  "solo"
+            ],
+            "label": [
+                  "由布院",
+                  "週末旅行"
+            ],
+            "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/yufuin-onsen-weekend/"
+      },
+      {
+            "title": "石垣島でひとり旅をするのにおすすめしたいホテル3選",
+            "area": "沖縄・石垣島",
+            "date": "2026.06",
+            "tags": [
+                  "solo",
+                  "okinawa"
+            ],
+            "label": [
+                  "石垣島",
+                  "ひとり旅"
+            ],
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/ishigaki-solo-hotels-3/"
+      },
+      {
+            "title": "石垣島で離島ターミナル近くに泊まりたい人向けホテル3選",
+            "area": "沖縄・石垣島",
+            "date": "2026.06",
+            "tags": [
+                  "okinawa"
+            ],
+            "label": [
+                  "石垣島",
+                  "港近く"
+            ],
+            "image": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/ishigaki-terminal-hotels-3/"
+      },
+      {
+            "title": "八重山で記念日旅に向くホテル3選",
+            "area": "沖縄・八重山",
+            "date": "2026.06",
+            "tags": [
+                  "anniversary",
+                  "couple",
+                  "okinawa"
+            ],
+            "label": [
+                  "八重山",
+                  "記念日"
+            ],
+            "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/yaeyama-anniversary-hotels-3/"
+      },
+      {
+            "title": "小浜島で静かな島時間を楽しみたい人におすすめのホテル2選",
+            "area": "沖縄・小浜島",
+            "date": "2026.06",
+            "tags": [
+                  "couple",
+                  "anniversary",
+                  "okinawa"
+            ],
+            "label": [
+                  "小浜島",
+                  "ホテル比較"
+            ],
+            "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/kohama-hotels-2/"
+      },
+      {
+            "title": "宮古島で目的別に選びたいホテル3選",
+            "area": "沖縄・宮古島",
+            "date": "2026.06",
+            "tags": [
+                  "couple",
+                  "solo",
+                  "okinawa"
+            ],
+            "label": [
+                  "宮古島",
+                  "ホテル3選"
+            ],
+            "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/miyakojima-hotels-3/"
+      },
+      {
+            "title": "那覇で立地重視で選びたいホテル3選",
+            "area": "沖縄・那覇",
+            "date": "2026.06",
+            "tags": [
+                  "solo",
+                  "couple",
+                  "okinawa"
+            ],
+            "label": [
+                  "那覇",
+                  "ホテル3選"
+            ],
+            "image": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/naha-hotels-3/"
+      },
+      {
+            "title": "宮古島で記念日旅に向くホテル3選",
+            "area": "沖縄・宮古島",
+            "date": "2026.06",
+            "tags": [
+                  "anniversary",
+                  "couple",
+                  "okinawa"
+            ],
+            "label": [
+                  "宮古島",
+                  "記念日"
+            ],
+            "image": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/miyakojima-anniversary-hotels-3/"
+      },
+      {
+            "title": "石垣島1泊2日モデルコース｜弾丸でも離島まで楽しむ動き方",
+            "area": "沖縄・石垣島",
+            "date": "2026.06",
+            "tags": [
+                  "solo",
+                  "okinawa"
+            ],
+            "label": [
+                  "石垣島",
+                  "1泊2日"
+            ],
+            "image": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/ishigaki-2days-model-course/"
+      },
+      {
+            "title": "石垣島と宮古島、ひとり旅ならどっち？",
+            "area": "沖縄・比較",
+            "date": "2026.06",
+            "tags": [
+                  "solo",
+                  "okinawa"
+            ],
+            "label": [
+                  "比較",
+                  "ひとり旅"
+            ],
+            "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/ishigaki-vs-miyakojima-solo/"
+      },
+      {
+            "title": "冬の沖縄で海遊びはできる？海遊びと観光の組み立て方",
+            "area": "沖縄・冬旅",
+            "date": "2026.06",
+            "tags": [
+                  "okinawa"
+            ],
+            "label": [
+                  "沖縄",
+                  "冬旅"
+            ],
+            "image": "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/winter-okinawa-sea-guide/"
+      },
+      {
+            "title": "初めての沖縄旅行Q&A｜日数・レンタカー・ホテルの選び方",
+            "area": "沖縄・本島",
+            "date": "2026.06",
+            "tags": [
+                  "okinawa"
+            ],
+            "label": [
+                  "沖縄",
+                  "初心者向け"
+            ],
+            "image": "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/first-okinawa-qa/"
+      },
+      {
+            "title": "沖縄本島で記念日旅に向くホテル3選",
+            "area": "沖縄・本島",
+            "date": "2026.06",
+            "tags": [
+                  "anniversary",
+                  "couple",
+                  "okinawa"
+            ],
+            "label": [
+                  "本島",
+                  "記念日"
+            ],
+            "image": "https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1400&q=82",
+            "url": "/articles/okinawa-anniversary-hotels-3/"
       }
-    ];
+];
 
     const locationArticles = [
       {
-        title: "指宿",
-        area: "鹿児島",
-        date: "温泉・車なし",
-        label: ["砂むし温泉", "海沿い宿"],
-        image: "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/ibusuki-solo-trip/"
+            "title": "指宿",
+            "area": "鹿児島",
+            "date": "温泉と車なし旅",
+            "label": [
+                  "ひとり旅",
+                  "砂むし温泉"
+            ],
+            "image": "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/ibusuki-solo-trip/"
       },
       {
-        title: "沖縄離島",
-        area: "沖縄",
-        date: "島旅・1泊2日",
-        label: ["海", "非日常"],
-        image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/okinawa-islands-2days/"
+            "title": "沖縄離島",
+            "area": "沖縄",
+            "date": "弾丸でも行きやすい島",
+            "label": [
+                  "海",
+                  "週末旅行"
+            ],
+            "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/okinawa-islands-2days/"
       },
       {
-        title: "男鹿半島",
-        area: "秋田",
-        date: "文化体験・温泉",
-        label: ["なまはげ", "ドライブ"],
-        image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/oga-solo-trip/"
+            "title": "男鹿半島",
+            "area": "秋田",
+            "date": "文化旅と温泉",
+            "label": [
+                  "なまはげ",
+                  "ドライブ"
+            ],
+            "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/oga-solo-trip/"
       },
       {
-        title: "奈良",
-        area: "奈良",
-        date: "街歩き・記念日",
-        label: ["歴史", "カップル"],
-        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/nara-couple-trip/"
+            "title": "奈良",
+            "area": "奈良",
+            "date": "街歩きと記念日",
+            "label": [
+                  "歴史",
+                  "カップル"
+            ],
+            "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/nara-couple-trip/"
       },
       {
-        title: "箱根",
-        area: "神奈川",
-        date: "温泉・記念日",
-        label: ["フリーパス", "カップル"],
-        image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/hakone-anniversary-trip/"
+            "title": "箱根",
+            "area": "神奈川",
+            "date": "温泉と記念日",
+            "label": [
+                  "フリーパス",
+                  "カップル"
+            ],
+            "image": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/hakone-anniversary-trip/"
       },
       {
-        title: "由布院",
-        area: "大分",
-        date: "温泉・週末旅",
-        label: ["街歩き", "のんびり"],
-        image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/yufuin-onsen-weekend/"
+            "title": "由布院",
+            "area": "大分",
+            "date": "温泉と週末旅行",
+            "label": [
+                  "街歩き",
+                  "のんびり"
+            ],
+            "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/yufuin-onsen-weekend/"
       },
       {
-        title: "金沢",
-        area: "石川・金沢",
-        date: "街歩き・グルメ",
-        label: ["文化体験", "お酒"],
-        image: "https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=900&q=80",
-        url: "/articles/kanazawa-city-walk/"
+            "title": "石垣島",
+            "area": "沖縄",
+            "date": "ひとり旅と港拠点",
+            "label": [
+                  "石垣島",
+                  "ホテル選び"
+            ],
+            "image": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/ishigaki-solo-hotels-3/"
+      },
+      {
+            "title": "宮古島",
+            "area": "沖縄",
+            "date": "海とホテル時間",
+            "label": [
+                  "宮古島",
+                  "リゾート"
+            ],
+            "image": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/miyakojima-hotels-3/"
+      },
+      {
+            "title": "那覇",
+            "area": "沖縄",
+            "date": "立地重視のホテル選び",
+            "label": [
+                  "那覇",
+                  "街歩き"
+            ],
+            "image": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=900&q=80",
+            "url": "/articles/naha-hotels-3/"
       }
-    ];
+];
 
     const grid = document.getElementById("articleGrid");
     const locationGrid = document.getElementById("locationGrid");

@@ -1,99 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://tabi.ayumi-biz.com/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/about.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/contact.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/privacy.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/ads.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/finder.html</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/ibusuki-solo-trip/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/ibusuki-carfree/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/anniversary-onsen-ryokan/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/carfree-onsen-destinations/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/okinawa-islands-2days/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/oga-solo-trip/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/nara-couple-trip/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/kanazawa-city-walk/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/hakone-anniversary-trip/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tabi.ayumi-biz.com/articles/yufuin-onsen-weekend/</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/about.html</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.4</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/contact.html</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.4</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/privacy.html</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.4</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/ads.html</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.4</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/finder.html</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/ibusuki-solo-trip/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/ibusuki-carfree/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/anniversary-onsen-ryokan/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/carfree-onsen-destinations/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/okinawa-islands-2days/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/oga-solo-trip/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/nara-couple-trip/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/kanazawa-city-walk/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/hakone-anniversary-trip/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/yufuin-onsen-weekend/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/ishigaki-solo-hotels-3/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/ishigaki-terminal-hotels-3/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/yaeyama-anniversary-hotels-3/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/kohama-hotels-2/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/miyakojima-hotels-3/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/naha-hotels-3/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/miyakojima-anniversary-hotels-3/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/ishigaki-2days-model-course/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/ishigaki-vs-miyakojima-solo/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/winter-okinawa-sea-guide/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/first-okinawa-qa/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>https://tabi.ayumi-biz.com/articles/okinawa-anniversary-hotels-3/</loc>
+  <lastmod>2026-06-07</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
 </urlset>
