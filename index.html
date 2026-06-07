@@ -540,6 +540,84 @@
       justify-content: flex-end;
       margin-top: 18px;
     }
+    .map-shell {
+      margin-top: 24px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: linear-gradient(180deg, #fbfcfc 0%, #f5f8f9 100%);
+      box-shadow: var(--shadow);
+    }
+    .japan-map {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-areas:
+        ". . hokkaido ."
+        ". tohoku tohoku ."
+        "chugoku kanto kanto ."
+        "shikoku kansai chubu ."
+        ". kyushu . okinawa";
+      gap: 12px;
+      align-items: stretch;
+    }
+    .map-region {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 88px;
+      padding: 14px 16px;
+      border: 1px solid rgba(31, 95, 143, .14);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .92);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .map-region:hover {
+      transform: translateY(-2px);
+      border-color: rgba(31, 95, 143, .36);
+      box-shadow: 0 10px 26px rgba(17, 17, 17, .06);
+    }
+    .map-region b {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+    .map-region span {
+      margin-top: 8px;
+      color: var(--sub);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .map-region.hokkaido { grid-area: hokkaido; }
+    .map-region.tohoku { grid-area: tohoku; }
+    .map-region.kanto { grid-area: kanto; }
+    .map-region.chubu { grid-area: chubu; }
+    .map-region.kansai { grid-area: kansai; }
+    .map-region.chugoku { grid-area: chugoku; }
+    .map-region.shikoku { grid-area: shikoku; }
+    .map-region.kyushu { grid-area: kyushu; }
+    .map-region.okinawa { grid-area: okinawa; }
+    .region-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .region-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+      font-weight: 700;
+      transition: border-color .18s ease, color .18s ease;
+    }
+    .region-links a:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
     .note-list {
       display: grid;
       gap: 14px;
@@ -724,6 +802,15 @@
         display: block;
       }
       .section-title p { margin-top: 10px; }
+      .japan-map {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "hokkaido hokkaido"
+          "tohoku kanto"
+          "chubu kansai"
+          "chugoku shikoku"
+          "kyushu okinawa";
+      }
     }
     @media (max-width: 560px) {
       .site-header { height: 58px; }
@@ -734,6 +821,19 @@
       .choice-grid,
       .choice-grid.three,
       .destination-grid { grid-template-columns: 1fr; }
+      .japan-map {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "hokkaido"
+          "tohoku"
+          "kanto"
+          "chubu"
+          "kansai"
+          "chugoku"
+          "shikoku"
+          "kyushu"
+          "okinawa";
+      }
       .wrap { padding-top: 48px; padding-bottom: 48px; }
       .footer { display: block; }
       .footer-links { margin-top: 12px; }
@@ -785,8 +885,55 @@
     <section class="wrap" id="locations">
       <div class="section-title">
         <h2>場所から見つける</h2>
+        <p>地方ごとにざっくり分けて、今ある記事へつながる入口をまとめました。</p>
       </div>
-      <div class="article-grid" id="locationGrid"></div>
+      <div class="map-shell">
+        <div class="japan-map" aria-label="日本地図から地方を選ぶ">
+          <a class="map-region hokkaido" href="/articles/index.html">
+            <b>北海道</b>
+            <span>記事を準備中</span>
+          </a>
+          <a class="map-region tohoku" href="/articles/oga-solo-trip/">
+            <b>東北</b>
+            <span>男鹿半島・秋田の文化旅</span>
+          </a>
+          <a class="map-region kanto" href="/articles/hakone-anniversary-trip/">
+            <b>関東</b>
+            <span>箱根の記念日温泉旅</span>
+          </a>
+          <a class="map-region chubu" href="/articles/kanazawa-city-walk/">
+            <b>中部・北陸</b>
+            <span>金沢の街歩き旅</span>
+          </a>
+          <a class="map-region kansai" href="/articles/nara-couple-trip/">
+            <b>関西</b>
+            <span>奈良の街歩きと奈良監獄</span>
+          </a>
+          <a class="map-region chugoku" href="/articles/index.html">
+            <b>中国</b>
+            <span>記事を準備中</span>
+          </a>
+          <a class="map-region shikoku" href="/articles/index.html">
+            <b>四国</b>
+            <span>記事を準備中</span>
+          </a>
+          <a class="map-region kyushu" href="/articles/ibusuki-solo-trip/">
+            <b>九州</b>
+            <span>指宿・由布院の温泉旅</span>
+          </a>
+          <a class="map-region okinawa" href="/articles/okinawa-islands-2days/">
+            <b>沖縄</b>
+            <span>石垣島・小浜島・那覇</span>
+          </a>
+        </div>
+        <div class="region-links" aria-label="注目エリア">
+          <a href="/articles/okinawa-islands-2days/">沖縄離島</a>
+          <a href="/articles/ibusuki-solo-trip/">九州の温泉旅</a>
+          <a href="/articles/nara-prison-museum/">奈良の建築旅</a>
+          <a href="/articles/oga-solo-trip/">東北の文化旅</a>
+          <a href="/articles/kanazawa-city-walk/">金沢の街歩き</a>
+        </div>
+      </div>
       <div class="section-footer">
         <a class="section-link" href="/articles/index.html">その他記事を見る</a>
       </div>
@@ -1168,110 +1315,7 @@
       }
 ];
 
-    const locationArticles = [
-      {
-            "title": "指宿",
-            "area": "鹿児島",
-            "date": "温泉と車なし旅",
-            "label": [
-                  "ひとり旅",
-                  "砂むし温泉"
-            ],
-            "image": "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/ibusuki-solo-trip/"
-      },
-      {
-            "title": "沖縄離島",
-            "area": "沖縄",
-            "date": "弾丸でも行きやすい島",
-            "label": [
-                  "海",
-                  "週末旅行"
-            ],
-            "image": "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/okinawa-islands-2days/"
-      },
-      {
-            "title": "男鹿半島",
-            "area": "秋田",
-            "date": "文化旅と温泉",
-            "label": [
-                  "なまはげ",
-                  "ドライブ"
-            ],
-            "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/oga-solo-trip/"
-      },
-      {
-            "title": "奈良",
-            "area": "奈良",
-            "date": "街歩きと記念日",
-            "label": [
-                  "歴史",
-                  "カップル"
-            ],
-            "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/nara-couple-trip/"
-      },
-      {
-            "title": "箱根",
-            "area": "神奈川",
-            "date": "温泉と記念日",
-            "label": [
-                  "フリーパス",
-                  "カップル"
-            ],
-            "image": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/hakone-anniversary-trip/"
-      },
-      {
-            "title": "由布院",
-            "area": "大分",
-            "date": "温泉と週末旅行",
-            "label": [
-                  "街歩き",
-                  "のんびり"
-            ],
-            "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/yufuin-onsen-weekend/"
-      },
-      {
-            "title": "石垣島",
-            "area": "沖縄",
-            "date": "ひとり旅と港拠点",
-            "label": [
-                  "石垣島",
-                  "ホテル選び"
-            ],
-            "image": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/ishigaki-solo-hotels-3/"
-      },
-      {
-            "title": "宮古島",
-            "area": "沖縄",
-            "date": "海とホテル時間",
-            "label": [
-                  "宮古島",
-                  "リゾート"
-            ],
-            "image": "https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/miyakojima-hotels-3/"
-      },
-      {
-            "title": "那覇",
-            "area": "沖縄",
-            "date": "立地重視のホテル選び",
-            "label": [
-                  "那覇",
-                  "街歩き"
-            ],
-            "image": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=900&q=80",
-            "url": "/articles/naha-hotels-3/"
-      }
-];
-
     const grid = document.getElementById("articleGrid");
-    const locationGrid = document.getElementById("locationGrid");
     const PREVIEW_LIMIT = 3;
     const renderCards = (items, target) => {
       target.innerHTML = items.map((article) => `
@@ -1290,7 +1334,6 @@
       renderCards(list.slice(0, PREVIEW_LIMIT), grid);
     };
     renderArticles("all");
-    renderCards(locationArticles.slice(0, PREVIEW_LIMIT), locationGrid);
 
     document.getElementById("tagStrip").addEventListener("click", (event) => {
       const button = event.target.closest("button[data-filter]");
