@@ -253,17 +253,26 @@
       margin: 0 0 4px;
     }
     .term-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
     }
-    .term-note abbr {
-      text-decoration: underline dotted;
-      text-underline-offset: 2px;
-      cursor: help;
+    .term-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 7px 10px;
+      border: 1px solid #d5e2ef;
+      border-radius: 999px;
+      background: #f7fbff;
+      color: var(--sub);
+      font-size: 0.86rem;
+      line-height: 1.35;
+    }
+    .term-chip b {
       color: var(--ink);
-      font-weight: 600;
+      font-size: 0.9rem;
     }
     .time-row {
       display: grid;
@@ -462,11 +471,11 @@
           <div class="time-example">
             <h3>【例】羽田発で1泊2日を組むとしたら</h3>
             <p>たとえば羽田空港から鹿児島空港へ向かう場合、ANA、JAL（FSC）、スカイマークなど（MCC）、LCCが就航しています。羽田発なら、価格と時間のバランスでスカイマークを候補にしやすいです。</p>
-            <p class="term-note">
-              <abbr title="FSC: フルサービスキャリア。手荷物や機内サービスが充実した航空会社です。">FSC</abbr> /
-              <abbr title="MCC: 中堅航空会社。FSCとLCCの中間で、価格と利便性のバランスを取りやすい区分です。">MCC</abbr> /
-              <abbr title="LCC: 格安航空会社。運賃を抑えやすい一方、サービスは必要最小限です。">LCC</abbr>
-            </p>
+            <div class="term-note" aria-label="航空会社タイプの補足">
+              <span class="term-chip"><b>FSC</b>大手航空会社。JAL・ANAなど</span>
+              <span class="term-chip"><b>MCC</b>中堅航空会社。スカイマークなど</span>
+              <span class="term-chip"><b>LCC</b>格安航空会社</span>
+            </div>
             <div class="time-row">
               <b>【例】8:40-10:30</b>
               <span>羽田空港から鹿児島空港へ。例: スカイマーク SKY303便</span>
