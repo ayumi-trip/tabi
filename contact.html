@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | tabinote</title>
+  <meta name="description" content="tabinoteのお問い合わせページです。">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --bg:#fff; --text:#1d2430; --muted:#66707f; --line:#dfe6ee; --accent:#2f6db3; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Noto Sans JP", system-ui, sans-serif; color: var(--text); background: var(--bg); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 32px 20px 56px; }
+    .header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .brand { font-size: 1.25rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .eyebrow { color: var(--accent); font-size: .85rem; font-weight: 700; letter-spacing: .06em; }
+    .card { margin-top: 24px; border: 1px solid var(--line); border-radius: 20px; padding: 28px; background: #fff; box-shadow: 0 10px 30px rgba(20, 35, 60, 0.04); }
+    h1 { margin: 8px 0 16px; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; }
+    p { margin: 0 0 16px; line-height: 1.9; }
+    .notice { padding: 14px 16px; border-radius: 14px; background: #f7faff; border: 1px solid #d8e6f7; color: #39516c; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 2px 0; border-top: 1px solid var(--line); margin-top: 32px; color: var(--muted); font-size: .92rem; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 14px; flex-wrap: wrap; }
+    @media (max-width: 760px) { .header, .footer { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <a class="brand" href="/">tabinote</a>
+      <a href="/">トップへ戻る</a>
+    </header>
+    <main>
+      <section class="card">
+        <div class="eyebrow">CONTACT</div>
+        <h1>お問い合わせ</h1>
+        <p>現在は準備中です。掲載内容の修正や、記事へのご意見はサイト内の更新を優先して反映します。</p>
+        <div class="notice">広告掲載、提携、記事修正のご相談窓口は順次整備します。</div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div>© 2026 tabinote.</div>
+      <div class="footer-links">
+        <a href="/about.html">運営者情報</a>
+        <a href="/contact.html">お問い合わせ</a>
+        <a href="/privacy.html">プライバシーポリシー</a>
+        <a href="/ads.html">広告掲載について</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

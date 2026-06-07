@@ -252,6 +252,23 @@
     .time-example h3 {
       margin: 0 0 4px;
     }
+    .term-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .term-note abbr {
+      text-decoration: underline dotted;
+      text-underline-offset: 2px;
+      cursor: help;
+    }
+    .section-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
     .time-row {
       display: grid;
       grid-template-columns: 88px minmax(0, 1fr) 108px;
@@ -378,6 +395,11 @@
       font-size: 12px;
       background: #f8f9f9;
     }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
     @media (max-width: 860px) {
       .article-wrap { grid-template-columns: 1fr; }
       .affiliate-grid { grid-template-columns: 1fr; }
@@ -409,7 +431,7 @@
           <span>鹿児島</span>
         </div>
         <h1>指宿ひとり旅は楽しい？砂むし温泉と白水館で過ごす1泊2日</h1>
-        <p class="lead">鹿児島・指宿は、ひとりで温泉に入り、列車移動も楽しみたい人に向いた旅先です。砂むし温泉、白水館、指宿のたまて箱を軸に、予約前に知っておきたいポイントを整理します。</p>
+        <p class="lead">鹿児島・指宿は、砂むし温泉と列車移動を組み合わせて楽しみたいひとり旅に向いた旅先です。1泊2日の動き方、指宿のたまて箱、宿選びのポイントを軸に、予約前に知っておきたいことを整理します。</p>
       </div>
     </section>
 
@@ -441,10 +463,11 @@
           <p>羽田・伊丹など主要空港から向かう場合、まず鹿児島空港へ飛び、空港から鹿児島中央駅へ移動し、さらにJRで指宿へ向かう流れになります。移動だけで半日近く使うため、1泊2日で行くなら「指宿だけに絞る」前提で考えるのが現実的です。</p>
           <p>鹿児島市内観光、霧島、知覧、開聞岳方面まで一気に入れようとすると、1泊2日ではかなり忙しくなります。ひとり旅なら、初日は指宿へ移動して砂むし温泉と宿時間、2日目は朝風呂と列車移動を楽しむくらいがちょうどよいです。</p>
           <div class="time-example">
-            <h3>羽田発の移動イメージ</h3>
-            <p>たとえば羽田空港から鹿児島空港へ向かう場合、鹿児島空港には大手2キャリアのほか、MCCやLCCも就航しています。羽田発なら、価格と時間のバランスでスカイマークを候補にしやすいです。</p>
+            <h3>【例】羽田発で1泊2日を組むとしたら</h3>
+            <p>たとえば羽田空港から鹿児島空港へ向かう場合、鹿児島空港には大手航空会社（FSC）、中堅航空会社（MCC）、格安航空会社（LCC）が就航しています。羽田発なら、価格と時間のバランスでスカイマークを候補にしやすいです。</p>
+            <p class="term-note"><abbr title="FSCはフルサービスキャリアの略。JALやANAのように、手荷物や機内サービスが充実した航空会社です。">FSC</abbr> = 大手航空会社、<abbr title="MCCは中堅航空会社のこと。FSCとLCCの中間で、運賃と利便性のバランスを取りやすい航空会社です。">MCC</abbr> = 中堅航空会社、<abbr title="LCCは格安航空会社のこと。運賃を抑えやすい一方、サービスは必要最小限です。">LCC</abbr> = 格安航空会社</p>
             <div class="time-row">
-              <b>8:40-10:30</b>
+              <b>【例】8:40-10:30</b>
               <span>羽田空港から鹿児島空港へ。例: スカイマーク SKY303便</span>
               <span>約1時間50分</span>
             </div>
@@ -459,7 +482,7 @@
               <span>約1時間前後</span>
             </div>
             <div class="time-row">
-              <b>14:17頃</b>
+              <b>14時半ごろ</b>
               <span>指宿駅に到着するイメージ。時間が合えば指宿のたまて箱も候補</span>
               <span>午後到着</span>
             </div>
@@ -468,8 +491,10 @@
               <span>約4〜4.5時間</span>
             </div>
             <p>便名や時刻、空港バス、JRの接続は季節や運行日により変わります。予約前に航空会社、空港バス、JR九州の公式情報で最新時刻を確認してください。</p>
+            <div class="photo-slot">ここに「羽田空港→鹿児島空港→鹿児島中央→指宿」の移動イメージ写真を差し込む想定</div>
+            <p class="section-note">写真の下に、便名・移動手段・所要時間を短く添えると、縦長写真より読みやすくなります。</p>
           </div>
-          <h3>1日目のイメージ</h3>
+          <h3>1日目のイメージ（例）</h3>
           <ol>
             <li>午前から昼頃に羽田・伊丹などを出発し、鹿児島空港へ</li>
             <li>空港バスなどで鹿児島中央駅へ移動</li>
@@ -496,13 +521,24 @@
 
         <section class="content-box" id="hotel">
           <h2>宿選びのポイント</h2>
-          <p>指宿で宿を選ぶなら、温泉・食事・駅からの移動を見ておくと失敗しにくいです。白水館のように館内で温泉や食事を楽しめる宿を選ぶと、ひとりでも夜の過ごし方に困りにくくなります。</p>
+          <p>指宿で宿を選ぶなら、温泉・食事・駅からの移動を見ておくと失敗しにくいです。白水館のような海沿いの高級旅館は、館内で温泉や食事を楽しみたい人向けの代表例です。</p>
           <ul>
             <li>砂むし温泉や海沿いの雰囲気を楽しみたいか</li>
             <li>駅からの送迎やタクシー移動がしやすいか</li>
             <li>夕食付きプランがあるか</li>
             <li>ひとり利用できる客室・プランがあるか</li>
           </ul>
+          <h3>おすすめホテル</h3>
+          <div class="spot-grid">
+            <article class="spot-card">
+              <div class="spot-photo">写真を差し込む想定<br>指宿ロイヤルホテル</div>
+              <div>
+                <h3>指宿ロイヤルホテル</h3>
+                <p>海側の眺めと落ち着いた雰囲気を重視するなら候補に入れやすい宿です。ひとり旅でも、食事と温泉を中心にゆっくり過ごしたい人に向いています。</p>
+                <p>駅からのアクセスや送迎の有無、朝食プランを見ながら選ぶと、1泊2日の組み立てがしやすくなります。</p>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section class="content-box" id="spots">
@@ -599,6 +635,12 @@
 
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
+    <div class="footer-links">
+      <a href="/about.html">運営者情報</a>
+      <a href="/contact.html">お問い合わせ</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/ads.html">広告掲載について</a>
+    </div>
     <a href="/">トップへ戻る</a>
   </footer>
 </body>
