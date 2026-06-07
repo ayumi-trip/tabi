@@ -540,6 +540,44 @@
       justify-content: flex-end;
       margin-top: 18px;
     }
+    .note-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .note-card {
+      display: block;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .note-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(31, 95, 143, .28);
+    }
+    .note-card b {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .note-card p {
+      margin: 0;
+      color: var(--sub);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .note-card span {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
     .section-link {
       display: inline-flex;
       align-items: center;
@@ -751,6 +789,29 @@
       <div class="article-grid" id="locationGrid"></div>
       <div class="section-footer">
         <a class="section-link" href="/articles/index.html">その他記事を見る</a>
+      </div>
+    </section>
+
+    <section class="wrap" id="notes">
+      <div class="section-title">
+        <h2>旅のひとりごと</h2>
+      </div>
+      <div class="note-list">
+        <a class="note-card" href="/articles/okinawa-islands-2days/">
+          <b>沖縄離島の1泊2日は、まず石垣島から考える</b>
+          <p>短い休みで離島へ行くなら、島をいくつも詰め込むより、空港から市街地や離島ターミナルへ動きやすい石垣島を軸にしたほうが予定を組みやすいです。</p>
+          <span>沖縄離島</span>
+        </a>
+        <a class="note-card" href="/articles/kohama-hotels-2/">
+          <b>小浜島は、ホテルで過ごす夜の時間まで含めて選びたい</b>
+          <p>小浜島は観光地を詰め込むより、どのホテルで夜を過ごすかの印象差が大きい島です。はいむるぶしを推したい理由も、そこにあります。</p>
+          <span>小浜島</span>
+        </a>
+        <a class="note-card" href="/articles/nara-prison-museum/">
+          <b>奈良監獄ミュージアムは、建築を見るだけでも行く理由になる</b>
+          <p>奈良公園だけではない奈良の寄り道先として、赤れんが建築の迫力はかなり強いです。最近の開業情報も含めて、単独で見に行く価値があります。</p>
+          <span>奈良</span>
+        </a>
       </div>
     </section>
 
