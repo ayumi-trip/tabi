@@ -504,31 +504,6 @@
       font-weight: 700;
     }
 
-    .tag-strip {
-      display: flex;
-      gap: 9px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: thin;
-    }
-    .tag {
-      flex: 0 0 auto;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 9px 14px;
-      background: var(--white);
-      color: var(--sub);
-      font-size: 13px;
-      font-weight: 700;
-      transition: background .16s ease, border-color .16s ease, color .16s ease;
-    }
-    .tag:hover,
-    .tag.is-active {
-      color: var(--white);
-      background: var(--deep);
-      border-color: var(--deep);
-    }
-
     .article-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -866,15 +841,6 @@
     <section class="wrap" id="articles">
       <div class="section-title">
         <h2>自分に合った旅を見つける</h2>
-      </div>
-      <div class="tag-strip" id="tagStrip">
-        <button class="tag is-active" data-filter="all">すべて</button>
-        <button class="tag" data-filter="solo">一人旅</button>
-        <button class="tag" data-filter="couple">カップル</button>
-        <button class="tag" data-filter="anniversary">記念日</button>
-        <button class="tag" data-filter="carfree">車なし</button>
-        <button class="tag" data-filter="onsen">温泉</button>
-        <button class="tag" data-filter="okinawa">沖縄離島</button>
       </div>
       <div class="article-grid" id="articleGrid"></div>
       <div class="section-footer">
@@ -1329,19 +1295,7 @@
         </a>
       `).join("");
     };
-    const renderArticles = (filter) => {
-      const list = filter === "all" ? articles : articles.filter((article) => article.tags.includes(filter));
-      renderCards(list.slice(0, PREVIEW_LIMIT), grid);
-    };
-    renderArticles("all");
-
-    document.getElementById("tagStrip").addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-filter]");
-      if (!button) return;
-      document.querySelectorAll(".tag").forEach((tag) => tag.classList.remove("is-active"));
-      button.classList.add("is-active");
-      renderArticles(button.dataset.filter);
-    });
+    renderCards(articles.slice(0, PREVIEW_LIMIT), grid);
 
   </script>
 </body>

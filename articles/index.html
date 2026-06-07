@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -77,6 +77,30 @@
       color: var(--sub);
       font-size: 15px;
     }
+    .filter-panel {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 240px));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .filter-box label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .08em;
+    }
+    .filter-box select {
+      width: 100%;
+      min-height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+    }
     .article-list {
       margin-top: 28px;
       border-top: 1px solid var(--line);
@@ -132,6 +156,9 @@
       flex-wrap: wrap;
     }
     @media (max-width: 860px) {
+      .filter-panel {
+        grid-template-columns: 1fr;
+      }
       .article-row {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -158,6 +185,36 @@
     <section class="hero">
       <h1>記事一覧</h1>
       <p>一人旅、カップル旅、記念日旅行、車なし旅、温泉旅、沖縄離島、ホテル選びの記事をまとめています。</p>
+    </section>
+
+    <section class="filter-panel" aria-label="記事の絞り込み">
+      <div class="filter-box">
+        <label for="areaFilter">エリアで探す</label>
+        <select id="areaFilter">
+          <option value="all">すべて</option>
+          <option value="沖縄">沖縄</option>
+          <option value="九州">九州</option>
+          <option value="関西">関西</option>
+          <option value="東北">東北</option>
+          <option value="関東">関東</option>
+          <option value="中部">中部・北陸</option>
+        </select>
+      </div>
+      <div class="filter-box">
+        <label for="tagFilter">タグで探す</label>
+        <select id="tagFilter">
+          <option value="all">すべて</option>
+          <option value="一人旅">一人旅</option>
+          <option value="カップル">カップル</option>
+          <option value="記念日">記念日</option>
+          <option value="車なし">車なし</option>
+          <option value="温泉">温泉</option>
+          <option value="ホテル">ホテル</option>
+          <option value="沖縄離島">沖縄離島</option>
+          <option value="街歩き">街歩き</option>
+          <option value="文化">文化</option>
+        </select>
+      </div>
     </section>
 
     <section class="article-list" aria-label="記事一覧">
@@ -293,5 +350,33 @@
       <a href="/ads.html">広告掲載について</a>
     </div>
   </footer>
+  <script>
+    const areaFilter = document.getElementById("areaFilter");
+    const tagFilter = document.getElementById("tagFilter");
+    const rows = [...document.querySelectorAll(".article-row")];
+
+    const matchesArea = (row, areaValue) => {
+      if (areaValue === "all") return true;
+      const areaText = row.querySelector(".article-meta")?.textContent ?? "";
+      return areaText.includes(areaValue);
+    };
+
+    const matchesTag = (row, tagValue) => {
+      if (tagValue === "all") return true;
+      const tags = [...row.querySelectorAll(".pill")].map((pill) => pill.textContent.trim());
+      return tags.some((tag) => tag.includes(tagValue));
+    };
+
+    const applyFilters = () => {
+      const areaValue = areaFilter.value;
+      const tagValue = tagFilter.value;
+      rows.forEach((row) => {
+        row.style.display = matchesArea(row, areaValue) && matchesTag(row, tagValue) ? "grid" : "none";
+      });
+    };
+
+    areaFilter.addEventListener("change", applyFilters);
+    tagFilter.addEventListener("change", applyFilters);
+  </script>
 </body>
 </html>
