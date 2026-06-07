@@ -191,6 +191,54 @@
       padding: 8px 0 8px 14px;
       background: #f8fbfd;
     }
+    .photo-slot {
+      display: grid;
+      place-items: center;
+      min-height: clamp(180px, 32vw, 280px);
+      margin: 22px 0;
+      border: 1px dashed #c7d6e0;
+      border-radius: 16px;
+      background: #f7fafc;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    .spot-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .spot-card {
+      display: grid;
+      grid-template-columns: minmax(180px, .42fr) minmax(0, .58fr);
+      gap: 18px;
+      align-items: stretch;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fff;
+    }
+    .spot-photo {
+      display: grid;
+      place-items: center;
+      min-height: 180px;
+      border-radius: 12px;
+      background: #f3f7fa;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+    .spot-card h3 {
+      margin-top: 0;
+    }
+    .spot-note {
+      margin-top: 12px;
+      border-left: 3px solid var(--teal);
+      padding: 10px 0 10px 14px;
+      background: #f8fbfd;
+      color: var(--sub);
+      font-size: 13px;
+    }
     .pr-box {
       border: 1px solid rgba(31, 95, 143, .18);
       border-radius: 14px;
@@ -293,6 +341,7 @@
     @media (max-width: 860px) {
       .article-wrap { grid-template-columns: 1fr; }
       .affiliate-grid { grid-template-columns: 1fr; }
+      .spot-card { grid-template-columns: 1fr; }
       .side-box { position: static; }
       .nav-links { display: none; }
     }
@@ -327,8 +376,11 @@
       <article class="article-main">
         <section class="content-box" id="summary">
           <h2>結論</h2>
-          <p>指宿は、砂むし温泉・温泉宿・観光列車を組み合わせやすく、ひとり旅でも目的を作りやすい温泉地です。羽田や伊丹から鹿児島空港を経由する場合は移動時間が長めですが、鹿児島中央駅からJRで指宿へ向かえるため、車なしでも1泊2日の旅先として成立します。</p>
-          <p>ただし、1泊2日で行くなら「砂むし温泉に入る」「宿でゆっくりする」「指宿のたまて箱に乗る」くらいに目的を絞るのがおすすめです。</p>
+          <ul class="summary-list">
+            <li>指宿は、砂むし温泉・温泉宿・観光列車を組み合わせやすく、ひとり旅でも目的を作りやすい温泉地です。</li>
+            <li>羽田や伊丹から向かう場合は移動時間が長めですが、鹿児島中央駅からJRで指宿へ向かえるため、車なしでも1泊2日の旅先として成立します。</li>
+            <li>1泊2日なら「砂むし温泉に入る」「宿でゆっくりする」「指宿のたまて箱に乗る」くらいに目的を絞るのがおすすめです。</li>
+          </ul>
         </section>
 
         <section class="content-box" id="fit">
@@ -381,6 +433,32 @@
             <li>夕食付きプランがあるか</li>
             <li>ひとり利用できる客室・プランがあるか</li>
           </ul>
+        </section>
+
+        <section class="content-box" id="spots">
+          <h2>意外と面白い観光地</h2>
+          <p>指宿は温泉の印象が強いですが、食や体験を目的にできるスポットもあります。ただし、車なしの一人旅では行きやすさや過ごし方に差が出るため、優先順位をつけて選ぶのが現実的です。</p>
+          <div class="photo-slot">ここに指宿旅の横長写真を追加予定</div>
+          <div class="spot-grid">
+            <article class="spot-card">
+              <div class="spot-photo">写真追加予定<br>市営唐船峡そうめん流し</div>
+              <div>
+                <h3>市営唐船峡そうめん流し</h3>
+                <p>唐船峡は、回転式そうめん流し発祥の地として知られる指宿の名物スポットです。冷たい湧水で楽しむそうめん流しは、温泉旅とはまた違う面白さがあります。</p>
+                <p>一方で、指宿駅からは距離があり、かごしま市観光ナビではJR指宿駅から車で約25分と案内されています。車なしの一人旅だと移動のハードルがあり、現地でも「ひとりでそうめん流し」は少し寂しく感じる可能性があります。</p>
+                <div class="spot-note">行くなら、レンタカー利用、タクシー利用、同行者がいる旅、または開聞岳方面と組み合わせる日程向きです。</div>
+              </div>
+            </article>
+            <article class="spot-card">
+              <div class="spot-photo">写真追加予定<br>砂むし会館 砂楽</div>
+              <div>
+                <h3>砂むし会館 砂楽</h3>
+                <p>砂楽は、指宿名物の砂むし温泉を体験できる代表的な施設です。専用施設なので、初めてのひとり旅でも流れがわかりやすく、指宿らしさを短時間で感じられます。</p>
+                <p>天候やメンテナンス、混雑状況によって受付や利用条件が変わることがあるため、旅の主目的にするなら公式サイトで最新情報を確認してから向かうのが安心です。</p>
+                <div class="spot-note">ひとり旅なら、到着後すぐに行くか、翌朝に余裕を持って入れる計画にしておくと失敗しにくいです。</div>
+              </div>
+            </article>
+          </div>
         </section>
 
         <section class="content-box" id="booking">
@@ -438,6 +516,7 @@
         <a href="#course">モデルコース</a>
         <a href="#carfree">車なし移動</a>
         <a href="#hotel">宿選び</a>
+        <a href="#spots">観光スポット</a>
         <a href="#booking">予約前の確認</a>
         <a href="#sources">公式情報</a>
         <div class="article-dates">
