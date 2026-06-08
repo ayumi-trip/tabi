@@ -79,16 +79,26 @@
     }
     .filter-panel {
       display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      grid-template-areas:
+        "keyword area"
+        "tags tags";
       gap: 18px;
       margin-top: 28px;
       padding-bottom: 18px;
       border-bottom: 1px solid var(--line);
     }
     .filter-box.keyword-filter-box {
-      max-width: 560px;
+      grid-area: keyword;
     }
     .filter-box.area-filter-box {
+      grid-area: area;
       max-width: 260px;
+      justify-self: end;
+      width: 100%;
+    }
+    .filter-box.tag-filter-box {
+      grid-area: tags;
     }
     .filter-box label {
       display: block;
@@ -203,9 +213,17 @@
       flex-wrap: wrap;
     }
     @media (max-width: 860px) {
+      .filter-panel {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "keyword"
+          "area"
+          "tags";
+      }
       .filter-box.keyword-filter-box,
       .filter-box.area-filter-box {
         max-width: none;
+        justify-self: stretch;
       }
       .article-row {
         grid-template-columns: 1fr;
