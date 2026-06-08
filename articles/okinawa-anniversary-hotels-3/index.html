@@ -30,7 +30,7 @@
     "@type": "Article",
     "headline": "沖縄本島で記念日旅に向くホテル3選",
     "description": "沖縄本島で記念日旅をするなら、北谷の大人っぽさ、読谷の記憶に残るホスピタリティ、名護の王道高級リゾートで選び方が分かれます。おすすめの3軒を整理します。",
-      "datePublished": "2026-06-07",
+    "datePublished": "2026-06-07",
     "dateModified": "2026-06-07",
     "author": {
         "@type": "Organization",
@@ -230,6 +230,28 @@
       font-weight: 800;
     }
     .ranking-card p:last-child { margin-bottom: 0; }
+    .hotel-contact {
+      display: grid;
+      gap: 6px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .hotel-contact p {
+      margin: 0;
+    }
+    .hotel-contact b {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .hotel-contact a {
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
     .affiliate-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -395,7 +417,9 @@
   <li>ラウンジ利用</li>
   <li>大人向けの空気感</li>
 </ul>
-<p><a href="https://mb-gallery.jp/" target="_blank" rel="noopener">公式サイト</a></p>
+<div class="hotel-contact">
+<p><b>公式サイト：</b><a href="https://mb-gallery.jp/" target="_blank" rel="noopener">公式サイト</a></p>
+</div>
 </article>
 <article class="ranking-card">
 <div class="rank">2</div>
@@ -406,7 +430,9 @@
   <li>読谷の空気感</li>
   <li>記憶に残りやすい</li>
 </ul>
-<p><a href="https://www.alivila.co.jp/" target="_blank" rel="noopener">公式サイト</a></p>
+<div class="hotel-contact">
+<p><b>公式サイト：</b><a href="https://www.alivila.co.jp/" target="_blank" rel="noopener">公式サイト</a></p>
+</div>
 </article>
 <article class="ranking-card">
 <div class="rank">3</div>
@@ -417,7 +443,9 @@
   <li>大人向け</li>
   <li>特別なディナーも組みやすい</li>
 </ul>
-<p><a href="https://www.terrace.co.jp/busena/" target="_blank" rel="noopener">公式サイト</a></p>
+<div class="hotel-contact">
+<p><b>公式サイト：</b><a href="https://www.terrace.co.jp/busena/" target="_blank" rel="noopener">公式サイト</a></p>
+</div>
 </article>
 </div>
         </section>

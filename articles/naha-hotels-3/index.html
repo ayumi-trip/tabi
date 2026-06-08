@@ -30,7 +30,7 @@
     "@type": "Article",
     "headline": "那覇で立地重視で選びたいホテル3選",
     "description": "那覇でホテルを選ぶなら、国際通り・おもろまち・首里寄りなど、何をしたいかで選び方が変わります。立地重視で使いやすいホテルを3軒に絞って整理します。",
-      "datePublished": "2026-06-07",
+    "datePublished": "2026-06-07",
     "dateModified": "2026-06-07",
     "author": {
         "@type": "Organization",
@@ -230,6 +230,28 @@
       font-weight: 800;
     }
     .ranking-card p:last-child { margin-bottom: 0; }
+    .hotel-contact {
+      display: grid;
+      gap: 6px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .hotel-contact p {
+      margin: 0;
+    }
+    .hotel-contact b {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .hotel-contact a {
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
     .affiliate-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -395,7 +417,9 @@
   <li>国際通り徒歩圏</li>
   <li>朝食も強め</li>
 </ul>
-<p><a href="https://www.daiwaroynet.jp/naha-kokusaidori/" target="_blank" rel="noopener">公式サイト</a></p>
+<div class="hotel-contact">
+<p><b>公式サイト：</b><a href="https://www.daiwaroynet.jp/naha-kokusaidori/" target="_blank" rel="noopener">公式サイト</a></p>
+</div>
 </article>
 <article class="ranking-card">
 <div class="rank">2</div>
@@ -406,7 +430,9 @@
   <li>大浴場あり</li>
   <li>ビジネス寄りでも快適</li>
 </ul>
-<p><a href="https://www.almont.jp/naha-omoromachi/" target="_blank" rel="noopener">公式サイト</a></p>
+<div class="hotel-contact">
+<p><b>公式サイト：</b><a href="https://www.almont.jp/naha-omoromachi/" target="_blank" rel="noopener">公式サイト</a></p>
+</div>
 </article>
 <article class="ranking-card">
 <div class="rank">3</div>
@@ -417,7 +443,9 @@
   <li>インフィニティプール</li>
   <li>早割で価格差が縮むこともある</li>
 </ul>
-<p><a href="https://www.novotelokinawanaha.jp/" target="_blank" rel="noopener">公式サイト</a></p>
+<div class="hotel-contact">
+<p><b>公式サイト：</b><a href="https://www.novotelokinawanaha.jp/" target="_blank" rel="noopener">公式サイト</a></p>
+</div>
 </article>
 </div>
         </section>

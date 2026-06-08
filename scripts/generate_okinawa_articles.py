@@ -233,6 +233,28 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       font-weight: 800;
     }}
     .ranking-card p:last-child {{ margin-bottom: 0; }}
+    .hotel-contact {{
+      display: grid;
+      gap: 6px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.7;
+    }}
+    .hotel-contact p {{
+      margin: 0;
+    }}
+    .hotel-contact b {{
+      color: var(--ink);
+      font-weight: 700;
+    }}
+    .hotel-contact a {{
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }}
     .affiliate-grid {{
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -428,9 +450,15 @@ def ranking_cards(cards: list[dict[str, object]]) -> str:
         for para in card["paragraphs"]:  # type: ignore[index]
             body.append(p(str(para)))
         body.append(ul([str(item) for item in card["bullets"]]))  # type: ignore[index]
-        body.append(
-            f'<p><a href="{html.escape(str(card["url"]))}" target="_blank" rel="noopener">公式サイト</a></p>'
+        meta: list[str] = []
+        if card.get("address"):
+            meta.append(f'<p><b>住所：</b>{html.escape(str(card["address"]))}</p>')
+        if card.get("phone"):
+            meta.append(f'<p><b>電話番号：</b>{html.escape(str(card["phone"]))}</p>')
+        meta.append(
+            f'<p><b>公式サイト：</b><a href="{html.escape(str(card["url"]))}" target="_blank" rel="noopener">公式サイト</a></p>'
         )
+        body.append('<div class="hotel-contact">\n' + "\n".join(meta) + "\n</div>")
         blocks.append('<article class="ranking-card">\n' + "\n".join(body) + "\n</article>")
     return '<div class="ranking-grid">\n' + "\n".join(blocks) + "\n</div>"
 
