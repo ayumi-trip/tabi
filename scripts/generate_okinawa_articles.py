@@ -455,9 +455,9 @@ def ranking_cards(cards: list[dict[str, object]]) -> str:
             meta.append(f'<p><b>住所：</b>{html.escape(str(card["address"]))}</p>')
         if card.get("phone"):
             meta.append(f'<p><b>電話番号：</b>{html.escape(str(card["phone"]))}</p>')
-        meta.append(
-            f'<p><b>公式サイト：</b><a href="{html.escape(str(card["url"]))}" target="_blank" rel="noopener">公式サイト</a></p>'
-        )
+            meta.append(
+                f'<p><b>公式サイト：</b><a href="{html.escape(str(card["url"]))}" target="_blank" rel="noopener">{html.escape(str(card["url"]))}</a></p>'
+            )
         body.append('<div class="hotel-contact">\n' + "\n".join(meta) + "\n</div>")
         blocks.append('<article class="ranking-card">\n' + "\n".join(body) + "\n</article>")
     return '<div class="ranking-grid">\n' + "\n".join(blocks) + "\n</div>"

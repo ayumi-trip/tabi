@@ -92,7 +92,7 @@ def render_spot_cards(spots: list[dict[str, str]]) -> str:
             meta.append(f'<p><b>電話番号：</b>{spot["phone"]}</p>')
         if spot.get("url"):
             meta.append(
-                f'<p><b>公式サイト：</b><a href="{spot["url"]}" target="_blank" rel="noopener">公式サイト</a></p>'
+                f'<p><b>公式サイト：</b><a href="{spot["url"]}" target="_blank" rel="noopener">{spot["url"]}</a></p>'
             )
         meta_block = (
             '<div class="hotel-contact">\n'
