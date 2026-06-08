@@ -7,7 +7,7 @@ from textwrap import dedent
 
 
 ROOT = Path(__file__).resolve().parent.parent
-TEMPLATE_PATH = ROOT / "articles" / "ibusuki-solo-trip" / "index.html"
+TEMPLATE_PATH = ROOT / "scripts" / "article_page_template.html"
 
 
 def write_text_utf8_bom(path: Path, content: str) -> None:
@@ -1404,32 +1404,32 @@ def apply_article(template: str, article: dict) -> str:
     replacements = [
         (r"<title>.*?</title>", f"<title>{html.escape(article['title'])} | tabinote</title>"),
         (
-            r'<meta name="description" content=".*?">',
+            r'<meta name="description" content=".*?(?=\r?\n\s*<meta name="robots")',
             f'<meta name="description" content="{html.escape(article["description"])}">',
         ),
         (r'<link rel="canonical" href=".*?">', f'<link rel="canonical" href="{url}">'),
         (r'<meta property="og:title" content=".*?">', f'<meta property="og:title" content="{html.escape(article["title"])} | tabinote">'),
         (
-            r'<meta property="og:description" content=".*?">',
+            r'<meta property="og:description" content=".*?(?=\r?\n\s*<meta property="og:url")',
             f'<meta property="og:description" content="{html.escape(article["description"])}">',
         ),
         (r'<meta property="og:url" content=".*?">', f'<meta property="og:url" content="{url}">'),
         (r'<meta property="og:image" content=".*?">', f'<meta property="og:image" content="{article["image"]}">'),
         (r'<meta name="twitter:title" content=".*?">', f'<meta name="twitter:title" content="{html.escape(article["title"])} | tabinote">'),
         (
-            r'<meta name="twitter:description" content=".*?">',
+            r'<meta name="twitter:description" content=".*?(?=\r?\n\s*<meta name="twitter:image")',
             f'<meta name="twitter:description" content="{html.escape(article["description"])}">',
         ),
         (r'<meta name="twitter:image" content=".*?">', f'<meta name="twitter:image" content="{article["image"]}">'),
         (r'"headline": ".*?"', f'"headline": "{article["title"]}"'),
-        (r'"description": ".*?"', f'"description": "{article["description"]}"'),
+        (r'"description": ".*?"(?:,)?', f'"description": "{article["description"]}",'),
         (r'"mainEntityOfPage": ".*?"', f'"mainEntityOfPage": "{url}"'),
         (
             r'url\("https://images\.unsplash\.com/.*?"\) center/cover;',
             f'url("{article["image"]}") center/cover;',
         ),
         (
-            r'<div class="article-label">.*?</div>\s*<h1>.*?</h1>\s*<p class="lead">.*?</p>',
+            r'<div class="article-label">.*?(?=\r?\n\s*</section>\r?\n\s*<div class="article-wrap">)',
             "<div class=\"article-label\">\n"
             + "\n".join(f"          <span>{label}</span>" for label in article["labels"])
             + f"\n        </div>\n        <h1>{article['title']}</h1>\n        <p class=\"lead\">{article['lead']}</p>",
@@ -1442,14 +1442,14 @@ def apply_article(template: str, article: dict) -> str:
     article_main = build_article_main(article)
     content = replace_simple(
         content,
-        r"<article class=\"article-main\">.*?<aside class=\"side-box\" aria-label=\"記事目次\">.*?</aside>",
-        article_main + "\n\n      " + build_aside(article).strip(),
+        r"<div class=\"article-wrap\">.*?(?=\r?\n\s*</main>)",
+        "<div class=\"article-wrap\">\n      " + article_main.strip() + "\n\n      " + build_aside(article).strip() + "\n    </div>",
     )
     return content
 
 
 def main() -> None:
-    template = TEMPLATE_PATH.read_text(encoding="utf-8")
+    template = TEMPLATE_PATH.read_text(encoding="utf-8-sig")
     for article in ARTICLES:
         output = apply_article(template, article)
         target = ROOT / "articles" / article["slug"] / "index.html"
