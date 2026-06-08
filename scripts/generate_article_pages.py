@@ -85,6 +85,22 @@ def render_spot_cards(spots: list[dict[str, str]]) -> str:
     cards = []
     for spot in spots:
         note = f'<div class="spot-note">{spot["note"]}</div>' if spot.get("note") else ""
+        meta = []
+        if spot.get("address"):
+            meta.append(f'<p><b>住所：</b>{spot["address"]}</p>')
+        if spot.get("phone"):
+            meta.append(f'<p><b>電話番号：</b>{spot["phone"]}</p>')
+        if spot.get("url"):
+            meta.append(
+                f'<p><b>公式サイト：</b><a href="{spot["url"]}" target="_blank" rel="noopener">公式サイト</a></p>'
+            )
+        meta_block = (
+            '<div class="hotel-contact">\n'
+            + indent("\n".join(meta), 1)
+            + "\n</div>"
+            if meta
+            else ""
+        )
         cards.append(
             dedent(
                 f"""\
@@ -94,6 +110,7 @@ def render_spot_cards(spots: list[dict[str, str]]) -> str:
                     <h3>{spot["title"]}</h3>
                     <p>{spot["body1"]}</p>
                     <p>{spot["body2"]}</p>
+                    {meta_block}
                     {note}
                   </div>
                 </article>
