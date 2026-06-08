@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import html
 import json
@@ -529,9 +529,7 @@ def build_sections(article: dict[str, object]) -> list[tuple[str, str, str]]:
     if article.get("booking_list"):
         booking_parts.append(ul(article["booking_list"]))  # type: ignore[arg-type]
     booking_parts.append(affiliate_grid(article["affiliate_cards"]))  # type: ignore[arg-type]
-    sections.append(("booking", "予約前に確認したいこと", "\n".join(booking_parts)))
-
-    sections.append(("sources", "公式情報・参考リンク", render_sources(article["sources"])))  # type: ignore[arg-type]
+    sections.append(("booking", "予約前に確認したいこと", "\n".join(booking_parts)))  # type: ignore[arg-type]
     return sections
 
 

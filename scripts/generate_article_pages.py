@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import html
 import re
@@ -121,18 +121,6 @@ def render_affiliate(cards: list[dict[str, str]]) -> str:
     return '<div class="affiliate-grid" aria-label="予約導線">\n' + indent("\n".join(items), 1) + "\n</div>"
 
 
-def render_sources(sources: list[tuple[str, str]]) -> str:
-    items = "\n".join(
-        f'  <li><a href="{url}" target="_blank" rel="noopener">{label}</a></li>' for label, url in sources
-    )
-    return dedent(
-        f"""\
-        <p>営業時間、運行日、料金、予約条件は変わることがあります。実際に予約する前に、必ず公式情報を確認してください。</p>
-        <ul class="source-list">
-        {items}
-        </ul>
-        """
-    ).strip()
 
 
 def build_article_main(article: dict) -> str:
@@ -186,7 +174,6 @@ def build_article_main(article: dict) -> str:
             "\n".join([render_paragraphs(article["spots_intro"]), render_spot_cards(article["spots_cards"])]),
         ),
         section("booking", "予約前に確認したいこと", "\n".join(booking_parts)),
-        section("sources", "公式情報・参考リンク", render_sources(article["sources"])),
     ]
     return '<article class="article-main">\n' + indent("\n\n".join(sections), 1) + "\n</article>"
 
@@ -202,7 +189,6 @@ def build_aside(article: dict) -> str:
             ("hotel", "宿選び"),
             ("spots", "立ち寄り候補"),
             ("booking", "予約前の確認"),
-            ("sources", "公式情報"),
         ],
     )
     links = "\n".join(f'  <a href="#{anchor}">{label}</a>' for anchor, label in labels)
