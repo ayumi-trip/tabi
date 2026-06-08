@@ -842,7 +842,7 @@ ARTICLES: list[dict[str, object]] = [
                 "url": "https://www.haimurubushi.co.jp/",
             },
             {
-                "name": "リゾナーレ小浜島 by 星野リゾート",
+                "name": "リゾナーレ小浜島",
                 "paragraphs": [
                     "広い敷地や景色の見せ方など、星野らしい分かりやすい華やかさがあります。島の静けさもありつつ、ホテルの演出を楽しみたい人向けです。",
                 ],
@@ -1048,7 +1048,7 @@ ARTICLES: list[dict[str, object]] = [
             {"title": "レンタカー", "body": "宮古島での移動手段を比較する。", "cta": "レンタカーを探す", "secondary": "1"},
         ],
         "sources": [
-            ("イラフ SUI 公式", "https://www.suihotels.com/iraphsui-miyako_okinawa/"),
+            ("イラフ SUI ラグジュアリーコレクションホテル 沖縄宮古 公式", "https://www.suihotels.com/iraphsui-miyako_okinawa/"),
             ("the rescape 公式", "https://www.uds-hotels.com/the-rescape/"),
             ("宮古島東急ホテル＆リゾーツ 公式", "https://www.tokyuhotels.co.jp/miyakojima-h/index.html"),
         ],
@@ -1414,7 +1414,7 @@ ARTICLES: list[dict[str, object]] = [
             {"title": "レンタカー", "body": "本島リゾート滞在の移動手段を比較する。", "cta": "レンタカーを探す", "secondary": "1"},
         ],
         "sources": [
-            ("MBギャラリーチャタン 公式", "https://mb-gallery.jp/"),
+            ("MBギャラリーチャタン by ザ・テラスホテルズ 公式", "https://mb-gallery.jp/"),
             ("ホテル日航アリビラ 公式", "https://www.alivila.co.jp/"),
             ("ザ・ブセナテラス 公式", "https://www.terrace.co.jp/busena/"),
         ],
