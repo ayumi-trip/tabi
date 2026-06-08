@@ -84,6 +84,9 @@
       padding-bottom: 18px;
       border-bottom: 1px solid var(--line);
     }
+    .filter-box.keyword-filter-box {
+      max-width: 560px;
+    }
     .filter-box.area-filter-box {
       max-width: 260px;
     }
@@ -99,6 +102,16 @@
       width: 100%;
       min-height: 44px;
       padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+    }
+    .filter-box input[type="search"] {
+      width: 100%;
+      min-height: 46px;
+      padding: 0 16px;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: var(--white);
@@ -190,6 +203,7 @@
       flex-wrap: wrap;
     }
     @media (max-width: 860px) {
+      .filter-box.keyword-filter-box,
       .filter-box.area-filter-box {
         max-width: none;
       }
@@ -222,6 +236,10 @@
     </section>
 
     <section class="filter-panel" aria-label="記事の絞り込み">
+      <div class="filter-box keyword-filter-box">
+        <label for="keywordFilter">キーワードで探す</label>
+        <input id="keywordFilter" type="search" placeholder="地名、温泉、ホテル名などで検索" autocomplete="off">
+      </div>
       <div class="filter-box area-filter-box">
         <label for="areaFilter">エリアで探す</label>
         <select id="areaFilter">
@@ -385,6 +403,7 @@
     </div>
   </footer>
   <script>
+    const keywordFilter = document.getElementById("keywordFilter");
     const areaFilter = document.getElementById("areaFilter");
     const tagFilterGroup = document.getElementById("tagFilterGroup");
     const tagFilterButtons = [...document.querySelectorAll(".tag-filter-chip[data-tag]")];
@@ -402,16 +421,27 @@
       return selectedTags.every((selectedTag) => tags.some((tag) => tag.includes(selectedTag)));
     };
 
+    const matchesKeyword = (row, keyword) => {
+      if (!keyword) return true;
+      const title = row.querySelector(".article-title")?.textContent ?? "";
+      const area = row.querySelector(".article-meta")?.textContent ?? "";
+      const tags = [...row.querySelectorAll(".pill")].map((pill) => pill.textContent.trim()).join(" ");
+      const haystack = `${title} ${area} ${tags}`.toLowerCase();
+      return haystack.includes(keyword.toLowerCase());
+    };
+
     const applyFilters = () => {
+      const keyword = keywordFilter.value.trim();
       const areaValue = areaFilter.value;
       const selectedTags = tagFilterButtons
         .filter((button) => button.getAttribute("aria-pressed") === "true")
         .map((button) => button.dataset.tag);
       rows.forEach((row) => {
-        row.style.display = matchesArea(row, areaValue) && matchesTag(row, selectedTags) ? "grid" : "none";
+        row.style.display = matchesKeyword(row, keyword) && matchesArea(row, areaValue) && matchesTag(row, selectedTags) ? "grid" : "none";
       });
     };
 
+    keywordFilter.addEventListener("input", applyFilters);
     areaFilter.addEventListener("change", applyFilters);
     tagFilterGroup.addEventListener("click", (event) => {
       const target = event.target.closest("button");
