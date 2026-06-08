@@ -79,9 +79,13 @@
     }
     .filter-panel {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 240px));
-      gap: 14px;
+      gap: 18px;
       margin-top: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .filter-box.area-filter-box {
+      max-width: 260px;
     }
     .filter-box label {
       display: block;
@@ -105,8 +109,12 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      align-items: center;
     }
     .tag-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       min-height: 40px;
       padding: 0 14px;
       border: 1px solid var(--line);
@@ -129,8 +137,7 @@
       color: var(--ink);
     }
     .article-list {
-      margin-top: 28px;
-      border-top: 1px solid var(--line);
+      margin-top: 24px;
     }
     .article-row {
       display: grid;
@@ -183,8 +190,8 @@
       flex-wrap: wrap;
     }
     @media (max-width: 860px) {
-      .filter-panel {
-        grid-template-columns: 1fr;
+      .filter-box.area-filter-box {
+        max-width: none;
       }
       .article-row {
         grid-template-columns: 1fr;
@@ -215,7 +222,7 @@
     </section>
 
     <section class="filter-panel" aria-label="記事の絞り込み">
-      <div class="filter-box">
+      <div class="filter-box area-filter-box">
         <label for="areaFilter">エリアで探す</label>
         <select id="areaFilter">
           <option value="all">すべて</option>
@@ -227,7 +234,7 @@
           <option value="中部">中部・北陸</option>
         </select>
       </div>
-      <div class="filter-box">
+      <div class="filter-box tag-filter-box">
         <label>タグで探す</label>
         <div class="tag-filter-group" id="tagFilterGroup" aria-label="タグで探す">
           <button type="button" class="tag-filter-chip is-clear" data-clear-tags="true">選択をクリア</button>
