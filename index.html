@@ -523,57 +523,43 @@
       background: linear-gradient(180deg, #fdfefe 0%, #f6f8fa 100%);
       box-shadow: var(--shadow);
     }
-    .japan-map {
-      width: 100%;
-      max-width: 920px;
-      margin: 0 auto;
+    .area-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
     }
-    .japan-map svg {
-      width: 100%;
-      height: auto;
+    .area-card {
       display: block;
-      overflow: visible;
+      padding: 18px 18px 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .96);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
-    .map-region {
-      fill: #edf4f9;
-      stroke: rgba(31, 95, 143, .22);
-      stroke-width: 2;
-      transition: fill .18s ease, stroke .18s ease, transform .18s ease;
+    .area-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(31, 95, 143, .34);
+      box-shadow: 0 10px 26px rgba(17, 17, 17, .06);
     }
-    .map-region.has-article {
-      fill: #dce8f2;
-      stroke: rgba(31, 95, 143, .42);
+    .area-card h3 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.4;
     }
-    .map-link:hover .map-region,
-    .map-link:focus .map-region {
-      fill: #1f5f8f;
-      stroke: #1f5f8f;
+    .area-card p {
+      margin: 8px 0 0;
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.7;
     }
-    .map-label {
-      fill: var(--ink);
-      font-family: "Noto Sans JP", sans-serif;
-      font-size: 14px;
-      font-weight: 800;
-      pointer-events: none;
-    }
-    .map-sub {
-      fill: var(--sub);
-      font-family: "Noto Sans JP", sans-serif;
-      font-size: 10px;
-      font-weight: 500;
-      pointer-events: none;
-    }
-    .map-link:hover .map-label,
-    .map-link:hover .map-sub,
-    .map-link:focus .map-label,
-    .map-link:focus .map-sub {
-      fill: #fff;
+    .area-card.is-empty {
+      background: #fbfcfd;
     }
     .map-note {
       margin-top: 12px;
       color: var(--muted);
       font-size: 12px;
-      text-align: right;
+      text-align: left;
     }
     .note-list {
       display: grid;
@@ -759,6 +745,9 @@
         display: block;
       }
       .section-title p { margin-top: 10px; }
+      .area-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
     @media (max-width: 560px) {
       .site-header { height: 58px; }
@@ -769,6 +758,9 @@
       .choice-grid,
       .choice-grid.three,
       .destination-grid { grid-template-columns: 1fr; }
+      .area-list {
+        grid-template-columns: 1fr;
+      }
       .wrap { padding-top: 48px; padding-bottom: 48px; }
       .footer { display: block; }
       .footer-links { margin-top: 12px; }
@@ -814,57 +806,45 @@
         <p>地方ごとにざっくり分けて、今ある記事へつながる入口をまとめました。</p>
       </div>
       <div class="map-shell">
-        <div class="japan-map" aria-label="日本地図から地方を選ぶ">
-          <svg viewBox="0 0 920 520" role="img" aria-label="日本の地方マップ">
-            <a class="map-link" href="/articles/index.html" aria-label="北海道の記事一覧">
-              <path class="map-region" d="M664 72 L730 38 L800 58 L778 120 L718 144 L654 120 Z"></path>
-              <text class="map-label" x="724" y="92" text-anchor="middle">北海道</text>
-              <text class="map-sub" x="724" y="112" text-anchor="middle">準備中</text>
-            </a>
-            <a class="map-link" href="/articles/oga-solo-trip/" aria-label="東北の記事へ">
-              <path class="map-region has-article" d="M600 154 L652 128 L702 152 L694 232 L638 256 L586 224 Z"></path>
-              <text class="map-label" x="646" y="186" text-anchor="middle">東北</text>
-              <text class="map-sub" x="646" y="206" text-anchor="middle">男鹿・秋田</text>
-            </a>
-            <a class="map-link" href="/articles/hakone-anniversary-trip/" aria-label="関東の記事へ">
-              <path class="map-region has-article" d="M576 258 L626 236 L674 250 L688 304 L638 332 L588 318 Z"></path>
-              <text class="map-label" x="634" y="280" text-anchor="middle">関東</text>
-              <text class="map-sub" x="634" y="300" text-anchor="middle">箱根</text>
-            </a>
-            <a class="map-link" href="/articles/kanazawa-city-walk/" aria-label="中部北陸の記事へ">
-              <path class="map-region has-article" d="M498 244 L560 214 L616 240 L604 300 L542 324 L492 292 Z"></path>
-              <text class="map-label" x="553" y="270" text-anchor="middle">中部・北陸</text>
-              <text class="map-sub" x="553" y="290" text-anchor="middle">金沢</text>
-            </a>
-            <a class="map-link" href="/articles/nara-couple-trip/" aria-label="関西の記事へ">
-              <path class="map-region has-article" d="M444 302 L492 280 L538 296 L530 346 L478 366 L434 344 Z"></path>
-              <text class="map-label" x="482" y="326" text-anchor="middle">関西</text>
-              <text class="map-sub" x="482" y="346" text-anchor="middle">奈良</text>
-            </a>
-            <a class="map-link" href="/articles/index.html" aria-label="中国地方の記事一覧">
-              <path class="map-region" d="M346 306 L430 288 L458 324 L430 360 L344 356 L314 328 Z"></path>
-              <text class="map-label" x="388" y="326" text-anchor="middle">中国</text>
-              <text class="map-sub" x="388" y="346" text-anchor="middle">準備中</text>
-            </a>
-            <a class="map-link" href="/articles/index.html" aria-label="四国の記事一覧">
-              <path class="map-region" d="M372 382 L452 372 L470 394 L444 416 L372 410 L350 394 Z"></path>
-              <text class="map-label" x="410" y="397" text-anchor="middle">四国</text>
-            </a>
-            <a class="map-link" href="/articles/ibusuki-solo-trip/" aria-label="九州の記事へ">
-              <path class="map-region has-article" d="M236 330 L298 294 L352 326 L342 404 L292 446 L228 428 L202 372 Z"></path>
-              <text class="map-label" x="283" y="356" text-anchor="middle">九州</text>
-              <text class="map-sub" x="283" y="376" text-anchor="middle">指宿・由布院</text>
-            </a>
-            <a class="map-link" href="/articles/okinawa-islands-2days/" aria-label="沖縄の記事へ">
-              <path class="map-region has-article" d="M150 452 L188 442 L214 454 L206 478 L168 486 L142 474 Z"></path>
-              <circle class="map-region has-article" cx="108" cy="482" r="8"></circle>
-              <circle class="map-region has-article" cx="84" cy="500" r="6"></circle>
-              <text class="map-label" x="180" y="438" text-anchor="middle">沖縄</text>
-              <text class="map-sub" x="180" y="500" text-anchor="middle">石垣・小浜・那覇</text>
-            </a>
-          </svg>
+        <div class="area-list" aria-label="地方から選ぶ">
+          <a class="area-card is-empty" href="/articles/index.html">
+            <h3>北海道</h3>
+            <p>記事を準備中</p>
+          </a>
+          <a class="area-card" href="/articles/oga-solo-trip/">
+            <h3>東北</h3>
+            <p>男鹿・秋田の文化旅</p>
+          </a>
+          <a class="area-card" href="/articles/hakone-anniversary-trip/">
+            <h3>関東</h3>
+            <p>箱根の記念日温泉旅</p>
+          </a>
+          <a class="area-card" href="/articles/kanazawa-city-walk/">
+            <h3>中部・北陸</h3>
+            <p>金沢の街歩き旅</p>
+          </a>
+          <a class="area-card" href="/articles/nara-couple-trip/">
+            <h3>関西</h3>
+            <p>奈良の街歩きと奈良監獄</p>
+          </a>
+          <a class="area-card is-empty" href="/articles/index.html">
+            <h3>中国</h3>
+            <p>記事を準備中</p>
+          </a>
+          <a class="area-card is-empty" href="/articles/index.html">
+            <h3>四国</h3>
+            <p>記事を準備中</p>
+          </a>
+          <a class="area-card" href="/articles/ibusuki-solo-trip/">
+            <h3>九州</h3>
+            <p>指宿・由布院の温泉旅</p>
+          </a>
+          <a class="area-card" href="/articles/okinawa-islands-2days/">
+            <h3>沖縄</h3>
+            <p>石垣・小浜・那覇</p>
+          </a>
         </div>
-        <div class="map-note">色がついている地方から、そのエリアの記事へ飛べます。</div>
+        <div class="map-note">記事がある地方から読めます。準備中の地方は一覧ページへ飛びます。</div>
       </div>
       <div class="section-footer">
         <a class="section-link" href="/articles/index.html">その他記事を見る</a>
