@@ -17,6 +17,102 @@ def write_text_utf8_bom(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8-sig")
 
 
+def normalize_url(url: str) -> str:
+    return url.rstrip("/")
+
+
+HOTEL_META = {
+    normalize_url("https://granview.co.jp/ishigaki/"): {
+        "address": "〒907-0004 沖縄県石垣市登野城1番地",
+        "phone": "0980-82-6161",
+    },
+    normalize_url("https://www.apahotel.com/hotel/kyushu-okinawa/okinawa/ishigakijima/"): {
+        "address": "〒907-0011 沖縄県石垣市八島町1-2-3",
+        "phone": "0980-82-2000",
+    },
+    normalize_url("https://hotelthird.com/"): {
+        "address": "〒907-0012 沖縄県石垣市美崎町4-7",
+        "phone": "098-083-6366",
+    },
+    normalize_url("https://www.hotelthird.com/"): {
+        "address": "〒907-0012 沖縄県石垣市美崎町4-7",
+        "phone": "098-083-6366",
+    },
+    normalize_url("https://www.miyahira.co.jp/"): {
+        "address": "〒907-0012 沖縄県石垣市美崎町4-9",
+        "phone": "0570-00-6112",
+    },
+    normalize_url("https://www.courthotels.co.jp/eastchinasea/"): {
+        "address": "〒907-0012 沖縄県石垣市美崎町2-8",
+        "phone": "0980-88-1155",
+    },
+    normalize_url("https://www.anaintercontinental-ishigaki.jp/"): {
+        "address": "〒907-0002 沖縄県石垣市真栄里354-1",
+        "phone": "0980-88-7111",
+    },
+    normalize_url("https://hoshinoresorts.com/ja/hotels/hoshinoyataketomijima/"): {
+        "address": "〒907-1101 沖縄県八重山郡竹富町竹富1955",
+        "phone": "050-3134-8091",
+    },
+    normalize_url("https://www.haimurubushi.co.jp/"): {
+        "address": "〒907-1221 沖縄県八重山郡竹富町小浜2930",
+        "phone": "0980-85-3111",
+    },
+    normalize_url("https://hoshinoresorts.com/ja/hotels/risonarekohamajima/"): {
+        "address": "〒907-1221 沖縄県八重山郡竹富町小浜2954",
+        "phone": "050-3134-8093",
+    },
+    normalize_url("https://www.tokyuhotels.co.jp/miyakojima-h/index.html"): {
+        "address": "〒906-0305 沖縄県宮古島市下地字与那覇914",
+        "phone": "0980-76-2109",
+    },
+    normalize_url("https://shigira.com/hotel/santamonica"): {
+        "address": "〒906-0203 沖縄県宮古島市上野宮国974-1",
+        "phone": "0980-74-7300",
+    },
+    normalize_url("https://miyakojima.hiltonjapan.co.jp/"): {
+        "address": "〒906-0015 沖縄県宮古島市平良久貝550-7",
+        "phone": "0980-75-5500",
+    },
+    normalize_url("https://miyakojima.tabino-hotel.jp/"): {
+        "address": "〒906-0012 沖縄県宮古島市平良西里596",
+        "phone": "0980-75-3100",
+    },
+    normalize_url("https://www.daiwaroynet.jp/naha-kokusaidori/"): {
+        "address": "〒902-0067 沖縄県那覇市安里2-1-1",
+        "phone": "098-868-9055",
+    },
+    normalize_url("https://www.almont.jp/naha-omoromachi/"): {
+        "address": "〒900-0006 沖縄県那覇市おもろまち4-3-8",
+        "phone": "098-860-6611",
+    },
+    normalize_url("https://www.novotelokinawanaha.jp/"): {
+        "address": "〒902-0062 沖縄県那覇市松川40番地",
+        "phone": "098-887-1111",
+    },
+    normalize_url("https://www.suihotels.com/iraphsui-miyako_okinawa/"): {
+        "address": "〒906-0503 沖縄県宮古島市伊良部字伊良部818番5",
+        "phone": "0980-74-5511",
+    },
+    normalize_url("https://www.uds-hotels.com/the-rescape/"): {
+        "address": "〒906-0105 沖縄県宮古島市城辺長間1901-1",
+        "phone": "0980-74-4120",
+    },
+    normalize_url("https://mb-gallery.jp/"): {
+        "address": "〒904-0115 沖縄県中頭郡北谷町美浜38-1",
+        "phone": "098-921-7111",
+    },
+    normalize_url("https://www.alivila.co.jp/"): {
+        "address": "〒904-0393 沖縄県中頭郡読谷村字儀間600",
+        "phone": "098-982-9111",
+    },
+    normalize_url("https://www.terrace.co.jp/busena/"): {
+        "address": "〒905-0026 沖縄県名護市喜瀬1808",
+        "phone": "0980-51-1333",
+    },
+}
+
+
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -450,13 +546,19 @@ def ranking_cards(cards: list[dict[str, object]]) -> str:
         for para in card["paragraphs"]:  # type: ignore[index]
             body.append(p(str(para)))
         body.append(ul([str(item) for item in card["bullets"]]))  # type: ignore[index]
+        raw_url = str(card.get("url", "")).strip()
+        meta_seed = HOTEL_META.get(normalize_url(raw_url), {}) if raw_url else {}
+        address = str(card.get("address") or meta_seed.get("address") or "").strip()
+        phone = str(card.get("phone") or meta_seed.get("phone") or "").strip()
+        official_url = raw_url or str(meta_seed.get("url") or "").strip()
         meta: list[str] = []
-        if card.get("address"):
-            meta.append(f'<p><b>住所：</b>{html.escape(str(card["address"]))}</p>')
-        if card.get("phone"):
-            meta.append(f'<p><b>電話番号：</b>{html.escape(str(card["phone"]))}</p>')
+        if address:
+            meta.append(f'<p><b>住所：</b>{html.escape(address)}</p>')
+        if phone:
+            meta.append(f'<p><b>電話番号：</b>{html.escape(phone)}</p>')
+        if official_url:
             meta.append(
-                f'<p><b>公式サイト：</b><a href="{html.escape(str(card["url"]))}" target="_blank" rel="noopener">{html.escape(str(card["url"]))}</a></p>'
+                f'<p><b>公式サイト：</b><a href="{html.escape(official_url)}" target="_blank" rel="noopener">{html.escape(official_url)}</a></p>'
             )
         body.append('<div class="hotel-contact">\n' + "\n".join(meta) + "\n</div>")
         blocks.append('<article class="ranking-card">\n' + "\n".join(body) + "\n</article>")
@@ -1442,13 +1544,13 @@ BASE_ARTICLES = [
         "url": "/articles/okinawa-islands-2days/",
     },
     {
-        "title": "男鹿半島は2泊3日でゆっくり行きたい。なまはげと秋田市内の文化旅",
+        "title": "男鹿半島と秋田市内を2泊3日で回るなら？なまはげと文化をゆっくり楽しむ旅",
         "area": "秋田・男鹿",
         "date": "2026.06",
-        "tags": ["couple", "solo"],
+        "tags": ["couple"],
         "label": ["文化旅", "2泊3日"],
         "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-        "url": "/articles/oga-solo-trip/",
+        "url": "/articles/oga-akita-3days/",
     },
     {
         "title": "奈良カップル旅｜記念日に使いやすいホテルと街歩きで回る1泊2日",
@@ -1512,7 +1614,7 @@ LOCATION_ARTICLES = [
         "date": "文化旅と温泉",
         "label": ["なまはげ", "ドライブ"],
         "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-        "url": "/articles/oga-solo-trip/",
+        "url": "/articles/oga-akita-3days/",
     },
     {
         "title": "奈良",
@@ -1627,7 +1729,7 @@ def update_sitemap() -> None:
         "https://tabi.ayumi-biz.com/articles/anniversary-onsen-ryokan/",
         "https://tabi.ayumi-biz.com/articles/carfree-onsen-destinations/",
         "https://tabi.ayumi-biz.com/articles/okinawa-islands-2days/",
-        "https://tabi.ayumi-biz.com/articles/oga-solo-trip/",
+        "https://tabi.ayumi-biz.com/articles/oga-akita-3days/",
         "https://tabi.ayumi-biz.com/articles/nara-couple-trip/",
         "https://tabi.ayumi-biz.com/articles/kanazawa-city-walk/",
         "https://tabi.ayumi-biz.com/articles/hakone-anniversary-trip/",
@@ -1648,12 +1750,13 @@ def update_sitemap() -> None:
             ).strip()
         )
     for loc in article_urls:
+        lastmod = "2026-06-09" if loc.endswith("/articles/oga-akita-3days/") else "2026-06-07"
         items.append(
             dedent(
                 f"""\
                 <url>
                   <loc>{loc}</loc>
-                  <lastmod>2026-06-07</lastmod>
+                  <lastmod>{lastmod}</lastmod>
                   <changefreq>monthly</changefreq>
                   <priority>0.8</priority>
                 </url>
