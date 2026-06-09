@@ -915,6 +915,48 @@
         }));
       }, Promise.reject(new Error("registry not loaded")));
     };
+    const ensureRegistryUtils = () => {
+      if (window.TabinoteArticleUtils) {
+        return;
+      }
+      window.TABINOTE_STATUS_LABELS = window.TABINOTE_STATUS_LABELS || {
+        draft: "下書き",
+        review: "整文待ち",
+        scheduled: "予約投稿",
+        published: "公開中",
+        hidden: "一覧非表示"
+      };
+      window.TabinoteArticleUtils = {
+        isVisible(article, now = new Date()) {
+          if (article.status === "published") return true;
+          if (article.status === "scheduled" && article.publishAt) {
+            return new Date(article.publishAt).getTime() <= now.getTime();
+          }
+          return false;
+        },
+        isListable(article, now = new Date()) {
+          return this.isVisible(article, now) && article.status !== "hidden";
+        }
+      };
+    };
+    const loadRegistryJsonFallback = () => {
+      if (window.TABINOTE_ARTICLES) {
+        ensureRegistryUtils();
+        return Promise.resolve();
+      }
+      const registryJsonUrl = window.location.protocol === "file:" ? "./article-registry.json" : "/article-registry.json";
+      return fetch(registryJsonUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`failed: ${registryJsonUrl}`);
+          }
+          return response.json();
+        })
+        .then((articles) => {
+          window.TABINOTE_ARTICLES = articles;
+          ensureRegistryUtils();
+        });
+    };
     const resolveArticleHref = (article) => {
       if (!article?.url) return "#";
       if (window.location.protocol === "file:") {
@@ -934,7 +976,7 @@
         </a>
       `).join("");
     };
-    loadRegistryScript().then(() => {
+    loadRegistryScript().catch(() => loadRegistryJsonFallback()).then(() => {
       const { isListable } = window.TabinoteArticleUtils || {};
       const articles = (window.TABINOTE_ARTICLES || []).filter((article) => isListable(article));
       const featured = articles.filter((article) => article.topFeature).slice(0, PREVIEW_LIMIT);
