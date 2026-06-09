@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>記事一覧 | tabinote</title>
-  <meta name="description" content="tabinoteの記事一覧です。一人旅、カップル旅、記念日旅行、車なし旅、温泉旅、沖縄離島、ホテル選びの記事をまとめています。">
+  <meta name="description" content="tabinoteの記事一覧です。エリア、タグ、キーワードから読みたい旅行記事を探せます。">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="author" content="tabinote編集部">
   <meta name="theme-color" content="#1f5f8f">
@@ -177,6 +177,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
       font-size: 16px;
       font-weight: 700;
       transition: color .18s ease;
@@ -192,6 +193,50 @@
     .review-dot.is-checked {
       border-color: #9ba7b1;
       background: #9ba7b1;
+    }
+    .management-badges {
+      display: none;
+      gap: 6px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    body.admin-mode .management-badges {
+      display: inline-flex;
+    }
+    .management-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      background: #f3f4f6;
+      color: #5b6570;
+    }
+    .management-badge.tone-published,
+    .management-badge.tone-done,
+    .management-badge.tone-fixed {
+      background: #eef6fb;
+      color: #1f5f8f;
+    }
+    .management-badge.tone-scheduled,
+    .management-badge.tone-temp,
+    .management-badge.tone-reviewed {
+      background: #f5f7ea;
+      color: #6a6d2f;
+    }
+    .management-badge.tone-draft,
+    .management-badge.tone-review,
+    .management-badge.tone-none,
+    .management-badge.tone-todo {
+      background: #fbf1f1;
+      color: #9b645b;
+    }
+    .management-badge.tone-hidden {
+      background: #eef0f2;
+      color: #727b84;
     }
     .article-meta,
     .article-labels {
@@ -301,123 +346,7 @@
       </div>
     </section>
 
-    <section class="article-list" aria-label="記事一覧">
-      <a class="article-row" href="/articles/trip-choice-first-step/">
-        <div class="article-title"><span class="review-dot"></span>旅先選びは、誰と行くか・何を優先するか・レンタカーの有無で決める</div>
-        <div class="article-meta">旅のひとりごと</div>
-        <div class="article-labels"><span class="pill">週末旅</span><span class="pill">旅の選び方</span></div>
-      </a>
-      <a class="article-row" href="/articles/ibusuki-solo-trip/">
-        <div class="article-title"><span class="review-dot is-checked"></span>指宿ひとり旅｜砂むし温泉と海沿い宿で過ごす1泊2日</div>
-        <div class="article-meta">鹿児島・指宿</div>
-        <div class="article-labels"><span class="pill">一人旅</span><span class="pill">温泉</span></div>
-      </a>
-      <a class="article-row" href="/articles/okinawa-islands-2days/">
-        <div class="article-title"><span class="review-dot is-checked"></span>沖縄離島は1泊2日で行ける？短い休みで選びたい島を整理する</div>
-        <div class="article-meta">沖縄・離島</div>
-        <div class="article-labels"><span class="pill">沖縄離島</span><span class="pill">1泊2日</span></div>
-      </a>
-      <a class="article-row" href="/articles/oga-solo-trip/">
-        <div class="article-title"><span class="review-dot"></span>男鹿半島は2泊3日でゆっくり行きたい。なまはげと秋田市内の文化を楽しむ旅</div>
-        <div class="article-meta">秋田・男鹿</div>
-        <div class="article-labels"><span class="pill">文化</span><span class="pill">2泊3日</span></div>
-      </a>
-      <a class="article-row" href="/articles/nara-couple-trip/">
-        <div class="article-title"><span class="review-dot is-checked"></span>奈良カップル旅｜記念日に使いやすいホテルと街歩きで楽しむ1泊2日</div>
-        <div class="article-meta">奈良</div>
-        <div class="article-labels"><span class="pill">カップル</span><span class="pill">記念日</span></div>
-      </a>
-      <a class="article-row" href="/articles/nara-prison-museum/">
-        <div class="article-title"><span class="review-dot is-checked"></span>奈良監獄ミュージアムは見に行く価値あり？建築と予約前に知りたいこと</div>
-        <div class="article-meta">奈良</div>
-        <div class="article-labels"><span class="pill">建築</span><span class="pill">歴史</span></div>
-      </a>
-      <a class="article-row" href="/articles/kanazawa-city-walk/">
-        <div class="article-title"><span class="review-dot"></span>金沢は車なしで十分に楽しめる。ひとりでもカフェと街歩きで過ごす1泊2日</div>
-        <div class="article-meta">石川・金沢</div>
-        <div class="article-labels"><span class="pill">街歩き</span><span class="pill">グルメ</span></div>
-      </a>
-      <a class="article-row" href="/articles/hakone-anniversary-trip/">
-        <div class="article-title"><span class="review-dot"></span>箱根は記念日旅行に向いている？温泉宿とフリーパスで過ごす1泊2日</div>
-        <div class="article-meta">神奈川・箱根</div>
-        <div class="article-labels"><span class="pill">記念日</span><span class="pill">温泉</span></div>
-      </a>
-      <a class="article-row" href="/articles/yufuin-onsen-weekend/">
-        <div class="article-title"><span class="review-dot"></span>由布院は週末旅行に向いている？温泉宿と朝霧で過ごす1泊2日</div>
-        <div class="article-meta">大分・由布院</div>
-        <div class="article-labels"><span class="pill">温泉</span><span class="pill">週末旅</span></div>
-      </a>
-      <a class="article-row" href="/articles/ishigaki-solo-hotels-3/">
-        <div class="article-title"><span class="review-dot is-checked"></span>石垣島でひとり旅をするのにおすすめしたいホテル3選</div>
-        <div class="article-meta">沖縄・石垣島</div>
-        <div class="article-labels"><span class="pill">一人旅</span><span class="pill">ホテル選び</span></div>
-      </a>
-      <a class="article-row" href="/articles/ishigaki-terminal-hotels-3/">
-        <div class="article-title"><span class="review-dot"></span>石垣島で離島ターミナル近くに泊まりたい人向けホテル3選</div>
-        <div class="article-meta">沖縄・石垣島</div>
-        <div class="article-labels"><span class="pill">石垣島</span><span class="pill">離島観光</span></div>
-      </a>
-      <a class="article-row" href="/articles/yaeyama-anniversary-hotels-3/">
-        <div class="article-title"><span class="review-dot"></span>八重山で記念日旅に向くホテル3選</div>
-        <div class="article-meta">沖縄・八重山</div>
-        <div class="article-labels"><span class="pill">記念日</span><span class="pill">ホテル</span></div>
-      </a>
-      <a class="article-row" href="/articles/kohama-hotels-2/">
-        <div class="article-title"><span class="review-dot is-checked"></span>小浜島で静かな島時間を楽しみたい人におすすめのホテル2選</div>
-        <div class="article-meta">沖縄・小浜島</div>
-        <div class="article-labels"><span class="pill">小浜島</span><span class="pill">ホテル</span></div>
-      </a>
-      <a class="article-row" href="/articles/miyakojima-hotels-3/">
-        <div class="article-title"><span class="review-dot"></span>宮古島で目的別に選びたいホテル3選</div>
-        <div class="article-meta">沖縄・宮古島</div>
-        <div class="article-labels"><span class="pill">宮古島</span><span class="pill">ホテル</span></div>
-      </a>
-      <a class="article-row" href="/articles/naha-hotels-3/">
-        <div class="article-title"><span class="review-dot"></span>那覇で立地重視で選びたいホテル3選</div>
-        <div class="article-meta">沖縄・那覇</div>
-        <div class="article-labels"><span class="pill">那覇</span><span class="pill">街歩き</span></div>
-      </a>
-      <a class="article-row" href="/articles/miyakojima-anniversary-hotels-3/">
-        <div class="article-title"><span class="review-dot"></span>宮古島で記念日旅に向くホテル3選</div>
-        <div class="article-meta">沖縄・宮古島</div>
-        <div class="article-labels"><span class="pill">宮古島</span><span class="pill">記念日</span></div>
-      </a>
-      <a class="article-row" href="/articles/ishigaki-2days-model-course/">
-        <div class="article-title"><span class="review-dot"></span>石垣島1泊2日モデルコース</div>
-        <div class="article-meta">沖縄・石垣島</div>
-        <div class="article-labels"><span class="pill">石垣島</span><span class="pill">1泊2日</span></div>
-      </a>
-      <a class="article-row" href="/articles/ishigaki-vs-miyakojima-solo/">
-        <div class="article-title"><span class="review-dot"></span>石垣島と宮古島、ひとり旅ならどっち？</div>
-        <div class="article-meta">沖縄・比較</div>
-        <div class="article-labels"><span class="pill">比較</span><span class="pill">一人旅</span></div>
-      </a>
-      <a class="article-row" href="/articles/winter-okinawa-sea-guide/">
-        <div class="article-title"><span class="review-dot"></span>冬の沖縄で海遊びはできる？気温と服装、海に入る前に知りたいこと</div>
-        <div class="article-meta">沖縄・冬</div>
-        <div class="article-labels"><span class="pill">沖縄</span><span class="pill">冬</span></div>
-      </a>
-      <a class="article-row" href="/articles/first-okinawa-qa/">
-        <div class="article-title"><span class="review-dot"></span>初めての沖縄旅行Q&amp;A｜本島・離島・ホテル選びの考え方</div>
-        <div class="article-meta">沖縄・初心者</div>
-        <div class="article-labels"><span class="pill">沖縄</span><span class="pill">初心者</span></div>
-      </a>
-      <a class="article-row" href="/articles/anniversary-onsen-ryokan/">
-        <div class="article-title"><span class="review-dot"></span>記念日に泊まりたい温泉旅館はどう選ぶ？露天風呂付き客室の考え方</div>
-        <div class="article-meta">温泉旅館</div>
-        <div class="article-labels"><span class="pill">記念日</span><span class="pill">温泉</span></div>
-      </a>
-      <a class="article-row" href="/articles/carfree-onsen-destinations/">
-        <div class="article-title"><span class="review-dot"></span>レンタカーなし温泉旅に向いている旅行先まとめ</div>
-        <div class="article-meta">車なし旅</div>
-        <div class="article-labels"><span class="pill">車なし</span><span class="pill">温泉</span></div>
-      </a>
-      <a class="article-row" href="/articles/okinawa-anniversary-hotels-3/">
-        <div class="article-title"><span class="review-dot"></span>沖縄本島で記念日旅に向くホテル3選</div>
-        <div class="article-meta">沖縄本島</div>
-        <div class="article-labels"><span class="pill">記念日</span><span class="pill">ホテル</span></div>
-      </a>
-    </section>
+    <section class="article-list" id="articleList" aria-label="記事一覧"></section>
   </main>
 
   <footer class="footer">
@@ -429,31 +358,56 @@
       <a href="/ads.html">広告掲載について</a>
     </div>
   </footer>
+  <script src="/assets/article-registry.js"></script>
   <script>
+    const allArticles = window.TABINOTE_ARTICLES;
+    const articleList = document.getElementById("articleList");
     const keywordFilter = document.getElementById("keywordFilter");
     const areaFilter = document.getElementById("areaFilter");
     const tagFilterGroup = document.getElementById("tagFilterGroup");
     const tagFilterButtons = [...document.querySelectorAll(".tag-filter-chip[data-tag]")];
-    const rows = [...document.querySelectorAll(".article-row")];
+    const { isListable, adminEnabled, managementBadges } = window.TabinoteArticleUtils;
+    const adminMode = adminEnabled();
+    if (adminMode) {
+      document.body.classList.add("admin-mode");
+    }
 
-    const matchesArea = (row, areaValue) => {
+    const listableArticles = allArticles.filter((article) => isListable(article));
+    const escapeHtml = (value) => value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
+    const renderRows = (items) => {
+      articleList.innerHTML = items.map((article) => {
+        const checked = article.qualityChecked ? " is-checked" : "";
+        const badges = adminMode
+          ? `<span class="management-badges">${managementBadges(article).map((badge) => `<span class="management-badge tone-${badge.tone}">${badge.label}</span>`).join("")}</span>`
+          : "";
+        return `
+          <a class="article-row" href="${article.url}">
+            <div class="article-title"><span class="review-dot${checked}"></span>${escapeHtml(article.title)}${badges}</div>
+            <div class="article-meta">${escapeHtml(article.area)}</div>
+            <div class="article-labels">${article.tags.map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}</div>
+          </a>
+        `;
+      }).join("");
+    };
+
+    const matchesArea = (article, areaValue) => {
       if (areaValue === "all") return true;
-      const areaText = row.querySelector(".article-meta")?.textContent ?? "";
-      return areaText.includes(areaValue);
+      return article.area.includes(areaValue);
     };
 
-    const matchesTag = (row, selectedTags) => {
+    const matchesTag = (article, selectedTags) => {
       if (selectedTags.length === 0) return true;
-      const tags = [...row.querySelectorAll(".pill")].map((pill) => pill.textContent.trim());
-      return selectedTags.every((selectedTag) => tags.some((tag) => tag.includes(selectedTag)));
+      return selectedTags.every((selectedTag) => article.tags.some((tag) => tag.includes(selectedTag)));
     };
 
-    const matchesKeyword = (row, keyword) => {
+    const matchesKeyword = (article, keyword) => {
       if (!keyword) return true;
-      const title = row.querySelector(".article-title")?.textContent ?? "";
-      const area = row.querySelector(".article-meta")?.textContent ?? "";
-      const tags = [...row.querySelectorAll(".pill")].map((pill) => pill.textContent.trim()).join(" ");
-      const haystack = `${title} ${area} ${tags}`.toLowerCase();
+      const haystack = `${article.title} ${article.area} ${article.tags.join(" ")}`.toLowerCase();
       return haystack.includes(keyword.toLowerCase());
     };
 
@@ -463,11 +417,15 @@
       const selectedTags = tagFilterButtons
         .filter((button) => button.getAttribute("aria-pressed") === "true")
         .map((button) => button.dataset.tag);
-      rows.forEach((row) => {
-        row.style.display = matchesKeyword(row, keyword) && matchesArea(row, areaValue) && matchesTag(row, selectedTags) ? "grid" : "none";
-      });
+      const filtered = listableArticles.filter((article) =>
+        matchesKeyword(article, keyword) &&
+        matchesArea(article, areaValue) &&
+        matchesTag(article, selectedTags)
+      );
+      renderRows(filtered);
     };
 
+    renderRows(listableArticles);
     keywordFilter.addEventListener("input", applyFilters);
     areaFilter.addEventListener("change", applyFilters);
     tagFilterGroup.addEventListener("click", (event) => {

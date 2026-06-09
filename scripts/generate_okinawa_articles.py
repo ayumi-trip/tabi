@@ -1,16 +1,14 @@
 ﻿from __future__ import annotations
 
 import html
-import json
-import re
 from pathlib import Path
 from textwrap import dedent
+
+from build_sitemap import build_sitemap_xml
 
 
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "articles"
-INDEX_PATH = ROOT / "index.html"
-SITEMAP_PATH = ROOT / "sitemap.xml"
 
 
 def write_text_utf8_bom(path: Path, content: str) -> None:
@@ -968,22 +966,22 @@ ARTICLES: list[dict[str, object]] = [
     {
         "slug": "miyakojima-hotels-3",
         "title": "宮古島で目的別に選びたいホテル3選",
-        "description": "宮古島のホテルは、前浜ビーチを軸にするか、シギラエリアで完結するか、市街地と海のバランスを取るかで選び方が変わります。目的別に3軒に絞って整理します。",
+        "description": "宮古島のホテル選びは、目的と予算を決めてから絞ると考えやすくなります。初めての宮古島でおすすめしたいホテルを3つ紹介します。",
         "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=82",
         "labels": ["沖縄", "宮古島", "ホテル3選", "目的別"],
-        "lead": "宮古島のホテルは、海の近さだけで選ぶとずれやすいです。前浜ビーチを主役にしたいのか、シギラ内で完結したいのか、初めての宮古島で安心感を取りたいのかで3軒に絞りました。",
+        "lead": "宮古島のホテル選びは、ホテルごとの価格差もかなり幅があるため、最初は迷いやすいです。まずは旅の目的と予算を決めて、無理のない範囲で絞っていくのがおすすめです。今回は、初めての宮古島で候補にしやすいホテルを3つ紹介します。",
         "summary": [
-            "王道なら宮古島東急、コスパとシギラ内完結ならサンタモニカ、新しめ大型リゾートならヒルトン。",
-            "宮古島はホテルの立地で旅の動き方がかなり変わる。",
-            "何を見たいかより、どこで過ごす時間を長くしたいかで選ぶと分かりやすい。",
+            "王道なら、東洋一ともいわれる前浜ビーチが目の前に広がる宮古島東急。",
+            "コスパよくリゾートに泊まりたいなら、シギラ内で過ごしやすいサンタモニカ。",
+            "ブランドの安心感を重視するならヒルトン。ダイビング中心なら、市街地のビジネスホテルも候補に入れたい。",
         ],
         "fit_heading": "この選び方が向く人",
         "fit_paragraphs": ["宮古島は、石垣島よりもホテル時間の比重が高くなりやすい島です。どのエリアに泊まるかで、海の見え方も夜ごはんの選び方も変わります。"],
         "fit_list": ["初めての宮古島で大きく外したくない", "ホテルで過ごす時間も重視したい", "ビーチ・ブランド感・コスパのどれを優先するか迷っている"],
         "main_heading": "宮古島ホテル選びの軸",
-        "main_paragraphs": ["前浜ビーチの王道感、シギラのリゾートシティ感、新しめ大型ブランドの安心感。この3つで比べると宮古島は選びやすくなります。"],
-        "hotel_heading": "目的別に選ぶ3軒",
-        "hotel_intro": ["宮古島は、ビーチを主役にしたいのか、市街地の便利さを優先したいのかで宿選びが変わります。目的別に選びやすい3軒をまとめました。"],
+        "main_paragraphs": ["宮古島には、東急やヒルトンのような王道リゾートはもちろん、敷地が広くさまざまな滞在を楽しめるシギラリゾート、市街地の格安ビジネスホテルやおしゃれなホテルまで、幅広い選択肢があります。価格差も大きいので、見栄を張りすぎず、目的と予算に合うホテルを選ぶのが大切です。"],
+        "hotel_heading": "目的別に選ぶホテル3つ",
+        "hotel_intro": ["宮古島は、ビーチを主役にしたいのか、リゾート内で過ごしたいのか、移動のしやすさを優先したいのかで宿選びが変わります。目的別に選びやすいホテルを3つまとめました。"],
         "hotels": [
             {
                 "name": "宮古島東急ホテル＆リゾーツ",
@@ -1694,82 +1692,22 @@ def write_articles() -> None:
 
 
 def update_index() -> None:
-    all_articles = BASE_ARTICLES + [
-        {
-            "title": article["title"],
-            "area": article["area"],
-            "date": "2026.06",
-            "tags": article["tags"],
-            "label": article["card_labels"],
-            "image": article["image"],
-            "url": f"/articles/{article['slug']}/",
-        }
-        for article in ARTICLES
-    ]
-    content = INDEX_PATH.read_text(encoding="utf-8")
-    articles_js = json.dumps(all_articles, ensure_ascii=False, indent=6)
-    locations_js = json.dumps(LOCATION_ARTICLES, ensure_ascii=False, indent=6)
-    content = re.sub(r"const articles = \[.*?\n    \];", f"const articles = {articles_js};", content, count=1, flags=re.S)
-    content = re.sub(r"const locationArticles = \[.*?\n    \];", f"const locationArticles = {locations_js};", content, count=1, flags=re.S)
-    write_text_utf8_bom(INDEX_PATH, content)
+    """Legacy no-op.
+
+    The top page now reads from ``assets/article-registry.js`` at runtime.
+    Keep this function so older callers do not fail, but do not rewrite
+    ``index.html`` from this script anymore.
+    """
+
+    return None
 
 
 def update_sitemap() -> None:
-    static_urls = [
-        ("https://tabi.ayumi-biz.com/", "1.0", "weekly"),
-        ("https://tabi.ayumi-biz.com/about.html", "0.4", "monthly"),
-        ("https://tabi.ayumi-biz.com/contact.html", "0.4", "monthly"),
-        ("https://tabi.ayumi-biz.com/privacy.html", "0.4", "monthly"),
-        ("https://tabi.ayumi-biz.com/ads.html", "0.4", "monthly"),
-        ("https://tabi.ayumi-biz.com/finder.html", "0.9", "weekly"),
-    ]
-    article_urls = [
-        "https://tabi.ayumi-biz.com/articles/ibusuki-solo-trip/",
-        "https://tabi.ayumi-biz.com/articles/ibusuki-carfree/",
-        "https://tabi.ayumi-biz.com/articles/anniversary-onsen-ryokan/",
-        "https://tabi.ayumi-biz.com/articles/carfree-onsen-destinations/",
-        "https://tabi.ayumi-biz.com/articles/okinawa-islands-2days/",
-        "https://tabi.ayumi-biz.com/articles/oga-akita-3days/",
-        "https://tabi.ayumi-biz.com/articles/nara-couple-trip/",
-        "https://tabi.ayumi-biz.com/articles/kanazawa-city-walk/",
-        "https://tabi.ayumi-biz.com/articles/hakone-anniversary-trip/",
-        "https://tabi.ayumi-biz.com/articles/yufuin-onsen-weekend/",
-    ] + [f"https://tabi.ayumi-biz.com/articles/{article['slug']}/" for article in ARTICLES]
-    items: list[str] = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for loc, priority, freq in static_urls:
-        items.append(
-            dedent(
-                f"""\
-                <url>
-                  <loc>{loc}</loc>
-                  <lastmod>2026-06-07</lastmod>
-                  <changefreq>{freq}</changefreq>
-                  <priority>{priority}</priority>
-                </url>
-                """
-            ).strip()
-        )
-    for loc in article_urls:
-        lastmod = "2026-06-09" if loc.endswith("/articles/oga-akita-3days/") else "2026-06-07"
-        items.append(
-            dedent(
-                f"""\
-                <url>
-                  <loc>{loc}</loc>
-                  <lastmod>{lastmod}</lastmod>
-                  <changefreq>monthly</changefreq>
-                  <priority>0.8</priority>
-                </url>
-                """
-            ).strip()
-        )
-    items.append("</urlset>")
-    SITEMAP_PATH.write_text("\n".join(items) + "\n", encoding="utf-8")
+    (ROOT / "sitemap.xml").write_text(build_sitemap_xml(), encoding="utf-8")
 
 
 def main() -> None:
     write_articles()
-    update_index()
     update_sitemap()
     print(f"generated {len(ARTICLES)} okinawa articles")
 
