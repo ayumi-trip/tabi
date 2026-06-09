@@ -345,6 +345,30 @@
       flex-wrap: wrap;
       gap: 14px;
     }
+    .affiliate-banner-wrap {
+      width: min(1040px, calc(100% - 36px));
+      margin: 0 auto 40px;
+    }
+    .affiliate-banner-box {
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 18px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .affiliate-banner-box p {
+      margin: 0 0 12px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    .affiliate-banner-box a {
+      display: inline-block;
+    }
+    .affiliate-banner-box img {
+      max-width: 100%;
+      height: auto;
+      border: 0;
+    }
     @media (max-width: 860px) {
       .article-wrap { grid-template-columns: 1fr; }
       .affiliate-grid { grid-template-columns: 1fr; }
@@ -521,6 +545,15 @@
       </aside>
     </div>
   </main>
+
+  <section class="affiliate-banner-wrap" aria-label="楽天トラベル バナー導線">
+    <div class="affiliate-banner-box">
+      <p>石垣島の宿をまとめて比較したいときは、楽天トラベルの一覧から探せます。</p>
+      <a href="https://hb.afl.rakuten.co.jp/hsc/54bb10f5.db9115c8.54bb1082.4e063cbe/_RTLink135339?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxMzMiLCJiYW4iOjIxODg2NTcsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">
+        <img src="https://hbb.afl.rakuten.co.jp/hsb/54bb10f5.db9115c8.54bb1082.4e063cbe/?me_id=2100001&me_adv_id=2188657&t=pict" alt="楽天トラベルで石垣島の宿を探す" title="楽天トラベルで石垣島の宿を探す">
+      </a>
+    </div>
+  </section>
 
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
