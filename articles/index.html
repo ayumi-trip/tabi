@@ -381,6 +381,7 @@
       try {
         const articles = JSON.parse(node.textContent);
         window.TABINOTE_ARTICLES = articles;
+        ensureRegistryUtils();
         return true;
       } catch {
         return false;
