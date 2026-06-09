@@ -252,28 +252,6 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    .affiliate-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .affiliate-card {
-      display: grid;
-      gap: 8px;
-      min-height: 180px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px;
-      background: var(--white);
-    }
-    .affiliate-card b {
-      font-size: 16px;
-    }
-    .affiliate-card p {
-      margin: 0;
-      font-size: 13px;
-    }
     .button {
       display: inline-flex;
       align-items: center;
@@ -346,18 +324,12 @@
       gap: 14px;
     }
     .affiliate-banner-wrap {
-      width: min(1040px, calc(100% - 36px));
+      width: min(1040px, 100%);
       margin: 0 auto 40px;
-    }
-    .affiliate-banner-box {
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      padding: 18px;
-      background: var(--white);
-      box-shadow: var(--shadow);
+      padding: 0 clamp(18px, 4vw, 32px);
     }
     .affiliate-banner-box p {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       color: var(--sub);
       font-size: 14px;
     }
@@ -371,7 +343,6 @@
     }
     @media (max-width: 860px) {
       .article-wrap { grid-template-columns: 1fr; }
-      .affiliate-grid { grid-template-columns: 1fr; }
       .side-box { position: static; }
       .nav-links { display: none; }
     }
@@ -521,13 +492,6 @@
   <li>夜に歩いて戻れる範囲に飲食店があるか</li>
   <li>大浴場や朝食など、宿内で完結できる要素があるか</li>
 </ul>
-<div class="affiliate-grid">
-<div class="affiliate-card">
-  <b>宿泊予約</b>
-  <p>楽天トラベルで宿の一覧を見ながら、立地や予算感をまとめて比較する。</p>
-  <a class="button" href="https://hb.afl.rakuten.co.jp/hsc/54bb10f5.db9115c8.54bb1082.4e063cbe/_RTLink135339?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxMzMiLCJiYW4iOjIxODg2NTcsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener">楽天トラベルで探す</a>
-</div>
-</div>
         </section>
       </article>
 
