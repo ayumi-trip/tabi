@@ -1,0 +1,22 @@
+{
+  "slug": "sample-scheduled-article",
+  "title": "予約投稿用サンプル記事タイトル",
+  "description": "予約投稿で使うサンプル。公開日時を過ぎるまでは一覧に出さない前提で設定する。",
+  "url": "/articles/sample-scheduled-article/",
+  "area": "旅のひとりごと",
+  "region": "guide",
+  "tags": ["週末旅", "旅の選び方"],
+  "cardLabels": ["旅の選び方", "週末旅"],
+  "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=900&q=80",
+  "dateLabel": "2026.06",
+  "status": "scheduled",
+  "publishAt": "2099-06-15T08:00:00+09:00",
+  "publishedAt": "",
+  "updatedAt": "2026-06-10",
+  "imageStatus": "temp",
+  "rewriteStatus": "reviewed",
+  "factCheckStatus": "done",
+  "qualityChecked": false,
+  "topFeature": false,
+  "noteFeature": false
+}

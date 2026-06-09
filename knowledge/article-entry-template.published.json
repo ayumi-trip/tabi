@@ -1,0 +1,22 @@
+{
+  "slug": "sample-published-article",
+  "title": "公開用サンプル記事タイトル",
+  "description": "記事一覧やOGPで使う要約文。何の記事かが一読でわかる形で入れる。",
+  "url": "/articles/sample-published-article/",
+  "area": "沖縄・石垣島",
+  "region": "okinawa",
+  "tags": ["一人旅", "沖縄離島", "ホテル"],
+  "cardLabels": ["石垣島", "ひとり旅"],
+  "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82",
+  "dateLabel": "2026.06",
+  "status": "published",
+  "publishAt": "2026-06-10T08:00:00+09:00",
+  "publishedAt": "2026-06-10",
+  "updatedAt": "2026-06-10",
+  "imageStatus": "done",
+  "rewriteStatus": "fixed",
+  "factCheckStatus": "done",
+  "qualityChecked": true,
+  "topFeature": false,
+  "noteFeature": false
+}

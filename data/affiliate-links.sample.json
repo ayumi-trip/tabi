@@ -1,0 +1,78 @@
+{
+  "links": [
+    {
+      "id": "rakuten-area-ibusuki-hotels",
+      "service": "rakuten_travel",
+      "entityType": "area",
+      "area": "鹿児島・指宿",
+      "tags": ["温泉", "車なし", "一人旅"],
+      "label": "指宿の宿を楽天トラベルで探す",
+      "url": "https://example.com/rakuten/ibusuki-hotels",
+      "notes": "エリアまとめ記事や予約導線の宿泊枠で使う"
+    },
+    {
+      "id": "rakuten-area-ishigaki-hotels",
+      "service": "rakuten_travel",
+      "entityType": "area",
+      "area": "沖縄・石垣島",
+      "tags": ["沖縄離島", "ホテル", "一人旅"],
+      "label": "石垣島の宿を楽天トラベルで探す",
+      "url": "https://example.com/rakuten/ishigaki-hotels",
+      "notes": "石垣島のモデルコース、ホテル比較記事で使う"
+    },
+    {
+      "id": "rakuten-hotel-ishigaki-grandview",
+      "service": "rakuten_travel",
+      "entityType": "hotel",
+      "hotelName": "ホテルグランビュー石垣 The First",
+      "area": "沖縄・石垣島",
+      "tags": ["一人旅", "大浴場", "離島ターミナル"],
+      "label": "ホテルグランビュー石垣 The Firstを楽天トラベルで見る",
+      "url": "https://example.com/rakuten/hotel-grandview-ishigaki",
+      "officialUrl": "https://granview.co.jp/ishigaki/",
+      "notes": "個別ホテルカード用。AIはURLを作らず、このidを指定して差し込む"
+    },
+    {
+      "id": "rakuten-hotel-east-china-sea",
+      "service": "rakuten_travel",
+      "entityType": "hotel",
+      "hotelName": "ホテルイーストチャイナシー",
+      "area": "沖縄・石垣島",
+      "tags": ["オーシャンビュー", "港近く", "記念日"],
+      "label": "ホテルイーストチャイナシーを楽天トラベルで見る",
+      "url": "https://example.com/rakuten/hotel-east-china-sea",
+      "officialUrl": "https://www.courthotels.co.jp/eastchinasea/",
+      "notes": "海が見える宿として比較記事に差し込む"
+    },
+    {
+      "id": "rakuten-flight-ishigaki",
+      "service": "rakuten_travel",
+      "entityType": "transport",
+      "area": "沖縄・石垣島",
+      "tags": ["航空券", "沖縄離島"],
+      "label": "石垣島行きの航空券を探す",
+      "url": "https://example.com/rakuten/flight-ishigaki",
+      "notes": "宿泊導線とは別枠。必要な記事だけ使う"
+    },
+    {
+      "id": "rakuten-flight-kagoshima",
+      "service": "rakuten_travel",
+      "entityType": "transport",
+      "area": "鹿児島",
+      "tags": ["航空券", "指宿"],
+      "label": "鹿児島行きの航空券を探す",
+      "url": "https://example.com/rakuten/flight-kagoshima",
+      "notes": "指宿や鹿児島記事向け"
+    },
+    {
+      "id": "rakuten-rentalcar-okinawa",
+      "service": "rakuten_travel",
+      "entityType": "rentalcar",
+      "area": "沖縄",
+      "tags": ["レンタカー"],
+      "label": "沖縄のレンタカーを探す",
+      "url": "https://example.com/rakuten/rentalcar-okinawa",
+      "notes": "レンタカーは専用リンク経由のみ成果対象"
+    }
+  ]
+}

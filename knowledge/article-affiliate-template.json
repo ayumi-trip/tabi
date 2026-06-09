@@ -1,0 +1,39 @@
+{
+  "slug": "sample-article-with-affiliate",
+  "title": "石垣島でひとり旅をするのにおすすめしたいホテル3選",
+  "area": "沖縄・石垣島",
+  "tags": ["一人旅", "ホテル", "沖縄離島"],
+  "affiliateSelection": {
+    "cards": [
+      {
+        "linkId": "rakuten-area-ishigaki-hotels",
+        "title": "宿泊予約",
+        "body": "離島ターミナルや市街地への動きやすさを見ながら比較する。",
+        "cta": "石垣島の宿を探す"
+      },
+      {
+        "linkId": "rakuten-flight-ishigaki",
+        "title": "航空券",
+        "body": "出発地からの便を見ながら、現地で使える時間を比較する。",
+        "cta": "航空券を探す",
+        "secondary": true
+      }
+    ],
+    "hotelCards": [
+      {
+        "name": "ホテルグランビュー石垣 The First",
+        "linkId": "rakuten-hotel-ishigaki-grandview",
+        "placement": "ホテル紹介カードの直下"
+      },
+      {
+        "name": "ホテルイーストチャイナシー",
+        "linkId": "rakuten-hotel-east-china-sea",
+        "placement": "ホテル紹介カードの直下"
+      }
+    ]
+  },
+  "aiInstruction": {
+    "allowedServices": ["rakuten_travel"],
+    "rule": "AIはaffiliate-linksのidを選ぶだけ。URL文字列を自作しない。"
+  }
+}

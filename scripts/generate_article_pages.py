@@ -124,13 +124,15 @@ def render_affiliate(cards: list[dict[str, str]]) -> str:
     items = []
     for card in cards:
         klass = "button secondary" if card.get("secondary") else "button"
+        href = card.get("url", "#")
+        rel = card.get("rel", "nofollow sponsored noopener")
         items.append(
             dedent(
                 f"""\
                 <div class="affiliate-card">
                   <b>{card["title"]}</b>
                   <p>{card["body"]}</p>
-                  <a class="{klass}" href="#">{card["cta"]}</a>
+                  <a class="{klass}" href="{href}" target="_blank" rel="{rel}">{card["cta"]}</a>
                 </div>
                 """
             ).strip()

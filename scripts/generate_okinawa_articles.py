@@ -567,13 +567,15 @@ def affiliate_grid(cards: list[dict[str, str]]) -> str:
     items: list[str] = []
     for card in cards:
         klass = "button secondary" if card.get("secondary") else "button"
+        href = card.get("url", "#")
+        rel = card.get("rel", "nofollow sponsored noopener")
         items.append(
             dedent(
                 f"""\
                 <div class="affiliate-card">
                   <b>{html.escape(card["title"])}</b>
                   <p>{html.escape(card["body"])}</p>
-                  <a class="{klass}" href="#">{html.escape(card["cta"])}</a>
+                  <a class="{klass}" href="{html.escape(href)}" target="_blank" rel="{html.escape(rel)}">{html.escape(card["cta"])}</a>
                 </div>
                 """
             ).strip()
