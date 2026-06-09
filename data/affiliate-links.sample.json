@@ -28,9 +28,33 @@
       "area": "沖縄・石垣島",
       "tags": ["一人旅", "大浴場", "離島ターミナル"],
       "label": "ホテルグランビュー石垣 The Firstを楽天トラベルで見る",
-      "url": "https://example.com/rakuten/hotel-grandview-ishigaki",
+      "url": "https://hb.afl.rakuten.co.jp/hgc/54bb6c39.71f2cf44.54bb6c3a.01dae953/_RTLink135339?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F187658%2F187658.html%3Fcid%3Dtr_af_1632&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIxMDB4MTAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
       "officialUrl": "https://granview.co.jp/ishigaki/",
       "notes": "個別ホテルカード用。AIはURLを作らず、このidを指定して差し込む"
+    },
+    {
+      "id": "rakuten-hotel-apa-ishigaki",
+      "service": "rakuten_travel",
+      "entityType": "hotel",
+      "hotelName": "アパホテル〈石垣島〉",
+      "area": "沖縄・石垣島",
+      "tags": ["一人旅", "港近く", "コスパ"],
+      "label": "アパホテル〈石垣島〉を楽天トラベルで見る",
+      "url": "https://hb.afl.rakuten.co.jp/hgc/54bb6c39.71f2cf44.54bb6c3a.01dae953/_RTLink135339?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F68616%2F68616.html%3Fcid%3Dtr_af_1632&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIxMDB4MTAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
+      "officialUrl": "https://www.apahotel.com/hotel/kyushu-okinawa/okinawa/ishigakijima/",
+      "notes": "石垣島ひとり旅ホテル比較の個別導線"
+    },
+    {
+      "id": "rakuten-hotel-third-ishigaki",
+      "service": "rakuten_travel",
+      "entityType": "hotel",
+      "hotelName": "THIRD石垣島",
+      "area": "沖縄・石垣島",
+      "tags": ["一人旅", "港前", "ホテル時間"],
+      "label": "THIRD石垣島を楽天トラベルで見る",
+      "url": "https://hb.afl.rakuten.co.jp/hgc/54bb6c39.71f2cf44.54bb6c3a.01dae953/_RTLink135339?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F182607%2F182607.html%3Fcid%3Dtr_af_1632&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIxMDB4MTAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
+      "officialUrl": "https://hotelthird.com/",
+      "notes": "石垣島ひとり旅ホテル比較の個別導線"
     },
     {
       "id": "rakuten-hotel-east-china-sea",

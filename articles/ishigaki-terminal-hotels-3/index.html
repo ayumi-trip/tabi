@@ -252,6 +252,9 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    .hotel-affiliate {
+      margin-top: 14px;
+    }
     .affiliate-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -307,6 +310,10 @@
       color: var(--sub);
       font-size: 13px;
     }
+    .side-box a:last-of-type {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
     .article-dates {
       display: grid;
       gap: 6px;
@@ -344,6 +351,24 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+    }
+    .affiliate-banner-wrap {
+      width: min(1040px, 100%);
+      margin: 0 auto 40px;
+      padding: 0 clamp(18px, 4vw, 32px);
+    }
+    .affiliate-banner-box p {
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    .affiliate-banner-box a {
+      display: inline-block;
+    }
+    .affiliate-banner-box img {
+      max-width: 100%;
+      height: auto;
+      border: 0;
     }
     @media (max-width: 860px) {
       .article-wrap { grid-template-columns: 1fr; }
@@ -467,26 +492,21 @@
 <h3>夜ごはんまで含めて考える</h3>
 <p>港周辺は居酒屋や市場が近い一方で、ホテル館内のリゾート感は薄くなりがちです。夜を街で楽しむ前提なら相性がよく、ホテルでこもりたい人には向きません。</p>
 </div>
-<ul>
-  <li>離島ターミナルまでの徒歩分数</li>
-  <li>荷物を預けやすいか</li>
-  <li>朝食時間が早めの出発に合うか</li>
-</ul>
 <div class="affiliate-grid">
 <div class="affiliate-card">
   <b>宿泊予約</b>
   <p>港周辺ホテルを立地で比較する。</p>
-  <a class="button" href="#">港近くの宿を探す</a>
+  <a class="button" href="#" target="_blank" rel="nofollow sponsored noopener">港近くの宿を探す</a>
 </div>
 <div class="affiliate-card">
   <b>フェリー・ツアー</b>
   <p>竹富島や西表島のツアーを比較する。</p>
-  <a class="button secondary" href="#">離島ツアーを探す</a>
+  <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">離島ツアーを探す</a>
 </div>
 <div class="affiliate-card">
   <b>航空券</b>
   <p>直行便と乗継便を比較する。</p>
-  <a class="button secondary" href="#">石垣島行きの航空券を探す</a>
+  <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">石垣島行きの航空券を探す</a>
 </div>
 </div>
         </section>
@@ -506,6 +526,7 @@
       </aside>
     </div>
   </main>
+  
 
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>

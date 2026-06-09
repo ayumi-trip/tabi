@@ -184,7 +184,7 @@ def build_article_main(article: dict) -> str:
     for sub in article["booking_sections"]:
         booking_parts.append(f"<h3>{sub['title']}</h3>")
         booking_parts.append(render_paragraphs(sub["paragraphs"]))
-    if article.get("booking_list"):
+    if article.get("booking_list") and not article.get("hide_booking_list"):
         booking_parts.append(render_list(article["booking_list"]))
     booking_parts.append(render_affiliate(article["affiliate_cards"]))
 

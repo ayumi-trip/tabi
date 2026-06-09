@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 
 import html
+import json
 from pathlib import Path
 from textwrap import dedent
 
@@ -349,6 +350,9 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       text-decoration: underline;
       text-underline-offset: 3px;
     }}
+    .hotel-affiliate {{
+      margin-top: 14px;
+    }}
     .affiliate-grid {{
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -404,6 +408,10 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       color: var(--sub);
       font-size: 13px;
     }}
+    .side-box a:last-of-type {{
+      padding-bottom: 0;
+      border-bottom: none;
+    }}
     .article-dates {{
       display: grid;
       gap: 6px;
@@ -441,6 +449,24 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+    }}
+    .affiliate-banner-wrap {{
+      width: min(1040px, 100%);
+      margin: 0 auto 40px;
+      padding: 0 clamp(18px, 4vw, 32px);
+    }}
+    .affiliate-banner-box p {{
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 14px;
+    }}
+    .affiliate-banner-box a {{
+      display: inline-block;
+    }}
+    .affiliate-banner-box img {{
+      max-width: 100%;
+      height: auto;
+      border: 0;
     }}
     @media (max-width: 860px) {{
       .article-wrap {{ grid-template-columns: 1fr; }}
@@ -487,6 +513,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
       </aside>
     </div>
   </main>
+  {bottom_affiliate_banner}
 
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
@@ -559,6 +586,14 @@ def ranking_cards(cards: list[dict[str, object]]) -> str:
                 f'<p><b>公式サイト：</b><a href="{html.escape(official_url)}" target="_blank" rel="noopener">{html.escape(official_url)}</a></p>'
             )
         body.append('<div class="hotel-contact">\n' + "\n".join(meta) + "\n</div>")
+        affiliate_url = str(card.get("affiliate_url", "")).strip()
+        affiliate_label = str(card.get("affiliate_label", "楽天トラベルで予約する")).strip()
+        if affiliate_url:
+            body.append(
+                '<div class="hotel-affiliate">\n'
+                + f'  <a class="button" href="{html.escape(affiliate_url)}" target="_blank" rel="nofollow sponsored noopener">{html.escape(affiliate_label)}</a>\n'
+                + "</div>"
+            )
         blocks.append('<article class="ranking-card">\n' + "\n".join(body) + "\n</article>")
     return '<div class="ranking-grid">\n' + "\n".join(blocks) + "\n</div>"
 
@@ -581,6 +616,26 @@ def affiliate_grid(cards: list[dict[str, str]]) -> str:
             ).strip()
         )
     return '<div class="affiliate-grid">\n' + "\n".join(items) + "\n</div>"
+
+
+def render_bottom_affiliate_banner(article: dict[str, object]) -> str:
+    href = str(article.get("bottom_banner_href", "")).strip()
+    image = str(article.get("bottom_banner_image", "")).strip()
+    alt = str(article.get("bottom_banner_alt", "")).strip()
+    text = str(article.get("bottom_banner_text", "")).strip()
+    if not href or not image:
+        return ""
+    text_html = f"      <p>{html.escape(text)}</p>\n" if text else ""
+    return (
+        '<section class="affiliate-banner-wrap" aria-label="楽天トラベル バナー導線">\n'
+        '  <div class="affiliate-banner-box">\n'
+        f"{text_html}"
+        f'    <a href="{html.escape(href)}" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">\n'
+        f'      <img src="{html.escape(image)}" alt="{html.escape(alt)}" title="{html.escape(alt)}">\n'
+        "    </a>\n"
+        "  </div>\n"
+        "</section>"
+    )
 
 
 def render_sources(sources: list[tuple[str, str]]) -> str:
@@ -628,7 +683,7 @@ def build_sections(article: dict[str, object]) -> list[tuple[str, str, str]]:
     booking_parts = [p(text) for text in article["booking_intro"]]  # type: ignore[index]
     for card in article.get("booking_cards", []):  # type: ignore[union-attr]
         booking_parts.append(info_card(card["title"], card["paragraphs"], card.get("bullets")))  # type: ignore[index]
-    if article.get("booking_list"):
+    if article.get("booking_list") and not article.get("hide_booking_list"):
         booking_parts.append(ul(article["booking_list"]))  # type: ignore[arg-type]
     booking_parts.append(affiliate_grid(article["affiliate_cards"]))  # type: ignore[arg-type]
     sections.append(("booking", "予約前に確認したいこと", "\n".join(booking_parts)))  # type: ignore[arg-type]
@@ -692,6 +747,7 @@ ARTICLES: list[dict[str, object]] = [
                 ],
                 "bullets": ["港周辺の利便性", "大浴場あり", "新しめで選びやすい"],
                 "url": "https://granview.co.jp/ishigaki/",
+                "affiliate_url": "https://hb.afl.rakuten.co.jp/hgc/54bb6c39.71f2cf44.54bb6c3a.01dae953/_RTLink135339?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F187658%2F187658.html%3Fcid%3Dtr_af_1632&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIxMDB4MTAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
             },
             {
                 "name": "アパホテル〈石垣島〉",
@@ -701,6 +757,7 @@ ARTICLES: list[dict[str, object]] = [
                 ],
                 "bullets": ["港徒歩圏", "ブランドの安心感", "コスパ重視向き"],
                 "url": "https://www.apahotel.com/hotel/kyushu-okinawa/okinawa/ishigakijima/",
+                "affiliate_url": "https://hb.afl.rakuten.co.jp/hgc/54bb6c39.71f2cf44.54bb6c3a.01dae953/_RTLink135339?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F68616%2F68616.html%3Fcid%3Dtr_af_1632&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIxMDB4MTAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
             },
             {
                 "name": "THIRD石垣島",
@@ -710,6 +767,7 @@ ARTICLES: list[dict[str, object]] = [
                 ],
                 "bullets": ["離島ターミナル至近", "街中でもホテル時間を楽しみやすい", "若めの大人旅にも合う"],
                 "url": "https://hotelthird.com/",
+                "affiliate_url": "https://hb.afl.rakuten.co.jp/hgc/54bb6c39.71f2cf44.54bb6c3a.01dae953/_RTLink135339?pc=https%3A%2F%2Ftravel.rakuten.co.jp%2FHOTEL%2F182607%2F182607.html%3Fcid%3Dtr_af_1632&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIxMDB4MTAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
             },
         ],
         "booking_intro": [
@@ -735,6 +793,7 @@ ARTICLES: list[dict[str, object]] = [
             "夜に歩いて戻れる範囲に飲食店があるか",
             "大浴場や朝食など、宿内で完結できる要素があるか",
         ],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "石垣島のホテルを比較しながら予約する。", "cta": "石垣島の宿を探す"},
             {"title": "航空券", "body": "羽田・関空などからの直行便を比較する。", "cta": "石垣島行きの航空券を探す", "secondary": "1"},
@@ -752,6 +811,10 @@ ARTICLES: list[dict[str, object]] = [
         "tags": ["solo", "okinawa"],
         "area": "沖縄・石垣島",
         "card_labels": ["石垣島", "ひとり旅"],
+        "bottom_banner_text": "石垣島の宿をまとめて比較したいときは、楽天トラベルの一覧から探せます。",
+        "bottom_banner_href": "https://hb.afl.rakuten.co.jp/hsc/54bb10f5.db9115c8.54bb1082.4e063cbe/_RTLink135339?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxMzMiLCJiYW4iOjIxODg2NTcsImFtcCI6ZmFsc2V9",
+        "bottom_banner_image": "https://hbb.afl.rakuten.co.jp/hsb/54bb10f5.db9115c8.54bb1082.4e063cbe/?me_id=2100001&me_adv_id=2188657&t=pict",
+        "bottom_banner_alt": "楽天トラベルで石垣島の宿を探す",
     },
     {
         "slug": "ishigaki-terminal-hotels-3",
@@ -832,6 +895,7 @@ ARTICLES: list[dict[str, object]] = [
             "荷物を預けやすいか",
             "朝食時間が早めの出発に合うか",
         ],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "港周辺ホテルを立地で比較する。", "cta": "港近くの宿を探す"},
             {"title": "フェリー・ツアー", "body": "竹富島や西表島のツアーを比較する。", "cta": "離島ツアーを探す", "secondary": "1"},
@@ -900,6 +964,7 @@ ARTICLES: list[dict[str, object]] = [
             }
         ],
         "booking_list": ["空港や港からの移動方法", "レストラン予約の要否", "島泊まりの場合の船時刻"],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "八重山の記念日向けホテルを比較する。", "cta": "記念日向けの宿を探す"},
             {"title": "航空券", "body": "石垣島行きの便を比較する。", "cta": "石垣島行きの航空券を探す", "secondary": "1"},
@@ -953,6 +1018,7 @@ ARTICLES: list[dict[str, object]] = [
         "booking_intro": ["小浜島は島内での選択肢が限られるため、食事や送迎の時間まで含めて先に決めたほうが安心です。"],
         "booking_cards": [],
         "booking_list": ["港からの送迎", "夕食の予約要否", "夜に何をして過ごしたいか"],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "小浜島で泊まれるホテルを比較する。", "cta": "小浜島の宿を探す"},
             {"title": "石垣島行き航空券", "body": "小浜島へ渡る前提で石垣島行きの便を比較する。", "cta": "石垣島行きの航空券を探す", "secondary": "1"},
@@ -1020,6 +1086,7 @@ ARTICLES: list[dict[str, object]] = [
             }
         ],
         "booking_list": ["到着・出発する空港", "空港からの所要時間"],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "宮古島のホテルを目的別に比較する。", "cta": "宮古島の宿を探す"},
             {"title": "航空券", "body": "宮古空港・下地島空港着の便を比較する。", "cta": "宮古島行きの航空券を探す", "secondary": "1"},
@@ -1081,6 +1148,7 @@ ARTICLES: list[dict[str, object]] = [
         "booking_intro": ["那覇はレンタカーなしでも動ける一方で、駅近かどうか、夜ごはんを歩いて取りに行けるかで満足度が変わります。"],
         "booking_cards": [],
         "booking_list": ["モノレール駅との距離", "国際通り・飲食店までの徒歩圏", "大浴場や朝食の必要性"],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "那覇のホテルを立地で比較する。", "cta": "那覇の宿を探す"},
             {"title": "航空券", "body": "那覇空港着の便を比較する。", "cta": "那覇行きの航空券を探す", "secondary": "1"},
@@ -1142,6 +1210,7 @@ ARTICLES: list[dict[str, object]] = [
         "booking_intro": ["宮古島はエリアが分かれるため、記念日ディナーをどこで取るか、レンタカーをどこまで使うかを先に考えておくと選びやすいです。"],
         "booking_cards": [],
         "booking_list": ["レストラン予約", "レンタカー前提度", "空港からの距離"],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "宮古島の記念日向けホテルを比較する。", "cta": "記念日向けの宿を探す"},
             {"title": "航空券", "body": "宮古島行きの便を比較する。", "cta": "宮古島行きの航空券を探す", "secondary": "1"},
@@ -1508,6 +1577,7 @@ ARTICLES: list[dict[str, object]] = [
         "booking_intro": ["沖縄本島の記念日旅は、ホテルの中だけで完結するか、外に食事へ出るかを先に決めると選びやすいです。"],
         "booking_cards": [],
         "booking_list": ["食事を外で取るか", "車を置いて歩けるか", "客室より空気感を優先するか"],
+        "hide_booking_list": True,
         "affiliate_cards": [
             {"title": "宿泊予約", "body": "沖縄本島の記念日向けホテルを比較する。", "cta": "記念日向けの宿を探す"},
             {"title": "航空券", "body": "那覇行きの便を比較する。", "cta": "那覇行きの航空券を探す", "secondary": "1"},
@@ -1687,6 +1757,7 @@ def write_articles() -> None:
             toc_links=toc,
             published=html.escape(str(article["published"])),
             updated=html.escape(str(article["updated"])),
+            bottom_affiliate_banner=render_bottom_affiliate_banner(article),
         )
         target = OUTPUT_DIR / str(article["slug"]) / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)

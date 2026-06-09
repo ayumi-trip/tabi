@@ -252,6 +252,9 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    .hotel-affiliate {
+      margin-top: 14px;
+    }
     .affiliate-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -307,6 +310,10 @@
       color: var(--sub);
       font-size: 13px;
     }
+    .side-box a:last-of-type {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
     .article-dates {
       display: grid;
       gap: 6px;
@@ -344,6 +351,24 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+    }
+    .affiliate-banner-wrap {
+      width: min(1040px, 100%);
+      margin: 0 auto 40px;
+      padding: 0 clamp(18px, 4vw, 32px);
+    }
+    .affiliate-banner-box p {
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    .affiliate-banner-box a {
+      display: inline-block;
+    }
+    .affiliate-banner-box img {
+      max-width: 100%;
+      height: auto;
+      border: 0;
     }
     @media (max-width: 860px) {
       .article-wrap { grid-template-columns: 1fr; }
@@ -463,26 +488,21 @@
 <h3>石垣島拠点か、島泊まりか</h3>
 <p>石垣島はアクセスが楽で、食事や移動の自由度があります。竹富島や小浜島は移動の自由度を少し落としてでも、泊まる意味を作りやすい選択です。</p>
 </div>
-<ul>
-  <li>空港や港からの移動方法</li>
-  <li>レストラン予約の要否</li>
-  <li>島泊まりの場合の船時刻</li>
-</ul>
 <div class="affiliate-grid">
 <div class="affiliate-card">
   <b>宿泊予約</b>
   <p>八重山の記念日向けホテルを比較する。</p>
-  <a class="button" href="#">記念日向けの宿を探す</a>
+  <a class="button" href="#" target="_blank" rel="nofollow sponsored noopener">記念日向けの宿を探す</a>
 </div>
 <div class="affiliate-card">
   <b>航空券</b>
   <p>石垣島行きの便を比較する。</p>
-  <a class="button secondary" href="#">石垣島行きの航空券を探す</a>
+  <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">石垣島行きの航空券を探す</a>
 </div>
 <div class="affiliate-card">
   <b>離島フェリー</b>
   <p>竹富島・小浜島へ渡る手段を確認する。</p>
-  <a class="button secondary" href="#">フェリー情報を見る</a>
+  <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">フェリー情報を見る</a>
 </div>
 </div>
         </section>
@@ -502,6 +522,7 @@
       </aside>
     </div>
   </main>
+  
 
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>

@@ -31,7 +31,7 @@
       "headline": "男鹿半島と秋田市内を2泊3日で回るなら？なまはげと文化をゆっくり楽しむ旅",
       "description": "男鹿半島のなまはげ館・男鹿温泉郷と、秋田市内の千秋公園や文化施設を2泊3日で組む考え方。レンタカーの有無、宿泊地、移動の配分を整理します。",
       "datePublished": "2026-06-07",
-      "dateModified": "2026-06-09",
+      "dateModified": "2026-06-07",
       "author": {
         "@type": "Organization",
         "name": "tabinote編集部"
@@ -240,6 +240,28 @@
       color: var(--sub);
       font-size: 13px;
     }
+    .hotel-contact {
+      display: grid;
+      gap: 6px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .hotel-contact p {
+      margin: 0;
+    }
+    .hotel-contact b {
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .hotel-contact a {
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
     .time-example {
       display: grid;
       gap: 10px;
@@ -344,6 +366,10 @@
       border-bottom: 1px solid var(--line);
       color: var(--sub);
       font-size: 13px;
+    }
+    .side-box a:last-of-type {
+      padding-bottom: 0;
+      border-bottom: none;
     }
     .article-dates {
       display: grid;
@@ -467,7 +493,7 @@
     <span>移動調整</span>
   </div>
             <div class="time-total">
-              <span>旅程の目安</span>
+              <span>移動時間の目安</span>
               <span>秋田市内1泊＋男鹿温泉1泊が組みやすい</span>
             </div>
           </div>
@@ -522,6 +548,7 @@
         <h3>なまはげ館</h3>
         <p>男鹿半島を選ぶ理由としてかなり強いスポットです。展示を見るだけでなく、なまはげ文化の背景を知ることで、旅先としての印象が深くなります。</p>
         <p>公式サイトでは、なまはげ館・男鹿真山伝承館・真山神社はそれぞれ所要時間の目安が約30分と案内されています。まとめて回るなら、半日単位で見ておくと余裕があります。</p>
+
         <div class="spot-note">男鹿旅の主軸にしやすい定番です。</div>
       </div>
     </article>
@@ -531,6 +558,7 @@
         <h3>男鹿真山伝承館</h3>
         <p>なまはげ館と合わせて見たい施設で、伝承行事の雰囲気をより具体的に感じやすい場所です。共通券もあるため、まとめて回る前提で計画しやすいです。</p>
         <p>なまはげ館と合わせて計画したい施設です。大晦日の行事を再現する体験型の施設なので、展示だけで終わらない濃さがあります。</p>
+
         <div class="spot-note">文化体験の濃さを求めるなら外しにくい候補です。</div>
       </div>
     </article>
@@ -540,6 +568,7 @@
         <h3>千秋公園</h3>
         <p>秋田市内で入れやすい城跡の公園です。秋田市公式サイトでは、久保田城跡として整備された公園で、園内は終日開放と案内されています。</p>
         <p>到着日や最終日の短い時間でも入れやすく、男鹿の文化体験とは違う秋田市内の歴史を感じられます。</p>
+
         <div class="spot-note">秋田市内の余白時間に入れやすい候補です。</div>
       </div>
     </article>
@@ -549,6 +578,7 @@
         <h3>秋田市民俗芸能伝承館（ねぶり流し館）</h3>
         <p>秋田竿燈まつりをはじめ、秋田市の民俗芸能に触れられる施設です。男鹿のなまはげと合わせて見ると、秋田の文化を「地域ごとの違い」で捉えやすくなります。</p>
         <p>秋田市内の街歩きに組み込みやすいので、2泊3日の1日目に入れると流れが作りやすいです。</p>
+
         <div class="spot-note">男鹿だけでなく秋田市内も旅の主役にできます。</div>
       </div>
     </article>
@@ -576,17 +606,17 @@
     <div class="affiliate-card">
       <b>宿泊予約</b>
       <p>秋田市内1泊と男鹿温泉1泊を分けて比較します。</p>
-      <a class="button" href="#">秋田・男鹿の宿を探す</a>
+      <a class="button" href="#" target="_blank" rel="nofollow sponsored noopener">秋田・男鹿の宿を探す</a>
     </div>
     <div class="affiliate-card">
       <b>交通予約</b>
       <p>秋田までの航空券や列車、男鹿で使うレンタカーを確認します。</p>
-      <a class="button secondary" href="#">秋田の交通を探す</a>
+      <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">秋田の交通を探す</a>
     </div>
     <div class="affiliate-card">
       <b>旅の下調べ</b>
       <p>文化施設の開館情報と男鹿方面の移動導線を先に確認します。</p>
-      <a class="button secondary" href="#">移動を確認する</a>
+      <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">移動を確認する</a>
     </div>
   </div>
       </section>
@@ -594,7 +624,7 @@
 
       <aside class="side-box" aria-label="記事目次">
         <h2>この記事の内容</h2>
-<a href="#summary">ひとことでいうと</a>
+        <a href="#summary">ひとことでいうと</a>
 <a href="#fit">向いている旅</a>
 <a href="#course">2泊3日の組み方</a>
 <a href="#carfree">レンタカー</a>

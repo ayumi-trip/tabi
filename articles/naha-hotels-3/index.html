@@ -252,6 +252,9 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    .hotel-affiliate {
+      margin-top: 14px;
+    }
     .affiliate-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -307,6 +310,10 @@
       color: var(--sub);
       font-size: 13px;
     }
+    .side-box a:last-of-type {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
     .article-dates {
       display: grid;
       gap: 6px;
@@ -344,6 +351,24 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+    }
+    .affiliate-banner-wrap {
+      width: min(1040px, 100%);
+      margin: 0 auto 40px;
+      padding: 0 clamp(18px, 4vw, 32px);
+    }
+    .affiliate-banner-box p {
+      margin: 0 0 14px;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    .affiliate-banner-box a {
+      display: inline-block;
+    }
+    .affiliate-banner-box img {
+      max-width: 100%;
+      height: auto;
+      border: 0;
     }
     @media (max-width: 860px) {
       .article-wrap { grid-template-columns: 1fr; }
@@ -459,26 +484,21 @@
 <section class="content-box" id="booking">
           <h2>予約前に確認したいこと</h2>
           <p>那覇はレンタカーなしでも動ける一方で、駅近かどうか、夜ごはんを歩いて取りに行けるかで満足度が変わります。</p>
-<ul>
-  <li>モノレール駅との距離</li>
-  <li>国際通り・飲食店までの徒歩圏</li>
-  <li>大浴場や朝食の必要性</li>
-</ul>
 <div class="affiliate-grid">
 <div class="affiliate-card">
   <b>宿泊予約</b>
   <p>那覇のホテルを立地で比較する。</p>
-  <a class="button" href="#">那覇の宿を探す</a>
+  <a class="button" href="#" target="_blank" rel="nofollow sponsored noopener">那覇の宿を探す</a>
 </div>
 <div class="affiliate-card">
   <b>航空券</b>
   <p>那覇空港着の便を比較する。</p>
-  <a class="button secondary" href="#">那覇行きの航空券を探す</a>
+  <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">那覇行きの航空券を探す</a>
 </div>
 <div class="affiliate-card">
   <b>レンタカー</b>
   <p>本島へそのまま出る日の移動手段を比較する。</p>
-  <a class="button secondary" href="#">レンタカーを探す</a>
+  <a class="button secondary" href="#" target="_blank" rel="nofollow sponsored noopener">レンタカーを探す</a>
 </div>
 </div>
         </section>
@@ -498,6 +518,7 @@
       </aside>
     </div>
   </main>
+  
 
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
