@@ -940,16 +940,19 @@
         published: "公開中",
         hidden: "一覧非表示"
       };
+      const isVisibleArticle = (article, now = new Date()) => {
+        if (article.status === "published") return true;
+        if (article.status === "scheduled" && article.publishAt) {
+          return new Date(article.publishAt).getTime() <= now.getTime();
+        }
+        return false;
+      };
       window.TabinoteArticleUtils = {
         isVisible(article, now = new Date()) {
-          if (article.status === "published") return true;
-          if (article.status === "scheduled" && article.publishAt) {
-            return new Date(article.publishAt).getTime() <= now.getTime();
-          }
-          return false;
+          return isVisibleArticle(article, now);
         },
         isListable(article, now = new Date()) {
-          return this.isVisible(article, now) && article.status !== "hidden";
+          return isVisibleArticle(article, now) && article.status !== "hidden";
         }
       };
     };
@@ -994,8 +997,8 @@
       .then(() => (loadInlineRegistryData() ? undefined : loadRegistryScript()))
       .catch(() => loadRegistryJsonFallback())
       .then(() => {
-      const { isListable } = window.TabinoteArticleUtils || {};
-      const articles = (window.TABINOTE_ARTICLES || []).filter((article) => isListable(article));
+      const utils = window.TabinoteArticleUtils || {};
+      const articles = (window.TABINOTE_ARTICLES || []).filter((article) => utils.isListable && utils.isListable(article));
       const featured = articles.filter((article) => article.topFeature).slice(0, PREVIEW_LIMIT);
       const fallbackFeatured = articles.filter((article) => !article.noteFeature).slice(0, PREVIEW_LIMIT);
       renderCards((featured.length ? featured : fallbackFeatured), grid);

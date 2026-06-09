@@ -417,16 +417,19 @@
         published: "公開中",
         hidden: "一覧非表示"
       };
+      const isVisibleArticle = (article, now = new Date()) => {
+        if (article.status === "published") return true;
+        if (article.status === "scheduled" && article.publishAt) {
+          return new Date(article.publishAt).getTime() <= now.getTime();
+        }
+        return false;
+      };
       window.TabinoteArticleUtils = {
         isVisible(article, now = new Date()) {
-          if (article.status === "published") return true;
-          if (article.status === "scheduled" && article.publishAt) {
-            return new Date(article.publishAt).getTime() <= now.getTime();
-          }
-          return false;
+          return isVisibleArticle(article, now);
         },
         isListable(article, now = new Date()) {
-          return this.isVisible(article, now) && article.status !== "hidden";
+          return isVisibleArticle(article, now) && article.status !== "hidden";
         },
         adminEnabled() {
           const params = new URLSearchParams(window.location.search);
@@ -480,18 +483,18 @@
       .catch(() => loadRegistryJsonFallback())
       .then(() => {
       const allArticles = window.TABINOTE_ARTICLES || [];
-      const { isListable, adminEnabled, managementBadges } = window.TabinoteArticleUtils || {};
-      if (!allArticles.length || !isListable || !adminEnabled || !managementBadges) {
+      const utils = window.TabinoteArticleUtils || {};
+      if (!allArticles.length || !utils.isListable || !utils.adminEnabled || !utils.managementBadges) {
         articleList.innerHTML = '<p>記事データを読み込めませんでした。ブラウザを再読み込みしてください。</p>';
         return;
       }
 
-      const adminMode = adminEnabled();
+      const adminMode = utils.adminEnabled();
       if (adminMode) {
         document.body.classList.add("admin-mode");
       }
 
-      const listableArticles = allArticles.filter((article) => isListable(article));
+      const listableArticles = allArticles.filter((article) => utils.isListable(article));
       const sortDate = (value) => value ? new Date(value).getTime() : 0;
       const statusOrder = {
         scheduled: 0,
@@ -510,7 +513,7 @@
         articleList.innerHTML = items.map((article) => {
           const checked = article.qualityChecked ? " is-checked" : "";
           const badges = adminMode
-            ? `<span class="management-badges">${managementBadges(article).map((badge) => `<span class="management-badge tone-${badge.tone}">${badge.label}</span>`).join("")}</span>`
+            ? `<span class="management-badges">${utils.managementBadges(article).map((badge) => `<span class="management-badge tone-${badge.tone}">${badge.label}</span>`).join("")}</span>`
             : "";
           return `
             <a class="article-row" href="${resolveArticleHref(article)}" data-status="${escapeHtml(article.status)}">

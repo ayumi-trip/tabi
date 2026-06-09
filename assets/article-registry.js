@@ -537,16 +537,20 @@ window.TABINOTE_STATUS_LABELS = {
   hidden: "一覧非表示"
 };
 
+const isVisibleArticle = (article, now = new Date()) => {
+  if (article.status === "published") return true;
+  if (article.status === "scheduled" && article.publishAt) {
+    return new Date(article.publishAt).getTime() <= now.getTime();
+  }
+  return false;
+};
+
 window.TabinoteArticleUtils = {
   isVisible(article, now = new Date()) {
-    if (article.status === "published") return true;
-    if (article.status === "scheduled" && article.publishAt) {
-      return new Date(article.publishAt).getTime() <= now.getTime();
-    }
-    return false;
+    return isVisibleArticle(article, now);
   },
   isListable(article, now = new Date()) {
-    return this.isVisible(article, now) && article.status !== "hidden";
+    return isVisibleArticle(article, now) && article.status !== "hidden";
   },
   adminEnabled() {
     const params = new URLSearchParams(window.location.search);
