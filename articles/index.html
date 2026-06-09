@@ -173,6 +173,10 @@
     .article-row:hover .article-title {
       color: var(--teal);
     }
+    body.admin-mode .article-row[data-status="hidden"],
+    body.admin-mode .article-row[data-status="review"] {
+      background: #fcfcfc;
+    }
     .article-title {
       display: inline-flex;
       align-items: center;
@@ -238,6 +242,10 @@
       background: #eef0f2;
       color: #727b84;
     }
+    .management-badge.tone-pending {
+      background: #fbf1f1;
+      color: #9b645b;
+    }
     .article-meta,
     .article-labels {
       color: var(--muted);
@@ -298,12 +306,12 @@
 </head>
 <body>
   <header class="site-header">
-    <a href="/" aria-label="tabinote トップ">
+    <a href="../index.html" aria-label="tabinote トップ">
       <span class="brand-name">tabi<span>note</span></span>
     </a>
     <nav class="nav-links" aria-label="主要メニュー">
-      <a href="/#articles">記事を探す</a>
-      <a href="/articles/trip-choice-first-step/">旅の選び方</a>
+      <a href="../index.html#articles">記事を探す</a>
+      <a href="./trip-choice-first-step/">旅の選び方</a>
     </nav>
   </header>
 
@@ -352,93 +360,144 @@
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
     <div class="footer-links">
-      <a href="/about.html">運営者情報</a>
-      <a href="/contact.html">お問い合わせ</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/ads.html">広告掲載について</a>
+      <a href="../about.html">運営者情報</a>
+      <a href="../contact.html">お問い合わせ</a>
+      <a href="../privacy.html">プライバシーポリシー</a>
+      <a href="../ads.html">広告掲載について</a>
     </div>
   </footer>
-  <script src="/assets/article-registry.js"></script>
   <script>
-    const allArticles = window.TABINOTE_ARTICLES;
     const articleList = document.getElementById("articleList");
     const keywordFilter = document.getElementById("keywordFilter");
     const areaFilter = document.getElementById("areaFilter");
     const tagFilterGroup = document.getElementById("tagFilterGroup");
     const tagFilterButtons = [...document.querySelectorAll(".tag-filter-chip[data-tag]")];
-    const { isListable, adminEnabled, managementBadges } = window.TabinoteArticleUtils;
-    const adminMode = adminEnabled();
-    if (adminMode) {
-      document.body.classList.add("admin-mode");
-    }
 
-    const listableArticles = allArticles.filter((article) => isListable(article));
-    const escapeHtml = (value) => value
+    const loadRegistryScript = () => {
+      if (window.TABINOTE_ARTICLES && window.TabinoteArticleUtils) {
+        return Promise.resolve();
+      }
+      const candidates = window.location.protocol === "file:"
+        ? ["../assets/article-registry.js", "./../assets/article-registry.js"]
+        : ["/assets/article-registry.js", "../assets/article-registry.js"];
+
+      return candidates.reduce((promise, src) => {
+        return promise.catch(() => new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error(`failed: ${src}`));
+          document.head.appendChild(script);
+        }));
+      }, Promise.reject(new Error("registry not loaded")));
+    };
+
+    const escapeHtml = (value) => String(value)
       .replaceAll("&", "&amp;")
       .replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;");
 
-    const renderRows = (items) => {
-      articleList.innerHTML = items.map((article) => {
-        const checked = article.qualityChecked ? " is-checked" : "";
-        const badges = adminMode
-          ? `<span class="management-badges">${managementBadges(article).map((badge) => `<span class="management-badge tone-${badge.tone}">${badge.label}</span>`).join("")}</span>`
-          : "";
-        return `
-          <a class="article-row" href="${article.url}">
-            <div class="article-title"><span class="review-dot${checked}"></span>${escapeHtml(article.title)}${badges}</div>
-            <div class="article-meta">${escapeHtml(article.area)}</div>
-            <div class="article-labels">${article.tags.map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}</div>
-          </a>
-        `;
-      }).join("");
+    const resolveArticleHref = (article) => {
+      if (!article?.url) return "#";
+      if (window.location.protocol === "file:") {
+        return `.${article.url.replace("/articles", "")}`;
+      }
+      return article.url;
     };
 
-    const matchesArea = (article, areaValue) => {
-      if (areaValue === "all") return true;
-      return article.area.includes(areaValue);
-    };
-
-    const matchesTag = (article, selectedTags) => {
-      if (selectedTags.length === 0) return true;
-      return selectedTags.every((selectedTag) => article.tags.some((tag) => tag.includes(selectedTag)));
-    };
-
-    const matchesKeyword = (article, keyword) => {
-      if (!keyword) return true;
-      const haystack = `${article.title} ${article.area} ${article.tags.join(" ")}`.toLowerCase();
-      return haystack.includes(keyword.toLowerCase());
-    };
-
-    const applyFilters = () => {
-      const keyword = keywordFilter.value.trim();
-      const areaValue = areaFilter.value;
-      const selectedTags = tagFilterButtons
-        .filter((button) => button.getAttribute("aria-pressed") === "true")
-        .map((button) => button.dataset.tag);
-      const filtered = listableArticles.filter((article) =>
-        matchesKeyword(article, keyword) &&
-        matchesArea(article, areaValue) &&
-        matchesTag(article, selectedTags)
-      );
-      renderRows(filtered);
-    };
-
-    renderRows(listableArticles);
-    keywordFilter.addEventListener("input", applyFilters);
-    areaFilter.addEventListener("change", applyFilters);
-    tagFilterGroup.addEventListener("click", (event) => {
-      const target = event.target.closest("button");
-      if (!target) return;
-      if (target.dataset.clearTags === "true") {
-        tagFilterButtons.forEach((button) => button.setAttribute("aria-pressed", "false"));
-        applyFilters();
+    loadRegistryScript().then(() => {
+      const allArticles = window.TABINOTE_ARTICLES || [];
+      const { isListable, adminEnabled, managementBadges } = window.TabinoteArticleUtils || {};
+      if (!allArticles.length || !isListable || !adminEnabled || !managementBadges) {
+        articleList.innerHTML = '<p>記事データを読み込めませんでした。ブラウザを再読み込みしてください。</p>';
         return;
       }
-      const isPressed = target.getAttribute("aria-pressed") === "true";
-      target.setAttribute("aria-pressed", isPressed ? "false" : "true");
-      applyFilters();
+
+      const adminMode = adminEnabled();
+      if (adminMode) {
+        document.body.classList.add("admin-mode");
+      }
+
+      const listableArticles = allArticles.filter((article) => isListable(article));
+      const sortDate = (value) => value ? new Date(value).getTime() : 0;
+      const statusOrder = {
+        scheduled: 0,
+        review: 1,
+        hidden: 2,
+        published: 3,
+        draft: 4
+      };
+      const adminArticles = [...allArticles].sort((a, b) => {
+        const statusDiff = (statusOrder[a.status] ?? 99) - (statusOrder[b.status] ?? 99);
+        if (statusDiff !== 0) return statusDiff;
+        return sortDate(b.publishAt || b.updatedAt || b.publishedAt) - sortDate(a.publishAt || a.updatedAt || a.publishedAt);
+      });
+
+      const renderRows = (items) => {
+        articleList.innerHTML = items.map((article) => {
+          const checked = article.qualityChecked ? " is-checked" : "";
+          const badges = adminMode
+            ? `<span class="management-badges">${managementBadges(article).map((badge) => `<span class="management-badge tone-${badge.tone}">${badge.label}</span>`).join("")}</span>`
+            : "";
+          return `
+            <a class="article-row" href="${resolveArticleHref(article)}" data-status="${escapeHtml(article.status)}">
+              <div class="article-title"><span class="review-dot${checked}"></span>${escapeHtml(article.title)}${badges}</div>
+              <div class="article-meta">${escapeHtml(article.area)}</div>
+              <div class="article-labels">${article.tags.map((tag) => `<span class="pill">${escapeHtml(tag)}</span>`).join("")}</div>
+            </a>
+          `;
+        }).join("");
+      };
+
+      const matchesArea = (article, areaValue) => {
+        if (areaValue === "all") return true;
+        return article.area.includes(areaValue);
+      };
+
+      const matchesTag = (article, selectedTags) => {
+        if (selectedTags.length === 0) return true;
+        return selectedTags.every((selectedTag) => article.tags.some((tag) => tag.includes(selectedTag)));
+      };
+
+      const matchesKeyword = (article, keyword) => {
+        if (!keyword) return true;
+        const haystack = `${article.title} ${article.area} ${article.tags.join(" ")}`.toLowerCase();
+        return haystack.includes(keyword.toLowerCase());
+      };
+
+      const applyFilters = () => {
+        const keyword = keywordFilter.value.trim();
+        const areaValue = areaFilter.value;
+        const selectedTags = tagFilterButtons
+          .filter((button) => button.getAttribute("aria-pressed") === "true")
+          .map((button) => button.dataset.tag);
+        const sourceItems = adminMode ? adminArticles : listableArticles;
+        const filtered = sourceItems.filter((article) =>
+          matchesKeyword(article, keyword) &&
+          matchesArea(article, areaValue) &&
+          matchesTag(article, selectedTags)
+        );
+        renderRows(filtered);
+      };
+
+      renderRows(adminMode ? adminArticles : listableArticles);
+      keywordFilter.addEventListener("input", applyFilters);
+      areaFilter.addEventListener("change", applyFilters);
+      tagFilterGroup.addEventListener("click", (event) => {
+        const target = event.target.closest("button");
+        if (!target) return;
+        if (target.dataset.clearTags === "true") {
+          tagFilterButtons.forEach((button) => button.setAttribute("aria-pressed", "false"));
+          applyFilters();
+          return;
+        }
+        const isPressed = target.getAttribute("aria-pressed") === "true";
+        target.setAttribute("aria-pressed", isPressed ? "false" : "true");
+        applyFilters();
+      });
+    }).catch(() => {
+      articleList.innerHTML = '<p>記事データを読み込めませんでした。ブラウザを再読み込みしてください。</p>';
     });
   </script>
 </body>

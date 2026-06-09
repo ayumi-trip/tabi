@@ -531,10 +531,10 @@ window.TABINOTE_ARTICLES = [
 
 window.TABINOTE_STATUS_LABELS = {
   draft: "下書き",
-  review: "要整文",
-  scheduled: "予約",
-  published: "公開",
-  hidden: "非表示"
+  review: "整文待ち",
+  scheduled: "予約投稿",
+  published: "公開中",
+  hidden: "一覧非表示"
 };
 
 window.TabinoteArticleUtils = {
@@ -555,9 +555,9 @@ window.TabinoteArticleUtils = {
   managementBadges(article) {
     return [
       { key: "status", label: window.TABINOTE_STATUS_LABELS[article.status] || article.status, tone: article.status },
-      { key: "image", label: article.imageStatus === "done" ? "画像済" : article.imageStatus === "temp" ? "仮画像" : "画像未", tone: article.imageStatus },
-      { key: "rewrite", label: article.rewriteStatus === "fixed" ? "整文済" : article.rewriteStatus === "reviewed" ? "確認済" : "要整文", tone: article.rewriteStatus },
-      { key: "fact", label: article.factCheckStatus === "done" ? "確認済" : "要確認", tone: article.factCheckStatus }
+      { key: "image", label: article.imageStatus === "done" ? "画像差し替え済み" : article.imageStatus === "temp" ? "仮画像のまま" : "画像未設定", tone: article.imageStatus },
+      { key: "rewrite", label: article.rewriteStatus === "fixed" ? "整文済み" : article.rewriteStatus === "reviewed" ? "確認済み" : "整文待ち", tone: article.rewriteStatus },
+      { key: "fact", label: article.factCheckStatus === "done" ? "事実確認済み" : "事実確認待ち", tone: article.factCheckStatus }
     ];
   }
 };

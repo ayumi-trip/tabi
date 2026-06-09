@@ -818,34 +818,34 @@
             <h3>関東</h3>
             <p>箱根の記念日温泉旅</p>
           </a>
-          <a class="area-card" href="/articles/kanazawa-city-walk/">
+          <a class="area-card" href="./articles/kanazawa-city-walk/">
             <h3>中部・北陸</h3>
             <p>金沢の街歩き旅</p>
           </a>
-          <a class="area-card" href="/articles/nara-couple-trip/">
+          <a class="area-card" href="./articles/nara-couple-trip/">
             <h3>関西</h3>
             <p>奈良の街歩きと奈良監獄</p>
           </a>
-          <a class="area-card is-empty" href="/articles/index.html">
+          <a class="area-card is-empty" href="./articles/index.html">
             <h3>中国</h3>
             <p>記事を準備中</p>
           </a>
-          <a class="area-card is-empty" href="/articles/index.html">
+          <a class="area-card is-empty" href="./articles/index.html">
             <h3>四国</h3>
             <p>記事を準備中</p>
           </a>
-          <a class="area-card" href="/articles/ibusuki-solo-trip/">
+          <a class="area-card" href="./articles/ibusuki-solo-trip/">
             <h3>九州</h3>
             <p>指宿・由布院の温泉旅</p>
           </a>
-          <a class="area-card" href="/articles/okinawa-islands-2days/">
+          <a class="area-card" href="./articles/okinawa-islands-2days/">
             <h3>沖縄</h3>
             <p>石垣・小浜・那覇</p>
           </a>
         </div>
       </div>
       <div class="section-footer">
-        <a class="section-link" href="/articles/index.html">その他記事を見る</a>
+        <a class="section-link" href="./articles/index.html">その他記事を見る</a>
       </div>
     </section>
 
@@ -855,7 +855,7 @@
       </div>
       <div class="article-grid" id="noteGrid"></div>
       <div class="section-footer">
-        <a class="section-link" href="/articles/index.html">その他記事を見る</a>
+        <a class="section-link" href="./articles/index.html">その他記事を見る</a>
       </div>
     </section>
 
@@ -885,23 +885,45 @@
   <footer class="footer">
     <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
     <div class="footer-links">
-      <a href="/about.html">運営者情報</a>
-      <a href="/contact.html">お問い合わせ</a>
-      <a href="/privacy.html">プライバシーポリシー</a>
-      <a href="/ads.html">広告掲載について</a>
+      <a href="./about.html">運営者情報</a>
+      <a href="./contact.html">お問い合わせ</a>
+      <a href="./privacy.html">プライバシーポリシー</a>
+      <a href="./ads.html">広告掲載について</a>
     </div>
   </footer>
 
-  <script src="/assets/article-registry.js"></script>
   <script>
     const grid = document.getElementById("articleGrid");
     const noteGrid = document.getElementById("noteGrid");
     const PREVIEW_LIMIT = 3;
-    const { isListable } = window.TabinoteArticleUtils;
-    const articles = window.TABINOTE_ARTICLES.filter((article) => isListable(article));
+    const loadRegistryScript = () => {
+      if (window.TABINOTE_ARTICLES && window.TabinoteArticleUtils) {
+        return Promise.resolve();
+      }
+      const candidates = window.location.protocol === "file:"
+        ? ["./assets/article-registry.js", "assets/article-registry.js"]
+        : ["/assets/article-registry.js", "./assets/article-registry.js"];
+
+      return candidates.reduce((promise, src) => {
+        return promise.catch(() => new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = src;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error(`failed: ${src}`));
+          document.head.appendChild(script);
+        }));
+      }, Promise.reject(new Error("registry not loaded")));
+    };
+    const resolveArticleHref = (article) => {
+      if (!article?.url) return "#";
+      if (window.location.protocol === "file:") {
+        return `.${article.url}`;
+      }
+      return article.url;
+    };
     const renderCards = (items, target) => {
       target.innerHTML = items.map((article) => `
-        <a class="article-card" href="${article.url || '#'}">
+        <a class="article-card" href="${resolveArticleHref(article)}">
           <div class="thumb" style="background-image:url('${article.image}')"></div>
           <div class="card-body">
             <div class="card-tags">${article.cardLabels.map((tag) => `<span class="pill">${tag}</span>`).join("")}</div>
@@ -911,10 +933,17 @@
         </a>
       `).join("");
     };
-    const featured = articles.filter((article) => article.topFeature).slice(0, PREVIEW_LIMIT);
-    const fallbackFeatured = articles.filter((article) => !article.noteFeature).slice(0, PREVIEW_LIMIT);
-    renderCards((featured.length ? featured : fallbackFeatured), grid);
-    renderCards(articles.filter((article) => article.noteFeature).slice(0, 3), noteGrid);
+    loadRegistryScript().then(() => {
+      const { isListable } = window.TabinoteArticleUtils || {};
+      const articles = (window.TABINOTE_ARTICLES || []).filter((article) => isListable(article));
+      const featured = articles.filter((article) => article.topFeature).slice(0, PREVIEW_LIMIT);
+      const fallbackFeatured = articles.filter((article) => !article.noteFeature).slice(0, PREVIEW_LIMIT);
+      renderCards((featured.length ? featured : fallbackFeatured), grid);
+      renderCards(articles.filter((article) => article.noteFeature).slice(0, 3), noteGrid);
+    }).catch(() => {
+      grid.innerHTML = "<p>記事データを読み込めませんでした。</p>";
+      noteGrid.innerHTML = "<p>記事データを読み込めませんでした。</p>";
+    });
 
   </script>
 </body>
