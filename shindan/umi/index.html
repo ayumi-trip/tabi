@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海に行きたい。どこがいい？診断 | 4つの質問で候補を3つに絞る | tabinote</title>
+  <meta name="description" content="「海には行きたい。でもどこがいいか分からない」を4つの質問で解決。元旅行会社スタッフのAYUMIが、あなたに合う海の旅先を理由付きで3つまで絞ります。おまかせ1択モードも。">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#1f5f8f">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://tabi.ayumi-biz.com/shindan/umi/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="tabinote">
+  <meta property="og:title" content="海に行きたい。どこがいい？診断 | tabinote">
+  <meta property="og:description" content="4つの質問に答えると、あなたに合う海の旅先を理由付きで3つまで絞ります。決められない人には、おまかせ1択モードも。">
+  <meta property="og:url" content="https://tabi.ayumi-biz.com/shindan/umi/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --sub: #4f5658;
+      --muted: #777f82;
+      --line: #e8eaec;
+      --paper: #fff;
+      --white: #fff;
+      --deep: #161a1c;
+      --teal: #1f5f8f;
+      --teal-2: #f1f6fb;
+      --shadow: 0 14px 40px rgba(17, 17, 17, .07);
+      --r: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 clamp(18px, 4vw, 52px);
+      background: rgba(255, 255, 255, .92);
+      border-bottom: 1px solid rgba(17, 17, 17, .08);
+      backdrop-filter: blur(16px);
+    }
+    .brand-name {
+      font-family: "Shippori Mincho", serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .brand-name span { color: var(--teal); }
+    .nav-links { display: flex; gap: 22px; color: var(--sub); font-size: 13px; }
+    .nav-links a:hover { color: var(--teal); }
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 48px clamp(18px, 4vw, 32px) 72px;
+    }
+    .eyebrow {
+      width: fit-content;
+      padding: 6px 10px;
+      border: 1px solid rgba(31, 95, 143, .18);
+      border-radius: 999px;
+      color: var(--teal);
+      background: #f6f9f8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    h1 {
+      margin: 16px 0 0;
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.3;
+    }
+    .lead { margin: 16px 0 0; color: var(--sub); font-size: 14px; max-width: 640px; }
+    .quiz {
+      margin-top: 32px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: clamp(20px, 4vw, 32px);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 24px;
+    }
+    .q-label {
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      margin-bottom: 4px;
+    }
+    .q-title { font-size: 16px; font-weight: 700; margin: 0 0 10px; }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .choice {
+      min-height: 56px;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 12px 14px;
+      background: #f8faf9;
+      text-align: left;
+      transition: border-color .16s ease, background .16s ease;
+    }
+    .choice strong { display: block; font-size: 14px; }
+    .choice span { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .choice:hover { border-color: var(--teal); }
+    .choice.is-active {
+      border-color: var(--teal);
+      background: var(--teal-2);
+      box-shadow: inset 0 0 0 1px var(--teal);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .go-button, .omakase-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border-radius: 999px;
+      padding: 0 26px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .go-button {
+      border: 1px solid var(--deep);
+      background: var(--deep);
+      color: var(--white);
+    }
+    .go-button:hover { background: var(--teal); border-color: var(--teal); transform: translateY(-1px); }
+    .go-button:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+    .omakase-button {
+      border: 1px dashed var(--teal);
+      background: var(--white);
+      color: var(--teal);
+    }
+    .omakase-button:hover { background: var(--teal-2); transform: translateY(-1px); }
+    .actions-note { color: var(--muted); font-size: 12px; }
+    .results { margin-top: 36px; display: none; }
+    .results.is-visible { display: block; }
+    .results-title {
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(22px, 4vw, 30px);
+      margin: 0 0 6px;
+    }
+    .results-sub { margin: 0 0 20px; color: var(--sub); font-size: 13px; }
+    .dest-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: clamp(18px, 3vw, 26px);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .dest-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--deep);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .dest-rank.is-omakase { background: var(--teal); min-width: auto; padding: 0 14px; }
+    .dest-card h3 { margin: 0; font-size: 20px; }
+    .dest-catch { margin: 6px 0 0; color: var(--teal); font-size: 13px; font-weight: 700; }
+    .dest-reason { margin: 12px 0 0; color: var(--sub); font-size: 14px; }
+    .dest-caution {
+      margin: 12px 0 0;
+      padding: 10px 14px;
+      border-radius: var(--r);
+      background: #faf6f0;
+      border: 1px solid #ecdfc8;
+      color: #6b5a3e;
+      font-size: 13px;
+    }
+    .dest-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .dest-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .dest-link.article { border: 1px solid var(--line); background: var(--white); color: var(--teal); }
+    .dest-link.article:hover { border-color: var(--teal); }
+    .dest-link.hotel { border: 1px solid var(--deep); background: var(--deep); color: var(--white); }
+    .dest-link.hotel:hover { background: var(--teal); border-color: var(--teal); }
+    .retry { margin-top: 8px; }
+    .retry button {
+      border: none;
+      background: none;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: underline;
+      padding: 0;
+    }
+    .roulette {
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(26px, 5vw, 38px);
+      font-weight: 700;
+      text-align: center;
+      padding: 40px 0;
+      color: var(--teal);
+      letter-spacing: .04em;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px clamp(18px, 4vw, 52px);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      background: #f8f9f9;
+      flex-wrap: wrap;
+    }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    @media (max-width: 560px) {
+      .nav-links a { display: none; }
+      .choice-grid { grid-template-columns: 1fr; }
+      .footer { display: block; }
+      .footer-links { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand" aria-label="tabinote トップ">
+      <span class="brand-name">tabi<span>note</span></span>
+    </a>
+    <nav class="nav-links" aria-label="主要メニュー">
+      <a href="/finder.html">旅の診断</a>
+      <a href="/articles/index.html">記事を探す</a>
+      <a href="/soudan.html">質問する</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="eyebrow">UMI SHINDAN</div>
+    <h1>海に行きたい。<br>どこがいい？診断</h1>
+    <p class="lead">
+      「海」と決まっているのに、行き先が決まらない。そんなときは4つの質問に答えてください。
+      元旅行会社スタッフのAYUMIが、候補を理由付きで3つまでに絞ります。
+      選ぶのも面倒な日は「おまかせ1択」でどうぞ。
+    </p>
+
+    <form class="quiz" id="quiz">
+      <div>
+        <div class="q-label">QUESTION 1</div>
+        <p class="q-title">誰と行きますか？</p>
+        <div class="choice-grid" data-q="who">
+          <button type="button" class="choice" data-v="solo"><strong>ひとりで</strong><span>自分のペースで動きたい</span></button>
+          <button type="button" class="choice" data-v="couple"><strong>ふたりで・記念日</strong><span>特別感のある旅にしたい</span></button>
+          <button type="button" class="choice" data-v="family"><strong>家族で</strong><span>子連れ・三世代もこちら</span></button>
+          <button type="button" class="choice" data-v="friends"><strong>友人と</strong><span>わいわい動き回りたい</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="q-label">QUESTION 2</div>
+        <p class="q-title">海で、どう過ごしたい？</p>
+        <div class="choice-grid" data-q="style">
+          <button type="button" class="choice" data-v="swim"><strong>泳ぐ・シュノーケル</strong><span>海に入るのがメイン</span></button>
+          <button type="button" class="choice" data-v="relax"><strong>眺めてのんびり</strong><span>ホテル時間と景色を重視</span></button>
+          <button type="button" class="choice" data-v="hop"><strong>島をめぐる</strong><span>船でいくつか回りたい</span></button>
+          <button type="button" class="choice" data-v="town"><strong>街もグルメも</strong><span>海だけだと飽きるかも</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="q-label">QUESTION 3</div>
+        <p class="q-title">いつ頃行きますか？</p>
+        <div class="choice-grid" data-q="season">
+          <button type="button" class="choice" data-v="summer"><strong>春〜秋（4〜10月）</strong><span>海に入れる時期</span></button>
+          <button type="button" class="choice" data-v="winter"><strong>冬（11〜3月）</strong><span>あたたかい場所へ逃げたい</span></button>
+        </div>
+      </div>
+      <div>
+        <div class="q-label">QUESTION 4</div>
+        <p class="q-title">レンタカーは？</p>
+        <div class="choice-grid" data-q="car">
+          <button type="button" class="choice" data-v="car"><strong>借りる</strong><span>運転して自由に回りたい</span></button>
+          <button type="button" class="choice" data-v="nocar"><strong>借りない</strong><span>運転なしでのんびりしたい</span></button>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="go-button" id="goButton" disabled>候補を3つに絞る</button>
+        <button type="button" class="omakase-button" id="omakaseButton">選ぶのも面倒。おまかせ1択！</button>
+        <span class="actions-note" id="actionsNote">4つの質問に答えると診断できます（おまかせは答えた分だけ考慮します）</span>
+      </div>
+    </form>
+
+    <section class="results" id="results" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
+    <div class="footer-links">
+      <a href="/about.html">運営者情報</a>
+      <a href="/soudan.html">質問ボックス</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/ads.html">広告掲載について</a>
+    </div>
+  </footer>
+
+  <script>
+    // テーマデータ。新しい診断（湖畔・温泉など）はこの形式のデータを差し替えて作る。
+    // scores: 各質問の選択肢ごとの適性 0〜3。affiliateUrl はアフィ台帳整備後に差し替える。
+    const THEME = {
+      destinations: [
+        {
+          id: "ishigaki",
+          name: "石垣島",
+          catch: "島めぐりの拠点に、いちばん便利な海",
+          reason: "離島ターミナルを起点に竹富島や周辺の島へ船で渡れるのが石垣島の強みです。市街地に泊まれば夜ごはんにも困らず、車なしでも旅が成立します。",
+          caution: "ビーチでのんびり、が主目的なら市街地よりリゾートエリア泊か、ほかの島も検討を。",
+          scores: { who: { solo: 3, couple: 2, family: 2, friends: 3 }, style: { swim: 2, relax: 1, hop: 3, town: 2 }, season: { summer: 3, winter: 2 }, car: { car: 2, nocar: 3 } },
+          articles: [
+            { label: "1泊2日モデルコース", url: "/articles/ishigaki-2days-model-course/" },
+            { label: "ひとり旅向けホテル3選", url: "/articles/ishigaki-solo-hotels-3/" }
+          ],
+          affiliateUrl: "#"
+        },
+        {
+          id: "miyakojima",
+          name: "宮古島",
+          catch: "「海の色」で選ぶなら、ここ",
+          reason: "与那覇前浜や砂山ビーチなど、海そのものの美しさは国内屈指。ホテル時間と海をゆっくり楽しむ旅に向いています。",
+          caution: "島内の移動はレンタカーがほぼ前提です。車なしだと行動範囲がかなり狭くなります。",
+          scores: { who: { solo: 1, couple: 3, family: 2, friends: 2 }, style: { swim: 3, relax: 3, hop: 1, town: 1 }, season: { summer: 3, winter: 1 }, car: { car: 3, nocar: 1 } },
+          articles: [
+            { label: "目的別ホテル3選", url: "/articles/miyakojima-hotels-3/" },
+            { label: "記念日向けホテル3選", url: "/articles/miyakojima-anniversary-hotels-3/" }
+          ],
+          affiliateUrl: "#"
+        },
+        {
+          id: "kohama",
+          name: "小浜島",
+          catch: "なにもしない、をしに行く島",
+          reason: "島全体が静かで、リゾート内で過ごす時間そのものが目的になる島です。記念日やふたり旅で「海を眺めて何もしない」を叶えたい人に向いています。",
+          caution: "飲食店やコンビニは少なめ。島の外へ気軽に出る旅ではないので、ホテル時間を楽しめるかが鍵です。",
+          scores: { who: { solo: 1, couple: 3, family: 2, friends: 1 }, style: { swim: 2, relax: 3, hop: 2, town: 0 }, season: { summer: 3, winter: 2 }, car: { car: 1, nocar: 3 } },
+          articles: [
+            { label: "小浜島のホテル2選", url: "/articles/kohama-hotels-2/" }
+          ],
+          affiliateUrl: "#"
+        },
+        {
+          id: "okinawa-resort",
+          name: "沖縄本島・リゾートエリア",
+          catch: "家族でも記念日でも外さない王道",
+          reason: "北谷・読谷・名護など、ホテルの選択肢の多さは国内随一。子連れ設備が整った宿から記念日向けまで、同行者に合わせて選べます。",
+          caution: "リゾートエリアの移動はレンタカーが基本。夏休みは那覇空港のレンタカー受け取りに時間がかかることも。",
+          scores: { who: { solo: 1, couple: 3, family: 3, friends: 2 }, style: { swim: 2, relax: 3, hop: 0, town: 2 }, season: { summer: 3, winter: 2 }, car: { car: 3, nocar: 1 } },
+          articles: [
+            { label: "本島の記念日ホテル3選", url: "/articles/okinawa-anniversary-hotels-3/" },
+            { label: "初めての沖縄Q&A", url: "/articles/first-okinawa-qa/" }
+          ],
+          affiliateUrl: "#"
+        },
+        {
+          id: "naha",
+          name: "那覇拠点の沖縄",
+          catch: "車なし・街も楽しむ、いいとこ取り",
+          reason: "国際通りの食と街歩きを楽しみつつ、慶良間諸島への日帰り船で海も満喫。モノレールと徒歩で完結するので、運転したくない旅に最適です。",
+          caution: "那覇市内に「歩いて行ける綺麗なビーチ」はほぼありません。海は日帰りツアーで出る前提で考えてください。",
+          scores: { who: { solo: 3, couple: 1, family: 1, friends: 2 }, style: { swim: 1, relax: 1, hop: 2, town: 3 }, season: { summer: 2, winter: 3 }, car: { car: 1, nocar: 3 } },
+          articles: [
+            { label: "那覇の立地重視ホテル3選", url: "/articles/naha-hotels-3/" },
+            { label: "冬の沖縄・海ガイド", url: "/articles/winter-okinawa-sea-guide/" }
+          ],
+          affiliateUrl: "#"
+        },
+        {
+          id: "ibusuki",
+          name: "指宿（鹿児島）",
+          catch: "海を「眺める」旅と砂むし温泉",
+          reason: "泳ぐ海ではなく、海沿いの宿と砂むし温泉でゆるむ旅。飛行機＋列車だけで行けて、冬でも楽しさが落ちないのが強みです。",
+          caution: "ビーチで泳ぐ旅を期待すると外れます。「海辺の温泉旅」としてどうぞ。",
+          scores: { who: { solo: 3, couple: 2, family: 1, friends: 1 }, style: { swim: 0, relax: 3, hop: 0, town: 1 }, season: { summer: 2, winter: 3 }, car: { car: 2, nocar: 3 } },
+          articles: [
+            { label: "指宿ひとり旅 1泊2日", url: "/articles/ibusuki-solo-trip/" }
+          ],
+          affiliateUrl: "#"
+        }
+      ]
+    };
+
+    const answers = {};
+    const QUESTIONS = ["who", "style", "season", "car"];
+    const quiz = document.getElementById("quiz");
+    const goButton = document.getElementById("goButton");
+    const omakaseButton = document.getElementById("omakaseButton");
+    const results = document.getElementById("results");
+
+    quiz.addEventListener("click", (e) => {
+      const button = e.target.closest(".choice");
+      if (!button) return;
+      const group = button.closest("[data-q]");
+      answers[group.dataset.q] = button.dataset.v;
+      group.querySelectorAll(".choice").forEach((c) => c.classList.toggle("is-active", c === button));
+      goButton.disabled = !QUESTIONS.every((q) => answers[q]);
+    });
+
+    const scoreOf = (dest) =>
+      QUESTIONS.reduce((sum, q) => sum + (answers[q] ? dest.scores[q][answers[q]] : 0), 0);
+
+    const renderCard = (dest, badge) => `
+      <div class="dest-card">
+        <span class="dest-rank${badge === "おまかせ" ? " is-omakase" : ""}">${badge}</span>
+        <h3>${dest.name}</h3>
+        <p class="dest-catch">${dest.catch}</p>
+        <p class="dest-reason">${dest.reason}</p>
+        <div class="dest-caution">注意点：${dest.caution}</div>
+        <div class="dest-links">
+          ${dest.articles.map((a) => `<a class="dest-link article" href="${a.url}">${a.label}</a>`).join("")}
+          ${dest.affiliateUrl && dest.affiliateUrl !== "#" ? `<a class="dest-link hotel" href="${dest.affiliateUrl}" target="_blank" rel="nofollow sponsored noopener">楽天トラベルで宿を見る</a>` : ""}
+        </div>
+      </div>`;
+
+    const showResults = (html, title, sub) => {
+      results.innerHTML = `
+        <h2 class="results-title">${title}</h2>
+        <p class="results-sub">${sub}</p>
+        ${html}
+        <p class="retry"><button type="button" onclick="location.reload()">条件を変えてやり直す</button></p>
+      `;
+      results.classList.add("is-visible");
+      results.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    goButton.addEventListener("click", () => {
+      const ranked = [...THEME.destinations]
+        .map((d) => ({ d, s: scoreOf(d) }))
+        .sort((a, b) => b.s - a.s)
+        .slice(0, 3);
+      showResults(
+        ranked.map((r, i) => renderCard(r.d, `第${i + 1}候補`)).join(""),
+        "あなたに合いそうな海は、この3つ",
+        "上から順におすすめです。気になる候補は記事で詳しく確認してください。"
+      );
+    });
+
+    omakaseButton.addEventListener("click", () => {
+      // 答えた質問だけで足切りし、残りからランダムに1つ選ぶ
+      const answered = QUESTIONS.filter((q) => answers[q]);
+      let pool = THEME.destinations.filter((d) =>
+        answered.every((q) => d.scores[q][answers[q]] >= 2)
+      );
+      if (!pool.length) pool = THEME.destinations;
+      const picked = pool[Math.floor(Math.random() * pool.length)];
+
+      results.innerHTML = `<div class="roulette" id="roulette">…</div>`;
+      results.classList.add("is-visible");
+      results.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      const roulette = document.getElementById("roulette");
+      let count = 0;
+      const timer = setInterval(() => {
+        roulette.textContent = THEME.destinations[count % THEME.destinations.length].name;
+        count += 1;
+        if (count > 14) {
+          clearInterval(timer);
+          showResults(
+            renderCard(picked, "おまかせ"),
+            `あなたの海は「${picked.name}」に決まりました`,
+            "迷いは禁止。まずはこの候補で妄想してみてください。"
+          );
+        }
+      }, 110);
+    });
+  </script>
+</body>
+</html>

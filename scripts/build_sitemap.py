@@ -21,6 +21,7 @@ STATIC_URLS = [
     (f"{SITE_ORIGIN}/ads.html", "0.4", "monthly", "2026-06-09"),
     (f"{SITE_ORIGIN}/finder.html", "0.9", "weekly", "2026-06-09"),
     (f"{SITE_ORIGIN}/soudan.html", "0.9", "monthly", "2026-06-10"),
+    (f"{SITE_ORIGIN}/shindan/umi/", "0.9", "weekly", "2026-06-10"),
     (f"{SITE_ORIGIN}/articles/", "0.9", "weekly", "2026-06-09"),
 ]
 
