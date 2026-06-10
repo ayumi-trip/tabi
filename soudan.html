@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅の相談 | 元旅行会社スタッフに無料で聞ける | tabinote</title>
+  <meta name="description" content="行き先選び、宿選び、行程の不安。元旅行会社スタッフ・旅行プランナーのAYUMIが、あなたの状況に合わせて無料で相談に乗ります。">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#1f5f8f">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://tabi.ayumi-biz.com/soudan.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="tabinote">
+  <meta property="og:title" content="旅の相談 | 元旅行会社スタッフに無料で聞ける | tabinote">
+  <meta property="og:description" content="行き先選び、宿選び、行程の不安。元旅行会社スタッフのAYUMIが、あなたの状況に合わせて無料で相談に乗ります。">
+  <meta property="og:url" content="https://tabi.ayumi-biz.com/soudan.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --sub: #4f5658;
+      --muted: #777f82;
+      --line: #e8eaec;
+      --paper: #fff;
+      --white: #fff;
+      --deep: #161a1c;
+      --teal: #1f5f8f;
+      --teal-2: #f1f6fb;
+      --shadow: 0 14px 40px rgba(17, 17, 17, .07);
+      --r: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.85;
+    }
+    a { color: inherit; text-decoration: none; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 clamp(18px, 4vw, 52px);
+      background: rgba(255, 255, 255, .92);
+      border-bottom: 1px solid rgba(17, 17, 17, .08);
+      backdrop-filter: blur(16px);
+    }
+    .brand-name {
+      font-family: "Shippori Mincho", serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .brand-name span { color: var(--teal); }
+    .nav-links { display: flex; gap: 22px; color: var(--sub); font-size: 13px; }
+    .nav-links a:hover { color: var(--teal); }
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px clamp(18px, 4vw, 32px) 72px;
+    }
+    .eyebrow {
+      width: fit-content;
+      padding: 6px 10px;
+      border: 1px solid rgba(31, 95, 143, .18);
+      border-radius: 999px;
+      color: var(--teal);
+      background: #f6f9f8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    h1 {
+      margin: 18px 0 0;
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.25;
+    }
+    .lead { margin: 18px 0 0; color: var(--sub); font-size: 15px; }
+    .card {
+      margin-top: 32px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: clamp(22px, 4vw, 34px);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .card h2 { margin: 0 0 12px; font-size: 19px; }
+    .card ul { margin: 0; padding-left: 1.3em; color: var(--sub); font-size: 14px; }
+    .card li { margin-bottom: 6px; }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      margin-top: 22px;
+      border: 1px solid var(--deep);
+      border-radius: 999px;
+      padding: 0 28px;
+      background: var(--deep);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .cta-button:hover { background: var(--teal); border-color: var(--teal); transform: translateY(-1px); }
+    .note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: var(--r);
+      background: var(--teal-2);
+      color: var(--sub);
+      font-size: 13px;
+    }
+    .steps { display: grid; gap: 14px; margin-top: 18px; }
+    .step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 14px 16px;
+      background: #fafbfb;
+    }
+    .step-num {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--deep);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .step b { display: block; font-size: 14px; }
+    .step p { margin: 4px 0 0; color: var(--sub); font-size: 13px; }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px clamp(18px, 4vw, 52px);
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      background: #f8f9f9;
+      flex-wrap: wrap;
+    }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    @media (max-width: 560px) {
+      .nav-links a { display: none; }
+      .footer { display: block; }
+      .footer-links { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand" aria-label="tabinote トップ">
+      <span class="brand-name">tabi<span>note</span></span>
+    </a>
+    <nav class="nav-links" aria-label="主要メニュー">
+      <a href="/finder.html">旅の診断</a>
+      <a href="/articles/index.html">記事を探す</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="eyebrow">TRAVEL CONSULTATION</div>
+    <h1>旅の相談、無料で受けています</h1>
+    <p class="lead">
+      「おすすめ10選」を読み比べても決められない。そんなときは、状況を教えてください。
+      元旅行会社スタッフ・旅行プランナーのAYUMIが、あなたの旅の条件に合わせて、候補を2〜3つに絞ってお返事します。
+    </p>
+
+    <section class="card">
+      <h2>こんな相談に向いています</h2>
+      <ul>
+        <li>行き先がふたつまで絞れたが、決め手がない（例：石垣島と宮古島どっち？）</li>
+        <li>子連れ・記念日・ひとり旅など、自分の状況に合う宿が分からない</li>
+        <li>レンタカーなしで回れるのか、行程が現実的なのか不安</li>
+        <li>AIや検索で出てきたプランが本当に大丈夫か、経験者に確認したい</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>相談のながれ</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <div>
+            <b>フォームから状況を送る</b>
+            <p>誰と・いつ頃・何日くらい・予算感・気になっていること。分かる範囲でOKです。</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <div>
+            <b>AYUMIから返信</b>
+            <p>候補を2〜3つに絞り、それぞれの理由と注意点を添えてお返事します（数日いただく場合があります）。</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <div>
+            <b>納得して予約へ</b>
+            <p>予約はご自身のタイミングで。追加の質問も遠慮なくどうぞ。</p>
+          </div>
+        </div>
+      </div>
+      <!-- TODO: Googleフォーム作成後、下のhrefを実際のフォームURLに差し替える -->
+      <a class="cta-button" href="https://forms.gle/REPLACE_WITH_FORM_ID" target="_blank" rel="noopener">相談フォームをひらく（無料）</a>
+      <div class="note">
+        いただいた相談内容は、個人が特定されない形で、今後の記事づくりや診断ツールの改善に活用させていただくことがあります。
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>なぜ無料？</h2>
+      <p style="margin:0;color:var(--sub);font-size:14px;">
+        旅行情報は増え続けているのに、「自分の場合はどうか」に答えてくれる場所が少ない——その不便さを解消したくて、このサイトを運営しています。
+        相談で見えたお悩みは記事や診断ツールに反映していくので、相談していただくこと自体がサイトを良くする力になります。
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© 2026 tabinote. 当サイトはPR・アフィリエイト広告を利用する場合があります。</div>
+    <div class="footer-links">
+      <a href="/about.html">運営者情報</a>
+      <a href="/contact.html">お問い合わせ</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/ads.html">広告掲載について</a>
+    </div>
+  </footer>
+</body>
+</html>
